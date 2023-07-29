@@ -10,6 +10,11 @@ export default {
                 white: "#FFFFFF",
                 black: "#232233",
             },
+            fontFamily: {
+                inter: ["Inter", "sans-serif"],
+                poppins: ["Poppins", "sans-serif"],
+                manrope: ["Manrope", "sans-serif"],
+            },
         },
     },
     plugins: [],

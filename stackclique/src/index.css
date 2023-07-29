@@ -1,3 +1,17 @@
+@font-face {
+    font-family: "Inter";
+    src: url("./assets/fonts/inter/Inter-VariableFont_slnt\,wght.ttf");
+}
+
+@font-face {
+    font-family: "Manrope";
+    src: url("./assets/fonts/manrope/Manrope-VariableFont_wght.ttf");
+}
+@font-face {
+    font-family: "Poppins";
+    src: url("./assets/fonts/poppins/Poppins-Regular.ttf");
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
