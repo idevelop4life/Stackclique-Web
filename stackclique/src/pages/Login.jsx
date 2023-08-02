@@ -24,7 +24,7 @@ export default function Login() {
             <p className="text-darkGrey">Log in into your account</p>
 
             <form
-                className="w-8/12 flex flex-col gap-6"
+                className="w-full lg:w-8/12 flex flex-col mt-6 gap-6"
                 onSubmit={formik.handleSubmit}
             >
                 <TextField
@@ -55,7 +55,7 @@ export default function Login() {
                     </p>
                 </div>
 
-                <div className="">
+                <div className="relative">
                     <Button
                         disabled={formik.errors.email || formik.errors.password}
                         type={"submit"}
