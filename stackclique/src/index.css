@@ -60,4 +60,21 @@
     .radio-label input:checked ~ .radio-input-span::before {
         display: block;
     }
+
+    /* For Chrome, Safari, and other WebKit-based browsers */
+    input[type="number"] {
+        -webkit-appearance: textfield;
+    }
+
+    /* Remove the inner spinner */
+    input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Remove the outer spinner (for Firefox) */
+    input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
 }
