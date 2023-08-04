@@ -56,7 +56,11 @@ export default function Login() {
 
                 <div className="relative">
                     <Button
-                        disabled={formik.errors.email || formik.errors.password}
+                        disabled={
+                            formik.errors.email ||
+                            formik.errors.password ||
+                            !formik.touched.email
+                        }
                         type={"submit"}
                     >
                         Login
