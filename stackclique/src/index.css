@@ -77,4 +77,8 @@
         -webkit-appearance: none;
         margin: 0;
     }
+    .backdrop {
+        background: rgb(110, 114, 122);
+        backdrop-filter: blur(24px);
+    }
 }
