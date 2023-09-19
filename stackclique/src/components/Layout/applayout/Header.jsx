@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { MdOutlineEmail } from "react-icons/md";
 import { BsTelephone } from "react-icons/bs";
 import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
@@ -43,12 +43,18 @@ export default function Header() {
                     })}
                 </ul>
                 <div className="lg:flex gap-4 hidden ">
-                    <button className="rounded-md py-2 px-4 bg-white">
+                    <Link
+                        to={"/login"}
+                        className="rounded-md py-2 px-4 bg-white"
+                    >
                         Login
-                    </button>
-                    <button className="rounded-md py-2 px-4 bg-primary text-white">
+                    </Link>
+                    <Link
+                        to={"sign-up"}
+                        className="rounded-md py-2 px-4 bg-primary text-white"
+                    >
                         Login
-                    </button>
+                    </Link>
                 </div>
                 <button
                     onClick={() => setMobileNavVisible(true)}
