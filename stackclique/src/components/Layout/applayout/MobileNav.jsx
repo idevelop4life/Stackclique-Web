@@ -2,6 +2,7 @@ import { NavLink, Link } from "react-router-dom";
 import { navLinks } from "./navigationLinks";
 import { MdClose } from "react-icons/md";
 import { motion, AnimatePresence } from "framer-motion";
+import Backdrop from "../../ui/Backdrop";
 
 const mobileNavVariant = {
     hidden: { x: "100vw" },
@@ -15,7 +16,7 @@ export default function MobileNav({ setMobileNavVisible }) {
     return (
         <AnimatePresence>
             <motion.div
-                className="absolute lg:hidden top-[80px] right-0 z-[1000] min-h-[calc(100vh-80px)] w-[70%] md:w-[50%] font-inter"
+                className="fixed lg:hidden  top-[80px] right-0 z-[2000] min-h-[calc(100vh-80px)] w-[70%] md:w-[50%] font-inter"
                 variants={mobileNavVariant}
                 initial="hidden"
                 animate="visible"

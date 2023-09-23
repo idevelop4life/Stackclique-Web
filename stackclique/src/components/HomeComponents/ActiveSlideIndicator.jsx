@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export default function ActiveSlideIndicator({ activeIndex }) {
     return (
-        <div className="absolute right-2 z-[200]  text-darkGrey bottom-0 flex gap-4 md:gap-6 shadow-md">
+        <div className="absolute right-2 z-10  text-darkGrey bottom-0 flex gap-4 md:gap-6 shadow-md">
             {activeSlideData.map((item) => {
                 return (
                     <div
