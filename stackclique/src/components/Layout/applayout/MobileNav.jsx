@@ -1,8 +1,11 @@
+import { useRef } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { navLinks } from "./navigationLinks";
 import { MdClose } from "react-icons/md";
 import { motion, AnimatePresence } from "framer-motion";
-import Backdrop from "../../ui/Backdrop";
+import { useAppStore } from "../../../store/useAppStore";
+import { Avatar } from "../../ui";
+import useClickAwayListener from "../../../hooks/useClickAway";
 
 const mobileNavVariant = {
     hidden: { x: "100vw" },
@@ -13,6 +16,14 @@ const mobileNavVariant = {
 };
 
 export default function MobileNav({ setMobileNavVisible }) {
+    const user = useAppStore((state) => state.user);
+    const mobileSideNavRef = useRef(null);
+    useClickAwayListener(mobileSideNavRef, closeSideMobileNav);
+
+    function closeSideMobileNav() {
+        setMobileNavVisible(false);
+    }
+
     return (
         <AnimatePresence>
             <motion.div
@@ -24,12 +35,26 @@ export default function MobileNav({ setMobileNavVisible }) {
                     x: "100vw",
                     transition: { ease: "linear", duration: 0.5 },
                 }}
+                ref={mobileSideNavRef}
             >
-                <div className=" absolute right-0 h-full w-10/12 z-[1000] bg-white flex flex-col gap-6 items-end py-[2.12rem] px-[0.86rem]">
-                    <div className="flex flex-col gap-4">
-                        <Link to={"/login"}>Log in</Link>
-                        <Link to={"/sign-up"}>Sign Up</Link>
-                    </div>
+                <div className=" absolute right-0 h-full w-10/12 z-[1000] bg-white flex flex-col gap-6 items-end py-[2.12rem] px-[1.2rem]">
+                    {/* welcome user if a user is logged in else auth buttons */}
+                    {user ? (
+                        <div className="flex items-center gap-4 font-inter">
+                            <div className="flex flex-col h-full justify-around">
+                                <p className="text-sm font-[700]">
+                                    Hello, Anderson
+                                </p>
+                                <p className="text-xs">Welcome onboard</p>
+                            </div>
+                            <Avatar />
+                        </div>
+                    ) : (
+                        <div className="flex flex-col gap-4">
+                            <Link to={"/login"}>Log in</Link>
+                            <Link to={"/sign-up"}>Sign Up</Link>
+                        </div>
+                    )}
                     <hr className="h-4  w-full" />
                     {navLinks.map((item) => {
                         return (
@@ -37,7 +62,9 @@ export default function MobileNav({ setMobileNavVisible }) {
                                 to={item.link}
                                 key={item.id}
                                 className={({ isActive }) =>
-                                    isActive ? "text-primary" : "text-black"
+                                    isActive
+                                        ? "text-primary font-[600]"
+                                        : "text-black"
                                 }
                             >
                                 {item.title}
@@ -45,9 +72,10 @@ export default function MobileNav({ setMobileNavVisible }) {
                         );
                     })}
                     <p>Get the App</p>
+                    {user && <button>Sign Out</button>}
                 </div>
                 <button
-                    onClick={() => setMobileNavVisible(false)}
+                    onClick={closeSideMobileNav}
                     className="absolute left-0 top-2 bg-white w-[1.5rem] h-[1.5rem] text-black rounded-full flex items-center justify-center"
                 >
                     <MdClose />
