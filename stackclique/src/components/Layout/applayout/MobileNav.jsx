@@ -2,7 +2,6 @@ import { NavLink, Link } from "react-router-dom";
 import { navLinks } from "./navigationLinks";
 import { MdClose } from "react-icons/md";
 import { motion, AnimatePresence } from "framer-motion";
-import Backdrop from "../../ui/Backdrop";
 
 const mobileNavVariant = {
     hidden: { x: "100vw" },

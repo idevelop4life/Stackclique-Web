@@ -28,7 +28,7 @@ const SingleSlide = ({ url, id, setActiveIndex }) => {
                 <img src={url} alt="" className="object-fit z-[-100]" />
             </div>
             <div className=" flex relative mt-[7rem] md:mt-[10rem] ml-4 lg:ml-[6rem]  flex-col text-left text-white z-[100] ">
-                <h2 className="md:text-[3.5rem] flex font-[600] lg:leading-[4.5rem] font-poppins">
+                <h2 className="text-[1.5rem] md:text-[3.5rem] flex font-[600] lg:leading-[4.5rem] font-poppins">
                     A community <br /> designed to reward
                 </h2>
                 <div className="h-[2.5rem]  md:h-[3rem] relative md:w-[80%] mt-4 flex bg-white rounded-[0.375rem] overflow-hidden">
