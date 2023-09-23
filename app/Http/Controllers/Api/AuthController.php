@@ -8,18 +8,24 @@ use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
-    public function signup()
+    public function signup(Request $req)
     {
         // $data = $request->validated();
         /** @var \App\Models\User $user */
         $user = User::create([
-            'name' => 'd',
-            'email' => 'dd',
-            'password' => bcrypt('ddd'),
+            'name' => $req->username,
+            'email' => $req->email,
+            'password' => bcrypt($req->password),
         ]);
 
         $token = $user->createToken('main')->plainTextToken;
-       dd($token);
-        return response(compact('user', 'token'));
+
+        return response()->json([
+            'user' => $user,
+            'token'=>$token,
+        ]);
+
+       // dd($token);
+        // return response(compact('user', 'token'));
     }
 }
