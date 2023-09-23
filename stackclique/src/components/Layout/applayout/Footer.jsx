@@ -1,3 +1,3 @@
 export default function Footer() {
-    return <div>Footer</div>;
+    return <div className="mt-[30rem]">Footer</div>;
 }

@@ -32,7 +32,7 @@ export default function ActiveSlideIndicator({ activeIndex }) {
                         {item.id == activeIndex && (
                             <motion.span
                                 layoutId="underline"
-                                className="absolute border-t-4 border-primary w-full  left-0 -top-0"
+                                className="absolute border-t-4 border-green w-full  left-0 -top-0"
                             />
                         )}
                     </div>
