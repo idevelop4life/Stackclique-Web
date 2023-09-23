@@ -23,6 +23,8 @@ export default function Login() {
                 .then(
                     response => alert(JSON.stringify(response.data))
 
+                    // if this response goes through the dashboard should be shown 
+
                     )
                 .catch(error => {
                     console.log("ERROR:: ",error.response.data);

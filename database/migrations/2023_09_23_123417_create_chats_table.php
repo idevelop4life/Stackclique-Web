@@ -14,19 +14,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('chats', function (Blueprint $table) {
             $table->uuid('id')->primary()->default(DB::raw('uuid()'));
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->string('username')->unique();
-            $table->string('profile_photo')->nullable();
-            $table->string('cover_photo')->nullable();
-            $table->integer('level')->default(0);
-            $table->uuid('channel_id')->nullable();
+            $table->uuid('sender_id');
+            $table->text('message');
+            $table->uuid('channel_id');
+            $table->foreign('sender_id')->references('id')->on('users');
             $table->foreign('channel_id')->references('id')->on('channels');
-            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -38,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('chats');
     }
 };
