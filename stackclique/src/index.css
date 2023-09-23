@@ -17,6 +17,20 @@
 @tailwind utilities;
 
 @layer components {
+    /* scrollbar styling */
+    ::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: #7e0772;
+        border-radius: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background-color: #f1f1f1;
+    }
+
     /* custom radio button */
     .radio-label {
         position: relative;
@@ -80,5 +94,10 @@
     .backdrop {
         background: rgb(110, 114, 122);
         backdrop-filter: blur(24px);
+    }
+
+    /* hero section active default bullet */
+    .hero-section-bullet {
+        display: none;
     }
 }

@@ -10,7 +10,7 @@ import { navLinks } from "./navigationLinks";
 export default function Header() {
     const [mobileNavVisible, setMobileNavVisible] = useState(false);
     return (
-        <header className=" absolute top-0 h-[80px] lg:h-[120px] left-0 right-0 bg-[#5A5F6B] backdrop-blur-xl">
+        <header className=" absolute top-0 h-[80px] lg:h-[120px] left-0 right-0 bg-[#5A5F6B] backdrop-blur-xl z-[100]">
             <div className="text-white text-xs md:text-sm bg-gray-600 lg:bg-black py-2 px-2 flex items-center justify-between mx-auto md:mx-[4rem] lg:mx-[7.37rem]">
                 <div className="flex items-center gap-4">
                     <MdOutlineEmail /> <p>Info@youremail.com</p>
@@ -23,8 +23,8 @@ export default function Header() {
                 </div>
             </div>
 
-            <nav className="flex items-center font-inter justify-between min-h-[3rem] px-2 py-2 md:mx-[4rem] lg:py-[1.56rem] lg:mx-[7.37rem]">
-                <p className="font-[700] text-sm lg:text-[1.5rem] font-poppins">
+            <nav className="flex items-center font-inter justify-between min-h-[3rem] px-2 py-2 md:mx-[4rem] lg:py-[1rem] lg:mx-[7.37rem]">
+                <p className="font-[700] text-sm lg:text-[1.5rem] text-white font-poppins">
                     STACK<span className="text-green">CLIQUE</span>
                 </p>
                 <ul className="hidden lg:flex gap-[3.12rem]">
@@ -34,7 +34,9 @@ export default function Header() {
                                 to={item.link}
                                 key={item.id}
                                 className={({ isActive }) =>
-                                    isActive ? "text-primary" : "text-white"
+                                    isActive
+                                        ? "text-primary font-[700]"
+                                        : "text-white"
                                 }
                             >
                                 {item.title}

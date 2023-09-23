@@ -8,6 +8,7 @@ export default {
                 appBackgroundColor: "#F3F3F3",
                 primaryDark: "#5F0A56",
                 darkGrey: "#8E8C8C",
+                lightGrey: "#e2e8f0",
                 green: "#13B351",
                 white: "#FFFFFF",
                 black: "#242424",

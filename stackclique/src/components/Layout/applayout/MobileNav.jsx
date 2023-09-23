@@ -15,7 +15,7 @@ export default function MobileNav({ setMobileNavVisible }) {
     return (
         <AnimatePresence>
             <motion.div
-                className="absolute lg:hidden top-[80px] right-0  min-h-[calc(100vh-80px)] w-[70%] md:w-[50%] font-inter"
+                className="absolute lg:hidden top-[80px] right-0 z-[1000] min-h-[calc(100vh-80px)] w-[70%] md:w-[50%] font-inter"
                 variants={mobileNavVariant}
                 initial="hidden"
                 animate="visible"
@@ -24,7 +24,7 @@ export default function MobileNav({ setMobileNavVisible }) {
                     transition: { ease: "linear", duration: 0.5 },
                 }}
             >
-                <div className=" absolute right-0 h-full w-10/12 bg-white flex flex-col gap-6 items-end py-[2.12rem] px-[0.86rem]">
+                <div className=" absolute right-0 h-full w-10/12 z-[1000] bg-white flex flex-col gap-6 items-end py-[2.12rem] px-[0.86rem]">
                     <div className="flex flex-col gap-4">
                         <Link to={"/login"}>Log in</Link>
                         <Link to={"/sign-up"}>Sign Up</Link>

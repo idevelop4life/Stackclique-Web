@@ -13,8 +13,5 @@
         "axios": "^0.25.0",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19"
-    },
-    "dependencies": {
-        "yup": "^1.2.0"
     }
 }
