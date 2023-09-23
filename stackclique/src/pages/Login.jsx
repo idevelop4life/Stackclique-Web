@@ -16,7 +16,6 @@ export default function Login() {
             console.log(values);
         },
     });
-
     return (
         <section className="flex flex-col items-center mt-[3rem] gap-2 font-poppins">
             <h2 className="font-[600] text-[2rem]">Sign In</h2>
@@ -57,7 +56,11 @@ export default function Login() {
 
                 <div className="relative">
                     <Button
-                        disabled={formik.errors.email || formik.errors.password}
+                        disabled={
+                            formik.errors.email ||
+                            formik.errors.password ||
+                            !formik.touched.email
+                        }
                         type={"submit"}
                     >
                         Login

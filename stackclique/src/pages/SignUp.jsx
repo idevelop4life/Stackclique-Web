@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import { SignUpSchema } from "../components/form/validationRegex";
 import { Button } from "../components/ui";
@@ -7,6 +8,7 @@ import axios from "axios";
 import axiosClient from "../axios-client";
 
 export default function Login() {
+    const navigate = useNavigate();
     const formik = useFormik({
         initialValues: {
             username: "",
@@ -17,24 +19,11 @@ export default function Login() {
         onSubmit: (values) => {
             // handle form submition when submit button is clicked
             console.log(values);
-
-            axios.post('http://localhost:8000/api/signup', values)
-          
-                .then(
-                    response => alert(JSON.stringify(response.data))
-
-                    )
-                .catch(error => {
-                    console.log("ERROR:: ",error.response.data);
-
-                    });
-
+            navigate("/verification");
         },
-
     });
-
     return (
-        <section className="flex flex-col items-center mt-[3rem] gap-2 font-poppins">
+        <section className="flex w-full flex-col items-center mt-[3rem] gap-2 font-poppins">
             <h2 className="font-[600] text-[2rem]">Sign Up</h2>
             <p className="w-[80%] text-xs text-darkGrey">
                 You have zero regrets joining the best community in the world,
@@ -47,7 +36,7 @@ export default function Login() {
                 <TextField
                     label={"Username"}
                     placeholder={"Enter Your Username"}
-                    id={"Email"}
+                    id={"username"}
                     name={"username"}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
@@ -78,10 +67,14 @@ export default function Login() {
 
                 <div className="relative">
                     <Button
-                        disabled={formik.errors.email || formik.errors.password}
+                        disabled={
+                            formik.errors.email ||
+                            formik.errors.password ||
+                            !formik.touched.email
+                        }
                         type={"submit"}
                     >
-                        Login
+                        Sign Up
                     </Button>
                 </div>
             </form>
