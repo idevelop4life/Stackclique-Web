@@ -47,7 +47,9 @@ export default function Footer() {
                 })}
             </div>
             <div className="flex flex-col relative justify-end items-center flex-[2] gap-4">
-                <p>Join Our Newsletter</p>
+                <h2 className="text-white  font-bold text-md">
+                    Join Our Newsletter
+                </h2>
                 <div className="h-[3rem] w-[90%] md:w-full  relative bg-white flex">
                     <input
                         type="text"
@@ -79,7 +81,7 @@ export default function Footer() {
                     Help Center
                 </Link>
             </div>
-            <div className="absolute flex bottom-0 w-[80%] justify-center text-xs left-[50%] -translate-x-1/2 ">
+            <div className="absolute flex bottom-0 w-[80%] justify-center text-[0.5rem] md:text-[0.8rem] left-[50%] -translate-x-1/2 ">
                 Copyright © {date} StackClique
             </div>
             <span className=" absolute left-0 bottom-0 h-[1.5rem] md:h-[2rem] w-1/4 md:w-1/3 bg-white rounded-tr-[3rem]" />

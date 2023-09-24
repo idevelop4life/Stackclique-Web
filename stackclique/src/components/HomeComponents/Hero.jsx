@@ -45,7 +45,7 @@ const SingleSlide = ({ url, id, setActiveIndex, swiper }) => {
                         value={newsletterValue}
                         onChange={handleTextField}
                     />
-                    <button className="bg-primary flex-1 w-[40%] rounded-tl-[0.375rem] rounded-bl-[0.375rem]">
+                    <button className="bg-primary h-full flex-1 w-[9.875rem] rounded-tl-[0.375rem] rounded-bl-[0.375rem]">
                         Subscribe
                     </button>
                 </div>
@@ -74,7 +74,7 @@ export default function Hero() {
                 // effect={"fade"}
                 navigation
                 autoplay={{
-                    delay: 6000,
+                    delay: 6500,
                     disableOnInteraction: false,
                 }}
                 pagination={{
