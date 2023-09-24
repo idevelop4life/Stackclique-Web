@@ -71,6 +71,7 @@ export default function Login() {
                             !formik.touched.email
                         }
                         type={"submit"}
+                        rounded="large"
                     >
                         Sign Up
                     </Button>

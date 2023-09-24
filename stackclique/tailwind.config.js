@@ -25,6 +25,7 @@ export default {
             },
             boxShadow: {
                 aboutAppCardsShadow: "0px 1px 10px 0px rgba(0, 0, 0, 0.10)",
+                whyJoinCardBoxShadow: "0px 64px 194px 0px rgba(0, 0, 0, 0.10)",
             },
         },
     },

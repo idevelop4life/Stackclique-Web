@@ -40,7 +40,7 @@ export default function AboutOurApp() {
                     <img src={MobileAppScreen} alt="" />
                 </div>
 
-                <div className="flex flex-col justify-evenly md:w-1/2 gap-y-4 md:gap-y-0 font-inter ">
+                <div className="flex flex-col justify-evenly md:w-1/2 gap-y-4 md:gap-y-4 font-inter ">
                     {aboutAppData.map((item) => {
                         return (
                             <div
