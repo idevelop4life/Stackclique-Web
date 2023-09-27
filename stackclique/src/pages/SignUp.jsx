@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { json, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import { SignUpSchema } from "../components/form/validationRegex";
 import { Button } from "../components/ui";
@@ -9,6 +9,7 @@ import axiosClient from "../axios-client";
 
 export default function Login() {
     const navigate = useNavigate();
+
     const formik = useFormik({
         initialValues: {
             username: "",
@@ -19,7 +20,38 @@ export default function Login() {
         onSubmit: (values) => {
             // handle form submition when submit button is clicked
             console.log(values);
-            navigate("/verification");
+
+            axios.post('http://localhost:8000/api/signup', values)
+
+
+            .then(response => {
+                if (response.status === 200) {
+
+                    // pls anderson this particular page should not
+                    // be accessed if the user has being successfully registered
+                    // so you can place a kind of middileware to guard that, so he doesnt sign up multipl times thanks
+
+                    // This contains info of the user that jus registered and the login message
+                    const registeredMessage = JSON.stringify(response.data);
+                     navigate("/verification");
+
+                } else {
+                    // Error message
+                    const errorStat= JSON.stringify(response.status);
+                }
+            }).catch(error => {
+
+
+                    // Below are the information for errors in interacting with the database
+                    const errorStatus= JSON.stringify(error.response.status);
+                    const errorMessage= JSON.stringify(error.response.data.message);
+                    const errorData= JSON.stringify(error.response.data.errors);
+                    console.log("API request failed with status code:", errorStatus);
+                    console.log("ERROR:: ", errorData);
+                    console.log("ERROR:: ", errorMessage);
+
+                    });
+
         },
     });
     return (
