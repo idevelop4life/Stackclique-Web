@@ -1,3 +1,5 @@
+
+import { Hero, HomeSecondSection } from "../components/HomeComponents";
 import {
     AboutOurApp,
     Hero,
@@ -8,6 +10,7 @@ export default function Home() {
     return (
         <main>
             <Hero />
+            <HomeSecondSection />
             <WhyJoinStackclique />
             <AboutOurApp />
         </main>
