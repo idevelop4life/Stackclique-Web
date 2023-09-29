@@ -13,33 +13,39 @@ import "swiper/css/autoplay";
 import { slideData } from "./homeComponentsData";
 import ActiveSlideIndicator from "./ActiveSlideIndicator";
 
-const SingleSlide = ({ url, id, setActiveIndex }) => {
+const SingleSlide = ({ url, id, setActiveIndex, swiper }) => {
     const [newsletterValue, setNewsLetterValue] = useState("");
     const swiperSlide = useSwiperSlide();
+
     // set the active index
     useEffect(() => {
         if (swiperSlide.isActive) {
             setActiveIndex(id);
         }
     }, [swiperSlide.isActive, id, setActiveIndex]);
+
+    const handleTextField = (e) => {
+        swiper.autoplay.stop();
+        setNewsLetterValue(e.target.value);
+    };
     return (
         <div className=" flex">
             <div className="absolute w-full h-full">
                 <img src={url} alt="" className="object-fit z-[-100]" />
             </div>
-            <div className=" flex relative mt-[6rem] md:mt-[10rem] w-full px-4 flex-col text-left text-white z-[100] ">
+            <div className=" flex relative mt-[6rem] md:mt-[10rem] w-full px-4 md:px-[5rem] lg:px-[7rem] flex-col text-left text-white z-[100] ">
                 <h2 className="text-[1.5rem] md:text-[3.5rem] flex font-[600] lg:leading-[4.5rem] font-poppins">
                     A community <br /> designed to reward
                 </h2>
-                <div className="h-[2.5rem]  md:h-[3rem] relative md:w-1/2 mt-4 flex bg-white rounded-[0.375rem] overflow-hidden">
+                <div className="h-[2.5rem]  md:h-[3rem] relative md:w-2/3 lg:w-1/2 mt-4 flex bg-white rounded-[0.375rem] overflow-hidden">
                     <input
                         type="text"
                         placeholder="Join our newsletter, stay updated"
                         className=" px-4 text-xs md:text-sm  w-[60%] text-darkGrey outline-none"
                         value={newsletterValue}
-                        onChange={(e) => setNewsLetterValue(e.target.value)}
+                        onChange={handleTextField}
                     />
-                    <button className="bg-primary flex-1 w-[40%] rounded-tl-[0.375rem] rounded-bl-[0.375rem]">
+                    <button className="bg-primary h-full flex-1 w-[9.875rem] rounded-tl-[0.375rem] rounded-bl-[0.375rem]">
                         Subscribe
                     </button>
                 </div>
@@ -68,7 +74,7 @@ export default function Hero() {
                 // effect={"fade"}
                 navigation
                 autoplay={{
-                    delay: 6000,
+                    delay: 6500,
                     disableOnInteraction: false,
                 }}
                 pagination={{
@@ -90,6 +96,7 @@ export default function Hero() {
                                 url={item.slideImg}
                                 id={item.id}
                                 setActiveIndex={setActiveIndex}
+                                swiper={swiper}
                             />
                         </SwiperSlide>
                     );
