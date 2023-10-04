@@ -6,11 +6,15 @@ import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import Menu from "../../../assets/svg/menu.svg";
 import MobileNav from "./MobileNav";
 import { navLinks } from "./navigationLinks";
+import { useAppStore } from "../../../store/useAppStore";
+import { Avatar } from "../../ui";
 
 export default function Header() {
     const [mobileNavVisible, setMobileNavVisible] = useState(false);
+    const user = useAppStore((state) => state.user);
+
     return (
-        <header className=" absolute top-0 h-[80px] lg:h-[120px] left-0 right-0 bg-[#5A5F6B] backdrop-blur-xl z-[100]">
+        <header className="fixed top-0 h-[80px] lg:h-[120px] left-0 right-0 bg-[#5A5F6B] backdrop-blur-xl z-[100]">
             <div className="text-white text-xs md:text-sm bg-gray-600 lg:bg-black py-2 px-2 flex items-center justify-between mx-auto md:mx-[4rem] lg:mx-[7.37rem]">
                 <div className="flex items-center gap-4">
                     <MdOutlineEmail /> <p>Info@youremail.com</p>
@@ -44,20 +48,27 @@ export default function Header() {
                         );
                     })}
                 </ul>
-                <div className="lg:flex gap-4 hidden ">
-                    <Link
-                        to={"/login"}
-                        className="rounded-md py-2 px-4 bg-white"
-                    >
-                        Login
-                    </Link>
-                    <Link
-                        to={"sign-up"}
-                        className="rounded-md py-2 px-4 bg-primary text-white"
-                    >
-                        Login
-                    </Link>
-                </div>
+                {user ? (
+                    <button className="hidden lg:flex">
+                        <Avatar size={"small"} />
+                    </button>
+                ) : (
+                    <div className="lg:flex gap-4 hidden ">
+                        <Link
+                            to={"/login"}
+                            className="rounded-md py-2 px-4 bg-white"
+                        >
+                            Login
+                        </Link>
+                        <Link
+                            to={"sign-up"}
+                            className="rounded-md py-2 px-4 bg-primary text-white"
+                        >
+                            Login
+                        </Link>
+                    </div>
+                )}
+
                 <button
                     onClick={() => setMobileNavVisible(true)}
                     className={`text-white text-[2rem] ${
