@@ -27,13 +27,13 @@ export default function Button({
     return (
         <button
             className={clsx(
-                "bg-primary text-white w-full py-[0.8125rem] hover:bg-primaryDark transition-colors",
+                "bg-primary text-white py-[0.8125rem] hover:bg-primaryDark transition-colors",
                 {
                     "disabled:bg-darkGrey disabled:border-darkGrey":
                         disabled === true,
                     "bg-white text-primary border-primary": bgWhite === true,
                     "w-[16.375rem]": width == "medium",
-                    "w-fit px-[3rem]": width == "small",
+                    "w-fit py-[0.5rem] px-[1rem]": width == "small",
                     "rounded-[0.375rem]": rounded == "small",
                     "rounded-[2rem]": rounded == "large",
                 },

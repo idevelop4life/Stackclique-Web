@@ -33,9 +33,16 @@ const firstCardData = [
 ];
 
 const whyJoinData = [
-    { id: 1, text: "Get Overview at a glance" },
-    { id: 2, text: "Earn like never before etc..." },
-    { id: 3, text: "Get Live Support" },
+    {
+        id: 1,
+        text: "Learn at your pace with flexible classes to suit your time.",
+    },
+    {
+        id: 2,
+        text: "Connect with a global community of learners, interact, share knowledge, and learn.",
+    },
+    { id: 3, text: "Gain knowledge from industry experts and get certified" },
+    { id: 4, text: "Earn while you learn too." },
 ];
 
 const FirstCard = () => {
@@ -49,7 +56,7 @@ const FirstCard = () => {
                     return (
                         <div
                             key={item.id}
-                            className="flex gap-6 items-center  font-manrope"
+                            className="flex items-center gap-6 font-manrope"
                         >
                             <Avatar
                                 img={item.img}
@@ -76,10 +83,10 @@ const FirstCard = () => {
 
 const SecondCard = () => {
     return (
-        <div className="shadow-whyJoinCardBoxShadow bg-white flex w-full md:w-[23.125rem] mt-4 mx-auto flex-col relative lg:top-[-10rem] lg:left-[11rem] z-10 gap-4 items-center rounded-[1.375rem] px-2 md:px-[2rem] py-[1.8rem]">
+        <div className="shadow-whyJoinCardBoxShadow bg-white flex w-full md:w-[23.125rem] mt-4 mx-auto flex-col lg:absolute lg:top-[10rem] lg:left-[16rem] z-10 gap-4 items-center rounded-[1.375rem] px-2 md:px-[2rem] py-[1.8rem]">
             <Avatar img={PythonTutor} />
             <h2 className="font-[800]">FUNDAMENTALS OF PYTHON</h2>
-            <p className="text-sm text-darkGrey -mt-4">
+            <p className="-mt-4 text-sm text-darkGrey">
                 Level 2 and above to enroll for free
             </p>
             <Button width="small" rounded="small">
@@ -92,24 +99,23 @@ const SecondCard = () => {
 export default function WhyJoinStackclique() {
     return (
         <section className="flex mt-[5rem] flex-col-reverse md:flex-row gap-4 justify-around">
-            <div className="md:w-1/2 px-8 lg:px-[3rem]">
+            <div className="md:w-1/2 px-8 lg:px-[3rem] relative">
                 <FirstCard />
                 <SecondCard />
             </div>
-            <div className="md:w-1/2 px-6 lg:px-[8rem]">
+            <div className="md:w-1/2 px-6 lg:px-[6rem]">
                 <p className="text-primary">WHY JOIN STACKCLIQUE?</p>
                 <h2 className="text-[2.5rem] md:text-[3.125rem] leading-[ 3.75rem] font-[800] font-manrope tracking-[-0.09375rem]">
-                    A good header text as to why they should join?
+                    Join Stackclique to Learn Digital Skills for Every Sphere
                 </h2>
                 <p className="text-darkGrey text-[0.875rem]">
-                    Why kept very ever home mrs. Considered sympathize ten
-                    uncommonly occasional assistance sufficient not. Letter of
-                    on become he tended active enable to.
+                    There is always a place for advancement! Gain in-demand
+                    digital skills to stay ahead with Stackclique.
                 </p>
                 {whyJoinData.map((item) => (
                     <p
                         key={item.id}
-                        className="flex items-center gap-4 text-darkGrey mt-4"
+                        className="flex items-center gap-4 mt-4 text-darkGrey"
                     >
                         <span className="text-green">
                             <BsFillCheckCircleFill />

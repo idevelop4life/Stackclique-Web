@@ -5,35 +5,42 @@ import MobileAppScreen from "../../assets/svg/mobile-app-screen.svg";
 const aboutAppData = [
     {
         id: 1,
-        heading: "Creative design",
+        heading: "Empower Your Learning",
         subHeading:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae. Est tellus vitae, nullam lobortis enim. Faucibus amet etiam tincidunt rhoncus, ullamcorper velit.",
+            "Stackclique's app is your gateway to unlocking your full potential in the dynamic world of technology",
     },
     {
         id: 2,
-        heading: "easy to use",
+        heading: "Flexible Learning",
         subHeading:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae. Est tellus vitae, nullam lobortis enim. Faucibus amet etiam tincidunt rhoncus, ullamcorper velit.",
+            "Access a diverse range of courses, tailored from beginner to advanced levels, allowing you to learn and progress at your own pace",
     },
     {
         id: 3,
-        heading: "Best user experince",
+        heading: "User-Friendly Experience",
         subHeading:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae. Est tellus vitae, nullam lobortis enim. Faucibus amet etiam tincidunt rhoncus, ullamcorper velit.",
+            "Enjoy a user-friendly app interface that makes navigation and learning a seamless and enjoyable experience",
+    },
+    {
+        id: 4,
+        heading: "Accessible Anytime, Anywhere",
+        subHeading:
+            "Learn on the go with our app, ensuring you can continue your education no matter where you are",
     },
 ];
 
 export default function AboutOurApp() {
     return (
-        <section className="flex flex-col items-center mt-[5rem] px-4 md:px-[3rem]">
+        <section className="flex flex-col items-center px-4 md:px-[3rem] mb-[4rem] mt-10">
             <h2 className="text-center text-[1.5rem] md:text-[2.6rem] font-[800] font-poppins">
                 About Our App
             </h2>
-            <p className="text-center md:w-[60%] lg:w-[50%] text-[0.8rem] mx-auto text-darkGrey">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra
-                nunc ante velit vitae. Est tellus vitae, nullam lobortis enim.
-                Faucibus amet etiam tincidunt rhoncus, ullamcorper velit.
-                Ullamcorper risus tempor, ac nunc libero urna, feugiat.
+            <p className="text-center md:w-[60%] lg:w-[50%] text-[1rem] mx-auto text-darkGrey">
+                Welcome to the Stackclique Learning App, your personalized path
+                to mastering the ever-changing world of technology. We&apos;re
+                here to help you flourish, whether you&apos;re a student or tech
+                enthusiast, by providing accessible and impactful learning
+                experiences.
             </p>
             <div className="relative w-full flex flex-col-reverse md:flex-row gap-4 mt-[3.75rem] justify-evenly">
                 <div className="self-center">
@@ -47,7 +54,7 @@ export default function AboutOurApp() {
                                 key={item.id}
                                 className="flex  py-6 gap-4 px-[1.25rem] rounded-[0.625rem] bg-white shadow-aboutAppCardsShadow"
                             >
-                                <span className="text-green mt-1">
+                                <span className="mt-1 text-green">
                                     <FaCheckCircle />
                                 </span>
                                 <div className="flex flex-col gap-4">
