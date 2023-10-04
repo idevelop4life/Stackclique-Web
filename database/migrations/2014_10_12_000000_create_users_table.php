@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -14,11 +15,17 @@ return new class extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary()->default(DB::raw('uuid()'));
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('username')->unique();
+            $table->string('profile_photo')->nullable();
+            $table->string('cover_photo')->nullable();
+            $table->integer('level')->default(0);
+            $table->uuid('channel_id')->nullable();
+            $table->foreign('channel_id')->references('id')->on('channels');
             $table->rememberToken();
             $table->timestamps();
         });
