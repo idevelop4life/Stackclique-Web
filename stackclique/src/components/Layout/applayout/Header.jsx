@@ -64,7 +64,7 @@ export default function Header() {
                             to={"sign-up"}
                             className="rounded-md py-2 px-4 bg-primary text-white"
                         >
-                            Login
+                            Sign Up
                         </Link>
                     </div>
                 )}
