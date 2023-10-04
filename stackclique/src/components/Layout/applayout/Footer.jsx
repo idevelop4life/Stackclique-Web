@@ -20,7 +20,7 @@ const socialIcons = [
 export default function Footer() {
     const date = new Date().getFullYear();
     return (
-        <footer className="min-h-fit flex relative flex-col md:flex-row gap-y-8 gap-x-4 font-manrope text-sm bg-black px-4 py-8 pb-[4rem]  lg:px-[6rem]  text-[#cbd5e1]">
+        <footer className="min-h-fit flex relative mt-auto flex-col md:flex-row gap-y-8 gap-x-4 font-manrope text-sm bg-black px-4 py-8 pb-[4rem]  lg:px-[6rem]  text-[#cbd5e1]">
             <div className="flex flex-col gap-4 flex-1">
                 <h2 className="text-white font-bold text-md">Legal</h2>
                 <Link to={"#"} className="hover:underline">

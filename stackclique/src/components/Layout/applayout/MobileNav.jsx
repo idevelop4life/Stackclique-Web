@@ -15,6 +15,11 @@ const mobileNavVariant = {
     },
 };
 
+const fadeInVariant = {
+    hidden: { translateY: 30, opacity: 0 },
+    show: { translateY: 0, opacity: 1, transition: { delay: 1, duration: 1 } },
+};
+
 export default function MobileNav({ setMobileNavVisible }) {
     const user = useAppStore((state) => state.user);
     const mobileSideNavRef = useRef(null);
@@ -56,9 +61,9 @@ export default function MobileNav({ setMobileNavVisible }) {
                         </div>
                     )}
                     <hr className="h-4  w-full" />
-                    {navLinks.map((item) => {
+                    {navLinks.map((item, index) => {
                         return (
-                            <NavLink
+                            <motion.NavLink
                                 to={item.link}
                                 key={item.id}
                                 className={({ isActive }) =>
@@ -66,13 +71,39 @@ export default function MobileNav({ setMobileNavVisible }) {
                                         ? "text-primary font-[600]"
                                         : "text-black"
                                 }
+                                initial={{ x: "100vw" }}
+                                animate={{
+                                    x: 0,
+                                    transition: {
+                                        delay: 0.1 * index,
+                                        duration: 0.5,
+                                        ease: "linear",
+                                    },
+                                }}
                             >
                                 {item.title}
-                            </NavLink>
+                            </motion.NavLink>
                         );
                     })}
-                    <p>Get the App</p>
-                    {user && <button>Sign Out</button>}
+                    <motion.p
+                        initial={{ opacity: 0, translateY: 30 }}
+                        animate={{
+                            opacity: 1,
+                            translateY: 0,
+                            transition: { delay: 1, duration: 1 },
+                        }}
+                    >
+                        Get the App
+                    </motion.p>
+                    {user && (
+                        <motion.button
+                            variants={fadeInVariant}
+                            initial="hidden"
+                            animate="show"
+                        >
+                            Sign Out
+                        </motion.button>
+                    )}
                 </div>
                 <button
                     onClick={closeSideMobileNav}

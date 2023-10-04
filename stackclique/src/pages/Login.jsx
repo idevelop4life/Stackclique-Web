@@ -23,7 +23,7 @@ export default function Login() {
             <p className="text-darkGrey">Log in into your account</p>
 
             <form
-                className="w-full lg:w-8/12 flex flex-col mt-6 gap-6"
+                className="flex flex-col w-full gap-6 mt-6 lg:w-8/12"
                 onSubmit={formik.handleSubmit}
             >
                 <TextField
@@ -48,28 +48,27 @@ export default function Login() {
                 />
                 <div className="flex items-center">
                     <CheckButton />
-                    <p className="text-xs ml-2">Remeber Me</p>
-                    <p className="text-primary text-xs ml-auto">
+                    <p className="ml-2 text-xs">Remeber Me</p>
+                    <p className="ml-auto text-xs text-primary">
                         Forgot Passowrd?
                     </p>
                 </div>
 
-                <div className="relative">
-                    <Button
-                        disabled={
-                            formik.errors.email ||
-                            formik.errors.password ||
-                            !formik.touched.email
-                        }
-                        type={"submit"}
-                        rounded="large"
-                    >
-                        Login
-                    </Button>
-                </div>
+                <Button
+                    disabled={
+                        formik.errors.email ||
+                        formik.errors.password ||
+                        !formik.touched.email
+                    }
+                    type={"submit"}
+                    rounded="large"
+                    width="full"
+                >
+                    Login
+                </Button>
             </form>
 
-            <div className="flex w-full justify-center gap-2 text-sm">
+            <div className="flex justify-center w-full gap-2 text-sm">
                 <p>Don’t have an account ?</p>
                 <Link to={"/sign-up"} className="text-primary hover:underline">
                     Register here !
