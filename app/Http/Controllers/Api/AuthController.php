@@ -10,7 +10,7 @@ class AuthController extends Controller
 {
     public function signup(Request $req)
     {
-        // Validate the incoming data using Laravel's validation rules
+        // Validate the incoming data 
         $validatedData = $req->validate([
             'username' => 'required|string|unique:users',
             'email' => 'required|email|unique:users',
@@ -31,7 +31,7 @@ class AuthController extends Controller
             return response()->json([
                 'user' => $user,
                 'token' => $token,
-                'message' => 'Data registered. You are now logged in.',
+                'message' => 'Data registered. You are now logged in now.',
                 'error' => null,
             ]);
         } catch (\Exception $e) {
