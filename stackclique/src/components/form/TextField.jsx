@@ -43,7 +43,6 @@ export default function TextField({
                 </span>
                 <input
                     type={handleInputType(type)}
-                    required
                     id={id}
                     placeholder={placeholder}
                     name={name}
