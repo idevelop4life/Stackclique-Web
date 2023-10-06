@@ -1,14 +1,20 @@
-import { json, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import { SignUpSchema } from "../components/form/validationRegex";
-import { Button } from "../components/ui";
+import { Backdrop, Button, Loader } from "../components/ui";
 import { TextField } from "../components/form";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import { useAppStore } from "../store/useAppStore";
 import axios from "axios";
 import axiosClient from "../axios-client";
 
-export default function Login() {
+export default function SignUp() {
     const navigate = useNavigate();
+    const { setUser } = useAppStore();
+    const [loading, setLoading] = useState(false);
+    const [disableButton, setDisableButton] = useState(false);
 
     const formik = useFormik({
         initialValues: {
@@ -19,7 +25,7 @@ export default function Login() {
         validationSchema: SignUpSchema,
         onSubmit: (values) => {
             // handle form submition when submit button is clicked
-
+            setLoading(true);
             axios
                 .post("http://localhost:8000/api/signup", values)
 
@@ -31,14 +37,26 @@ export default function Login() {
                         // so you can place a kind of middileware to guard that, so he doesnt sign up multipl times thanks
 
                         // This contains info of the user that jus registered and the login message
-                        const registeredMessage = JSON.stringify(response.data);
-                        navigate("/verification");
+                        const {
+                            user: { username, email },
+                        } = response.data;
+
+                        localStorage.setItem(
+                            "loginToken",
+                            JSON.stringify(response.data.token),
+                        );
+                        setUser({ username, email });
+                        navigate("/");
                     } else {
                         // Error message
-                        const errorStat = JSON.stringify(response.data);
+                        const errorStat = JSON.stringify(response.status);
+                        console.log("request success error: ", errorStat);
                     }
                 })
                 .catch((error) => {
+                    toast.error(error.response.data.message);
+                    // console.log(error);
+                    // toast.error("Error trying to Sign Up!");
                     // Below are the information for errors in interacting with the database
                     const errorStatus = JSON.stringify(error.response.status);
                     // const errorMessage = JSON.stringify(
@@ -53,11 +71,12 @@ export default function Login() {
                     );
                     console.log("ERROR:: ", errorData);
                     // console.log("ERROR:: ", errorMessage);
-                });
+                }).finally(()=> setLoading(false));
         },
     });
+
     return (
-        <section className="flex w-full flex-col items-center mt-[3rem] gap-2 font-poppins">
+        <section className="flex w-full relative flex-col items-center mt-[3rem] gap-2 font-poppins">
             <h2 className="font-[600] text-[2rem]">Sign Up</h2>
             <p className="w-[80%] text-xs text-darkGrey">
                 You have zero regrets joining the best community in the world,
@@ -74,7 +93,11 @@ export default function Login() {
                     name={"username"}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
-                    error={formik.touched.username && formik.errors.username}
+                    error={
+                        formik.touched.username &&
+                        formik.errors.username &&
+                        formik.errors.username
+                    }
                     type={"text"}
                 />
 
@@ -85,7 +108,11 @@ export default function Login() {
                     name={"email"}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
-                    error={formik.touched.email && formik.errors.email}
+                    error={
+                        formik.touched.email &&
+                        formik.errors.email &&
+                        formik.errors.email
+                    }
                     type={"email"}
                 />
 
@@ -96,14 +123,19 @@ export default function Login() {
                     name={"password"}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
-                    error={formik.touched.password && formik.errors.password}
+                    error={
+                        formik.touched.password &&
+                        formik.errors.password &&
+                        formik.errors.password
+                    }
                 />
 
                 <Button
                     disabled={
-                        formik.errors.email ||
-                        formik.errors.password ||
-                        !formik.touched.email
+                        Object.entries(formik.errors).length > 0 ||
+                        !formik.values.email ||
+                        !formik.values.password ||
+                        !formik.values.username
                     }
                     type={"submit"}
                     rounded="large"
@@ -119,6 +151,11 @@ export default function Login() {
                     Login In !
                 </Link>
             </div>
+            {loading && (
+                <Backdrop>
+                    <Loader />
+                </Backdrop>
+            )}
         </section>
     );
 }

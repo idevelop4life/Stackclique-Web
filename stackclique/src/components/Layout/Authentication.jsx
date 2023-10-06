@@ -1,6 +1,32 @@
-import { Outlet } from "react-router-dom";
+import { useEffect, useState } from "react";
+
+import { Outlet, useNavigate } from "react-router-dom";
 import Slider from "./Slider";
+import { Backdrop, Loader } from "../ui";
 export default function Authentication() {
+    const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
+
+    // checks if user is logged in then route them to landing page
+    useEffect(() => {
+        const token = localStorage.getItem("loginToken");
+
+        if (token) {
+            setUser(true);
+            navigate("/");
+        }
+        setLoading(false);
+    }, [navigate]);
+
+    if (loading && !user) {
+        return (
+            <Backdrop>
+                <Loader />
+            </Backdrop>
+        );
+    }
+
     return (
         <div className="flex min-h-screen relative">
             <section className="min-w-[51.25%] hidden lg:block">

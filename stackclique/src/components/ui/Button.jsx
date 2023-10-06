@@ -27,10 +27,9 @@ export default function Button({
     return (
         <button
             className={clsx(
-                "bg-primary text-white py-[0.8125rem] hover:bg-primaryDark transition-colors",
+                "bg-primary text-white py-[0.8125rem] hover:bg-primaryDark transition-colors duration-150",
                 {
-                    "disabled:bg-darkGrey disabled:border-darkGrey":
-                        disabled === true,
+                    "bg-[#8E8C8C] border-darkGrey": disabled == true,
                     "bg-white text-primary border-primary": bgWhite === true,
                     "w-[16.375rem]": width == "medium",
                     "w-fit py-[0.5rem] px-[1rem]": width == "small",

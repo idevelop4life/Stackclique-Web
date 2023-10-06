@@ -1,5 +1,7 @@
 import { create } from "zustand";
 
-export const useAppStore = create(() => ({
-    user: false,
+const userToken = localStorage.getItem("loginToken");
+export const useAppStore = create((set) => ({
+    user: userToken,
+    setUser: (userState) => set(() => ({ user: userState })),
 }));
