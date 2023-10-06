@@ -25,7 +25,7 @@ export default function Login() {
 
                 .then((response) => {
                     console.log(response);
-                    if (response.status === 200) {
+                    if (response.status === 200 && response.data.token != null) {
                         // pls anderson this particular page should not
                         // be accessed if the user has being successfully registered
                         // so you can place a kind of middileware to guard that, so he doesnt sign up multipl times thanks
@@ -35,15 +35,15 @@ export default function Login() {
                         navigate("/verification");
                     } else {
                         // Error message
-                        const errorStat = JSON.stringify(response.status);
+                        const errorStat = JSON.stringify(response.data);
                     }
                 })
                 .catch((error) => {
                     // Below are the information for errors in interacting with the database
                     const errorStatus = JSON.stringify(error.response.status);
-                    const errorMessage = JSON.stringify(
-                        error.response.data.message,
-                    );
+                    // const errorMessage = JSON.stringify(
+                    //     error.response.data.message,
+                    // );
                     const errorData = JSON.stringify(
                         error.response.data.errors,
                     );
@@ -52,7 +52,7 @@ export default function Login() {
                         errorStatus,
                     );
                     console.log("ERROR:: ", errorData);
-                    console.log("ERROR:: ", errorMessage);
+                    // console.log("ERROR:: ", errorMessage);
                 });
         },
     });

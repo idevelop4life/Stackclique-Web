@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 import { Button } from "../components/ui";
+import axios from "axios";
 
 function Input({ id, inputRef }) {
     return (
@@ -60,18 +61,63 @@ export default function OTP() {
             children[index - 1].focus();
         }
 
+
+        // Area I modification pls correct where necessary
         function submitOtp() {
-            if (defaultOtp != inputValues.join("")) {
-                setErrMessage(true);
+
+            const enteredOtp = inputValues.join('');
+
+            //API call to validate the OTP
+            axios
+              .post('http://localhost:8000/api/verf-user', { otp: enteredOtp })
+              .then((response) => {
+                console.log(response.data.user);
+
+                // Handle successfulresponse
+                if (response.data.success) {
+                  // redirecting the user here
+                  setErrMessage(false);
+                } else {
+                  // Indicating incorrect OTP
+                  setErrMessage(true);
+                }
+
+                // Reset input fields
                 children.forEach((child) => {
-                    child.value = "";
-                    child.disabled = true;
+                  child.value = '';
+                  child.disabled = true;
                 });
+
                 children[0].disabled = false;
                 children[0].focus();
-            } else {
-                setErrMessage(false);
-            }
+              })
+              .catch((error) => {
+                console.error('API request failed:', error);
+
+                // Handle APIfailure
+                setErrMessage(true); // Seterromessage
+
+                // Reset inputfields
+                children.forEach((child) => {
+                  child.value = '';
+                  child.disabled = true;
+                });
+
+                children[0].disabled = false;
+                children[0].focus();
+              });
+
+            // if (defaultOtp != inputValues.join("")) {
+            //     setErrMessage(true);
+            //     children.forEach((child) => {
+            //         child.value = "";
+            //         child.disabled = true;
+            //     });
+            //     children[0].disabled = false;
+            //     children[0].focus();
+            // } else {
+            //     setErrMessage(false);
+            // }
         }
     };
 
