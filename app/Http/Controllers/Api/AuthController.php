@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Api;
-
+use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -43,8 +43,17 @@ class AuthController extends Controller
                 'error' => $e->getMessage(),
             ]);
         }
-
-
-
     }
+
+// The Login request method
+public function login(Request $req)
+{
+    $user = User::where('email', $req -> email)->first();
+    
+    if(!$user || !Hash::check($req->password, $user->password)) {
+        // return "Wrong password or Email address";
+    return ['err'=>'Wrong password or Email address'];
+    }
+    return $user;
+}
 }
