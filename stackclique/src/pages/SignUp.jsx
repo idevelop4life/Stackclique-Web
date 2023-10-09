@@ -46,7 +46,7 @@ export default function SignUp() {
                             JSON.stringify(response.data.token),
                         );
                         setUser({ username, email });
-                        navigate("/");
+                        navigate("/verification");
                     } else {
                         // Error message
                         const errorStat = JSON.stringify(response.status);

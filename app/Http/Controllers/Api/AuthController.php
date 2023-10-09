@@ -126,6 +126,8 @@ class AuthController extends Controller
         return response('', 204);
     }
 
+    // Verification of Users
+
     public function verf_user(Request $req)
     {
 
@@ -141,7 +143,11 @@ class AuthController extends Controller
 
                 $u->email_verified_at = now()->format('Y-m-d');
                 $u->save();
-                return response()->json(['user'=> $u]);
+                return response()->json([
+
+                    'user'=> $u,
+                    'success'=> 'success',
+                ]);
 
 
            } else {
