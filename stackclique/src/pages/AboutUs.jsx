@@ -99,7 +99,7 @@ export default function AboutUs() {
                                     key={item.id}
                                     className="flex flex-col items-center gap-4 bg-white p-[1.5rem]"
                                 >
-                                    <h2 className="w-full text-primary font-[600]">
+                                    <h2 className="w-full text-primary-500 font-[600]">
                                         {item.title}
                                     </h2>
                                     <img src={item.icon} alt="" />

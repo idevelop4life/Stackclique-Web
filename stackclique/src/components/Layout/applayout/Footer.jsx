@@ -58,7 +58,7 @@ export default function Footer() {
                         // value={newsletterValue}
                         // onChange={(e) => setNewsLetterValue(e.target.value)}
                     />
-                    <button className="bg-[#e9c6f3] text-primary flex-1 w-[40%]">
+                    <button className="bg-[#e9c6f3] text-primary-500 flex-1 w-[40%]">
                         Subscribe
                     </button>
                 </div>

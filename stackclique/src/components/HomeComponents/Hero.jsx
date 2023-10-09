@@ -45,7 +45,7 @@ const SingleSlide = ({ url, id, setActiveIndex, swiper }) => {
                         value={newsletterValue}
                         onChange={handleTextField}
                     />
-                    <button className="bg-primary h-full flex-1 w-[9.875rem] rounded-tl-[0.375rem] rounded-bl-[0.375rem]">
+                    <button className="bg-primary-500 h-full flex-1 w-[9.875rem] rounded-tl-[0.375rem] rounded-bl-[0.375rem]">
                         Subscribe
                     </button>
                 </div>
@@ -106,13 +106,13 @@ export default function Hero() {
             {/* change slide buttons */}
             <div className="absolute z-10 w-full mt-[4rem] px-4 md:mt-[5rem] md:px-[5rem] flex justify-between">
                 <button
-                    className=" bg-white text-primary h-[1.5rem] w-[1.5rem] md:h-[2rem] md:w-[2rem] rounded-full flex items-center justify-center"
+                    className=" bg-white text-primary-500 h-[1.5rem] w-[1.5rem] md:h-[2rem] md:w-[2rem] rounded-full flex items-center justify-center"
                     onClick={() => swiper?.slidePrev()}
                 >
                     <MdChevronLeft />
                 </button>
                 <button
-                    className=" bg-white text-primary h-[1.5rem] w-[1.5rem] md:h-[2rem] md:w-[2rem] rounded-full flex items-center justify-center"
+                    className=" bg-white text-primary-500 h-[1.5rem] w-[1.5rem] md:h-[2rem] md:w-[2rem] rounded-full flex items-center justify-center"
                     onClick={() => swiper?.slideNext()}
                 >
                     <MdChevronRight />

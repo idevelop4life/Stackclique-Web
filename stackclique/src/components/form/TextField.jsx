@@ -25,17 +25,17 @@ export default function TextField({
         <div className="flex flex-col font-inter">
             <label
                 htmlFor={id}
-                className=" text-primary text-[1rem] font-[550]"
+                className=" text-primary-500 text-[1rem] font-[600]"
             >
                 {label}
             </label>
             <div
-                className={`flex group gap-1 px-1 items-center bg-[#EFEFEF] relative h-[3rem] border border-darkGrey focus-within:border-primary ${
+                className={`flex group gap-1 px-1 items-center bg-[#EFEFEF] relative h-[3rem] border border-darkGrey focus-within:border-primary-500 ${
                     error && "focus-within:border-red"
                 } transition-colors duration-200 rounded-md pr-2 overflow-hidden`}
             >
                 <span
-                    className={`text-[2rem] group-focus-within:text-primary ${
+                    className={`text-[2rem] group-focus-within:text-primary-500 ${
                         error && "group-focus-within:text-red-600"
                     }`}
                 >
@@ -55,7 +55,7 @@ export default function TextField({
                 {type == "password" && (
                     <button
                         type="button"
-                        className={`text-[1rem] group-focus-within:text-primary ${
+                        className={`text-[1rem] group-focus-within:text-primary-500 ${
                             error && "group-focus-within:text-red-600"
                         }`}
                         onClick={() => setShowPassword((prev) => !prev)}

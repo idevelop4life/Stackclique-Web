@@ -8,13 +8,12 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAppStore } from "../store/useAppStore";
 import axios from "axios";
-import axiosClient from "../axios-client";
+// import axiosClient from "../axios-client";
 
 export default function SignUp() {
     const navigate = useNavigate();
     const { setUser } = useAppStore();
     const [loading, setLoading] = useState(false);
-    const [disableButton, setDisableButton] = useState(false);
 
     const formik = useFormik({
         initialValues: {
@@ -30,47 +29,23 @@ export default function SignUp() {
                 .post("http://localhost:8000/api/signup", values)
 
                 .then((response) => {
-                    if (response.status === 200) {
-                        // pls anderson this particular page should not
-                        // be accessed if the user has being successfully registered
-                        // so you can place a kind of middileware to guard that, so he doesnt sign up multipl times thanks
-
-                        // This contains info of the user that jus registered and the login message
+                    if (
+                        response.status === 200 &&
+                        response.data.token != null
+                    ) {
                         const {
                             user: { username, email },
                         } = response.data;
 
-                        localStorage.setItem(
-                            "loginToken",
-                            JSON.stringify(response.data.token),
-                        );
                         setUser({ username, email });
-                        navigate("/");
+                        navigate("/verification");
                     } else {
-                        // Error message
                         const errorStat = JSON.stringify(response.status);
                         console.log("request success error: ", errorStat);
                     }
                 })
                 .catch((error) => {
                     toast.error(error.response.data.message);
-                    // console.log(error);
-                    // toast.error("Error trying to Sign Up!");
-                    // Below are the information for errors in interacting with the database
-                    // const data = JSON.stringify(error.response.data)
-                    // const errorStatus = JSON.stringify(error.response.status);
-                    // const errorMessage = JSON.stringify(
-                    //     error.response.data.message,
-                    // );
-                    // const errorData = JSON.stringify(
-                    //     error.response.data.errors,
-                    // );
-                    // console.log(
-                    //     "API request failed with status code:",
-                    //     errorStatus,
-                    // );
-                    // console.log("ERROR:: ", errorData);
-                    // console.log("ERROR:: ", errorMessage);
                 })
                 .finally(() => setLoading(false));
         },
@@ -139,8 +114,8 @@ export default function SignUp() {
                         !formik.values.username
                     }
                     type={"submit"}
-                    rounded="large"
-                    width="full"
+                    rounded="lg"
+                    size="fullwidth"
                 >
                     Sign Up
                 </Button>
@@ -148,7 +123,10 @@ export default function SignUp() {
 
             <div className="flex justify-center w-full gap-2 text-sm">
                 <p>Already have an account ?</p>
-                <Link to={"/login"} className="text-primary hover:underline">
+                <Link
+                    to={"/login"}
+                    className="text-primary-500 hover:underline"
+                >
                     Login In !
                 </Link>
             </div>

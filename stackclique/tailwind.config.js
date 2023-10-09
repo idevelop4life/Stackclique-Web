@@ -4,7 +4,14 @@ export default {
     theme: {
         extend: {
             colors: {
-                primary: "#7E0772",
+                primary: {
+                    100: "#d8b4fe",
+                    200: "#c084fc",
+                    300: "#a855f7",
+                    500: "#7E0772",
+                    600: "#3b0764",
+                },
+
                 appBackgroundColor: "#F3F3F3",
                 primaryDark: "#5F0A56",
                 darkGrey: "#8E8C8C",
