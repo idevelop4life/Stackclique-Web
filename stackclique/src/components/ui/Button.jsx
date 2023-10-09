@@ -53,15 +53,18 @@ export default function Button({
     className,
     onClick,
     rounded,
+    variant,
 }) {
     const normal =
-        "bg-primary-500 text-white rounded-md hover:bg-primary-600  disabled:bg-primary-100 transition-colors duration-150 px-2 w-fit h-[3.5rem]";
+        "bg-primary-500 font-bold text-white rounded-md hover:bg-primary-600  disabled:bg-primary-100 transition-colors duration-150 px-2 w-fit h-[3.5rem]";
     const defaultClasses = cn(normal, {
         " w-[5rem]": size === "small",
         " w-[12rem]": size === "medium",
         " w-full": size === "fullwidth",
         "rounded-lg": rounded === "md",
         "rounded-full": rounded === "lg",
+        "bg-white text-primary-500 border-2 border-primary-500 hover:bg-primary-500 hover:text-white":
+            variant === "outlined",
     });
 
     const combinedClasses = cn(defaultClasses, className);

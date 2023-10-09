@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 
 import { Outlet, useNavigate } from "react-router-dom";
 import Slider from "./Slider";
@@ -9,7 +9,7 @@ export default function Authentication() {
     const navigate = useNavigate();
 
     // checks if user is logged in then route them to landing page
-    useEffect(() => {
+    useLayoutEffect(() => {
         const token = localStorage.getItem("loginToken");
 
         if (token) {

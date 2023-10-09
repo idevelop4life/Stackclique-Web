@@ -139,4 +139,21 @@
             transform: translate(-25px, -25px) scale(1);
         }
     }
+    /* otp input style */
+    .otp-container {
+        display: flex;
+        margin-top: 1rem;
+        align-items: center;
+    }
+    .otp-input {
+        min-width: 3.5rem;
+        min-height: 3.5rem;
+        border: 1px solid #7e0772;
+        user-select: none;
+        border-radius: 8px;
+        outline-color: grey;
+    }
+    .otp-input:active {
+        border-color: red;
+    }
 }

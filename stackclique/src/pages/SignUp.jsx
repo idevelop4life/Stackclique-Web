@@ -29,19 +29,17 @@ export default function SignUp() {
                 .post("http://localhost:8000/api/signup", values)
 
                 .then((response) => {
-                    if (response.status === 200) {
+                    if (
+                        response.status === 200 &&
+                        response.data.token != null
+                    ) {
                         const {
                             user: { username, email },
                         } = response.data;
 
-                        localStorage.setItem(
-                            "loginToken",
-                            JSON.stringify(response.data.token),
-                        );
                         setUser({ username, email });
                         navigate("/verification");
                     } else {
-                        // Error message
                         const errorStat = JSON.stringify(response.status);
                         console.log("request success error: ", errorStat);
                     }
