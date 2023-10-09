@@ -49,7 +49,7 @@ export default function Login() {
                 <div className="flex items-center">
                     <CheckButton />
                     <p className="ml-2 text-xs">Remeber Me</p>
-                    <p className="ml-auto text-xs text-primary">
+                    <p className="ml-auto text-xs text-primary-500">
                         Forgot Passowrd?
                     </p>
                 </div>
@@ -61,8 +61,8 @@ export default function Login() {
                         !formik.touched.email
                     }
                     type={"submit"}
-                    rounded="large"
-                    width="full"
+                    rounded="lg"
+                    size="fullwidth"
                 >
                     Login
                 </Button>
@@ -70,7 +70,10 @@ export default function Login() {
 
             <div className="flex justify-center w-full gap-2 text-sm">
                 <p>Don’t have an account ?</p>
-                <Link to={"/sign-up"} className="text-primary hover:underline">
+                <Link
+                    to={"/sign-up"}
+                    className="text-primary-500 hover:underline"
+                >
                     Register here !
                 </Link>
             </div>

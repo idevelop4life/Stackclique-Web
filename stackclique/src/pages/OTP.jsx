@@ -77,7 +77,7 @@ export default function OTP() {
 
     return (
         <div className="font-poppins">
-            <h1 className="text-primary text-[2.5rem] lg:text-[3rem] font-[600] mt-4">
+            <h1 className="text-primary-500 text-[2.5rem] lg:text-[3rem] font-[600] mt-4">
                 Verification Code
             </h1>
             <p className="text-black">
@@ -102,13 +102,15 @@ export default function OTP() {
                 )}
                 <div className="flex gap-6 mt-[2.63rem]">
                     <p>Didn’t recieve any code ?</p>
-                    <button type="button" className="text-primary">
+                    <button type="button" className="text-primary-500">
                         Resend
                     </button>
                 </div>
-                <div className="flex md:w-[70%] gap-2 mt-[2.6rem]">
-                    <Button type={"button"}>Verify</Button>
-                    <Button type={"button"} bgWhite>
+                <div className="flex  gap-2 mt-[2.6rem]">
+                    <Button type={"button"} size="medium" rounded={"lg"}>
+                        Verify
+                    </Button>
+                    <Button type={"button"} size="medium" rounded={"lg"}>
                         Cancel
                     </Button>
                 </div>

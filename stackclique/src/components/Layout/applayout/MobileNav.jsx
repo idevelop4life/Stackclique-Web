@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { navLinks } from "./navigationLinks";
 import { MdClose } from "react-icons/md";
 import { motion, AnimatePresence } from "framer-motion";
@@ -68,7 +68,7 @@ export default function MobileNav({ setMobileNavVisible }) {
                                 key={item.id}
                                 className={({ isActive }) =>
                                     isActive
-                                        ? "text-primary font-[600]"
+                                        ? "text-primary-500 font-[600]"
                                         : "text-black"
                                 }
                                 initial={{ x: "100vw" }}
