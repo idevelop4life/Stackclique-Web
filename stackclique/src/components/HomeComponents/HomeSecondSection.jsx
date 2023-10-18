@@ -37,7 +37,7 @@ export default function HomeSecondSection() {
                     our platform empowers your learning journey like never
                     before
                 </p>
-                <p className="px-2 py-3 mx-auto text-sm text-white rounded-lg bg-primary w-fit md:px-12 lg:text-lg">
+                <p className="px-2 py-3 mx-auto text-sm text-white rounded-lg bg-primary-500 w-fit md:px-12 lg:text-lg">
                     EXPLORE OUR OFFERS!
                 </p>
             </div>
@@ -47,7 +47,7 @@ export default function HomeSecondSection() {
                         <span className="absolute top-0 right-0 font-black text-9xl -z-10 text-lightGrey opacity-20">
                             {id}
                         </span>
-                        <span className="text-2xl lg:text-4xl bg-[#E8F2FF] block w-max rounded-lg p-1 text-primary mb-3">
+                        <span className="text-2xl lg:text-4xl bg-[#E8F2FF] block w-max rounded-lg p-1 text-primary-500 mb-3">
                             {icon}
                         </span>
                         <h3 className="font-[800] mb-2 font-poppins">

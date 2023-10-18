@@ -19,7 +19,7 @@ const benefitsSectionData = [
 export default function BenefitsSection() {
     return (
         <section className="px-4 md:px-[3rem] font-poppins relative h-[42.1875rem] ">
-            <p className="top-0 left-0 w-full text-primary">
+            <p className="top-0 left-0 w-full text-primary-500">
                 Benefit from a range of features
             </p>
             <h2 className="text-[1.6rem]  top-10 left-0 lg:text-[2.625rem] lg:leading-[3.75rem] font-[800]">

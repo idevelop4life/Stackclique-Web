@@ -104,7 +104,7 @@ export default function WhyJoinStackclique() {
                 <SecondCard />
             </div>
             <div className="md:w-1/2 px-6 lg:px-[6rem]">
-                <p className="text-primary">WHY JOIN STACKCLIQUE?</p>
+                <p className="text-primary-500">WHY JOIN STACKCLIQUE?</p>
                 <h2 className="text-[2.5rem] md:text-[3.125rem] leading-[ 3.75rem] font-[800] font-manrope tracking-[-0.09375rem]">
                     Join Stackclique to Learn Digital Skills for Every Sphere
                 </h2>

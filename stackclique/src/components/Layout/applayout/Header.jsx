@@ -39,7 +39,7 @@ export default function Header() {
                                 key={item.id}
                                 className={({ isActive }) =>
                                     isActive
-                                        ? "text-primary font-[700]"
+                                        ? "text-primary-500 font-[700]"
                                         : "text-white"
                                 }
                             >
@@ -62,7 +62,7 @@ export default function Header() {
                         </Link>
                         <Link
                             to={"sign-up"}
-                            className="rounded-md py-2 px-4 bg-primary text-white"
+                            className="rounded-md py-2 px-4 bg-primary-500 text-white"
                         >
                             Sign Up
                         </Link>
