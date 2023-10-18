@@ -6,6 +6,8 @@ import {
     BenefitsSection,
 } from "../components/HomeComponents";
 
+
+
 export default function Home() {
     return (
         <section>

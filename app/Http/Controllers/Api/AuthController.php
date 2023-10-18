@@ -15,6 +15,15 @@ use Illuminate\Support\Str;
 class AuthController extends Controller
 {
 
+    public function test()
+    {
+        $user = Auth::user();
+
+        return response()->json([
+            'email' => $user ? $user->email : null,
+        ]);
+    }
+
     // A static function to make a verf code and pin
     public static function generateRefcode($name)
     {
@@ -58,8 +67,8 @@ class AuthController extends Controller
 
             // Make the verification mail
             $verf_dets = [
-                'verf_pin'=>$verf_code,
-                'name'=>$validatedData['username'],
+                'verf_pin' => $verf_code,
+                'name' => $validatedData['username'],
             ];
 
             // Send the verification mail
@@ -71,6 +80,8 @@ class AuthController extends Controller
                 'token' => $token,
                 'message' => 'Data registered. Awaiting Verification.',
                 'error' => null,
+                'verf_pin' => $verf_dets['verf_pin'],
+                'verf_pin_name' => $verf_dets['name'],
             ]);
         } catch (\Exception $e) {
             // Handle any exceptions that may occur during user creation
@@ -81,15 +92,14 @@ class AuthController extends Controller
                 'error' => $e->getMessage(),
             ]);
         }
-
     }
 
 
     public function login(Request $req)
     {
 
-         // Validate the incoming data
-         $validatedData = $req->validate([
+        // Validate the incoming data
+        $validatedData = $req->validate([
             'email' => 'required|email',
             'password' => 'required|string|min:6',
         ]);
@@ -106,24 +116,34 @@ class AuthController extends Controller
                 'message' => 'Data Checked. You are now logged in.',
                 'error' => null,
             ]);
-
         } catch (\Exception $e) {
             return response()->json([
 
-                'error' => "Provided email address or password is incorrect".$e->getMessage(),
+                'error' => "Provided email address or password is incorrect" . $e->getMessage(),
             ]);
         }
-
     }
 
     public function logout(Request $req)
     {
 
-        /** @var User $user */
+        try {
+            /** @var User $user */
+            $user_token = explode('|', $req->token);
+            $this_token = $user_token[1];
+            $user = User::where('email', $req->email)->get();
+            $user->currentAccessToken()->delete();
+            return response()->json([
+                'error' => null,
+                'email' => $req->email,
+                'success' => 'You Are logged out.',
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
 
-        $user = $req->user();
-        $user->currentAccessToken()->delete();
-        return response('', 204);
+                'error' => "An error occured whilst trying to log you out." . $e->getMessage(),
+            ]);
+        }
     }
 
     // Verification of Users
@@ -131,35 +151,30 @@ class AuthController extends Controller
     public function verf_user(Request $req)
     {
 
-        $user = User::where('verf_pin',$req->otp)->first();
+        $user = User::where('verf_pin', $req->otp)->first();
 
 
         if ($user != null) {
 
 
-            $u = User::where('verf_pin',$req->otp)->where('email_verified_at', null)->first();
+            $u = User::where('verf_pin', $req->otp)->where('email_verified_at', null)->first();
 
-           if ($u != null) {
+            if ($u != null) {
 
                 $u->email_verified_at = now()->format('Y-m-d');
                 $u->save();
                 return response()->json([
 
-                    'user'=> $u,
-                    'success'=> 'success',
+                    'user' => $u,
+                    'success' => 'success',
                 ]);
+            } else {
 
-
-           } else {
-
-               return response()->json(['error'=> 'You are already Verified']);
-           }
-
-
+                return response()->json(['error' => 'You are already Verified']);
+            }
         } else {
 
-            return response()->json(['erro'=> 'Incorrect pin']);
-
+            return response()->json(['erro' => 'Incorrect pin']);
         }
 
 

@@ -19,15 +19,15 @@ export default function Login() {
 
              // handle form submition when submit button is clicked
 
+             axios.defaults.withCredentials = true;
+
+             axios.get('http://localhost:8000/sanctum/csrf-cookie').then(() => {
              axios
-             .post("http://localhost:8000/api/login", values)
+             .post("http://localhost:8000/login", values)
 
              .then((response) => {
                  console.log(response);
                  if (response.status === 200 && response.data.token != null) {
-                     // pls anderson this particular page should not
-                     // be accessed if the user has being successfully registered
-                     // so you can place a kind of middileware to guard that, so he doesnt sign up multipl times thanks
 
                      // This contains info of the user that jus logged in and the login message
                      const loggedinMessage = JSON.stringify(response.data);
@@ -56,6 +56,7 @@ export default function Login() {
              });
             // handle form submition when submit button is clicked
             // console.log(values);
+          });
         },
     });
     return (

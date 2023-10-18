@@ -4,7 +4,55 @@ import { Button } from "../components/ui";
 import { TextField } from "../components/form";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import axiosClient from "../axios-client";
+
+
+function logCsrfToken() {
+    const csrfToken = extractCsrfTokenFromCookie();
+    console.log('CSRF Token:', csrfToken);
+}
+
+// Function to extract CSRF token from the cookie
+function extractCsrfTokenFromCookie() {
+    const cookieArray = document.cookie.split(';');
+    for (const cookie of cookieArray) {
+        const [name, value] = cookie.trim().split('=');
+        if (name === 'XSRF-TOKEN') {
+            return decodeURIComponent(value);
+        }
+    }
+    return null;
+}
+
+// Call the function to log the CSRF token
+logCsrfToken();
+
+
+// Logout request
+
+axios.defaults.withCredentials = true;
+
+axios.get('http://localhost:8000/sanctum/csrf-cookie').then(() => {
+    axios
+    .post("http://localhost:8000/logout", values)
+
+    .then((response) => {
+        if (
+            response.data.error === 'none'
+        ) {
+
+            console.log("Logout message: ", response.data.message);
+
+        } else {
+            console.log('Not logged out');
+        }
+    })
+    .catch((error) => {
+        // error
+    })
+
+});
+
+// Logout REquest End
 
 export default function Login() {
     const formik = useFormik({
@@ -23,13 +71,66 @@ export default function Login() {
                 .then(
                     response => alert(JSON.stringify(response.data))
 
-                    // if this response goes through the dashboard should be shown 
+                    // if this response goes through the dashboard should be shown
 
                     )
                 .catch(error => {
                     console.log("ERROR:: ",error.response.data);
 
                     });
+
+
+
+
+// Step 1: Get the CSRF cookie
+// axios.get('http://localhost:8000/sanctum/csrf-cookie')
+//     .then(response => {
+//         // Step 2: Automatically extract CSRF token from the cookie
+//         const csrfToken = extractCsrfTokenFromCookie();
+
+//         console.log(csrfToken);
+
+//         // Step 3: Make another request with the CSRF token
+//         axios.post('http://localhost:8000/some-endpoint', data, {
+//             headers: {
+//                 'X-XSRF-TOKEN': csrfToken,
+//                 'Content-Type': 'application/json', // Adjust the content type as per your request
+//                 // Add other headers as needed
+//             },
+//         })
+//         .then(response => {
+//             // Handle the response
+//         })
+//         .catch(error => {
+//             // Handle errors
+//         });
+//     })
+//     .catch(error => {
+//         // Handle errors
+//     });
+
+
+
+            // I need the token of the user that wants to logout and the email all
+            // should be passed as in the values below.
+            // call the keys token and emails pls.
+
+            // axios.post('http://localhost:8000/api/sign-out', values)
+
+            // .then(
+            //     response => alert(JSON.stringify(response.data))
+
+            //     // if this response goes through the dashboard should be shown
+
+            //     )
+            // .catch(error => {
+            //     // if doesnt go through an error will occure here.
+            //     console.log("ERROR:: ",error.response.data);
+
+            //     });
+
+
+
 
         },
 

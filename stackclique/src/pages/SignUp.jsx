@@ -8,7 +8,9 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAppStore } from "../store/useAppStore";
 import axios from "axios";
-// import axiosClient from "../axios-client";
+
+
+
 
 export default function SignUp() {
     const navigate = useNavigate();
@@ -24,9 +26,13 @@ export default function SignUp() {
         validationSchema: SignUpSchema,
         onSubmit: (values) => {
             // handle form submition when submit button is clicked
-            setLoading(true);
-            axios
-                .post("http://localhost:8000/api/signup", values)
+            // setLoading(true);
+
+            axios.defaults.withCredentials = true; // Make sure this is set for all requests
+
+            axios.get('http://localhost:8000/sanctum/csrf-cookie').then(() => {
+                axios
+                .post("http://localhost:8000/register", values)
 
                 .then((response) => {
                     if (
@@ -48,6 +54,8 @@ export default function SignUp() {
                     toast.error(error.response.data.message);
                 })
                 .finally(() => setLoading(false));
+            });
+
         },
     });
 
