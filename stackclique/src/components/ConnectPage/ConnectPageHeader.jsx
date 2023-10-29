@@ -6,10 +6,15 @@ import { BiSearch } from "react-icons/bi";
 import { FiChevronUp, FiChevronDown } from "react-icons/fi";
 import { BsPin } from "react-icons/bs";
 import { FaUsers } from "react-icons/fa";
+import ChannelInfoModal from "./ChannelInfoModal";
 export default function ConnectPageHeader() {
     const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [descriptionModalOpen, setDescriptionModalOpen] = useState(false);
     const dropdownRef = useRef(null);
+    const channelModalRef = useRef(null);
     useClickAwayListener(dropdownRef, () => setDropdownOpen(false));
+    useClickAwayListener(channelModalRef, () => setDescriptionModalOpen(false));
+
     return (
         <section>
             <div className="flex h-[2rem] font-manrope relative mt-8 items-center w-[80%] md:w-[60%] lg:w-[40%] mx-auto rounded-2xl overflow-hidden">
@@ -24,7 +29,7 @@ export default function ConnectPageHeader() {
                     className="flex-1 h-full px-2 bg-white outline-none"
                 />
             </div>
-            <div className="bg-[#F7F7F7] py-2 px-2 md:px-[4rem] mt-2 gap-2 flex items-center">
+            <div className="bg-[#F7F7F7] relative py-2 px-2 md:px-[4rem] mt-2 gap-2 flex items-center">
                 <div
                     role="dropdown"
                     className="relative flex items-center gap-2 text-sm capitalize"
@@ -53,7 +58,13 @@ export default function ConnectPageHeader() {
                             }}
                             exit={{ scale: 0, transition: { duration: 0.3 } }}
                         >
-                            <button>Channel Description </button>
+                            <button
+                                onClick={() =>
+                                    setDescriptionModalOpen((prev) => !prev)
+                                }
+                            >
+                                Channel Description{" "}
+                            </button>
                             <button>Exit Channel</button>
                         </motion.div>
                     )}
@@ -70,6 +81,12 @@ export default function ConnectPageHeader() {
                     </span>
                     <span className="text-xs">26 members</span>
                 </div>
+                {descriptionModalOpen ? (
+                    <ChannelInfoModal
+                        setDescriptionModalOpen={setDescriptionModalOpen}
+                        channelModalRef={channelModalRef}
+                    />
+                ) : null}
             </div>
         </section>
     );

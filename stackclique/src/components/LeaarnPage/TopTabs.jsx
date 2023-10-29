@@ -16,7 +16,7 @@ export default function TopTabs({ tabIndex, setTabIndex }) {
         <section className="mx-4 lg:mx-[7rem] py-2">
             <ul className="flex items-center gap-4 overflow-x-auto font-inter top-bar">
                 {tabs.map((tab) => (
-                    <li key={tab.id} className="wmin-w-[35%] lg:min-w-[12%]">
+                    <li key={tab.id} className="min-w-[35%] lg:min-w-[12%]">
                         <button
                             className={`font-bold capitalize w-full whitespace-nowrap  ${
                                 tabIndex === tab.id ? "text-lg" : "text-sm"
