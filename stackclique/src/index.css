@@ -156,4 +156,10 @@
     .otp-input:active {
         border-color: red;
     }
+
+    .top-bar::-webkit-scrollbar {
+        display: none;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
 }
