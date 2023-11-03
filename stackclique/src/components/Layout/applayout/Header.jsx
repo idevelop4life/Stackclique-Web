@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { NavLink, Link, useLocation } from "react-router-dom";
 import { MdOutlineEmail } from "react-icons/md";
 import { BsTelephone } from "react-icons/bs";
 import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
@@ -11,8 +11,11 @@ import { Avatar } from "../../ui";
 
 export default function Header() {
     const [mobileNavVisible, setMobileNavVisible] = useState(false);
+    const { pathname } = useLocation();
     const user = useAppStore((state) => state.user);
-
+    useEffect(() => {
+        setMobileNavVisible(false);
+    }, [pathname]);
     return (
         <header className="fixed top-0 h-[80px] lg:h-[120px] left-0 right-0 bg-[#5A5F6B] backdrop-blur-xl z-[100]">
             <div className="text-white text-xs md:text-sm bg-gray-600 lg:bg-black py-2 px-2 flex items-center justify-between mx-auto md:mx-[4rem] lg:mx-[7.37rem]">
@@ -22,7 +25,7 @@ export default function Header() {
                 <div className="flex items-center gap-4">
                     <BsTelephone /> <p>(480) 555-0103</p>
                 </div>
-                <div className="hidden md:flex items-center gap-4">
+                <div className="items-center hidden gap-4 md:flex">
                     <FaFacebookF /> <FaInstagram /> <FaTwitter /> <FaYoutube />
                 </div>
             </div>
@@ -53,16 +56,16 @@ export default function Header() {
                         <Avatar size={"small"} />
                     </button>
                 ) : (
-                    <div className="lg:flex gap-4 hidden ">
+                    <div className="hidden gap-4 lg:flex ">
                         <Link
                             to={"/login"}
-                            className="rounded-md py-2 px-4 bg-white"
+                            className="px-4 py-2 bg-white rounded-md"
                         >
                             Login
                         </Link>
                         <Link
                             to={"sign-up"}
-                            className="rounded-md py-2 px-4 bg-primary-500 text-white"
+                            className="px-4 py-2 text-white rounded-md bg-primary-500"
                         >
                             Sign Up
                         </Link>

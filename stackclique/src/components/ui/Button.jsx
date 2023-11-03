@@ -56,7 +56,7 @@ export default function Button({
     variant,
 }) {
     const normal =
-        "bg-primary-500 font-bold text-white rounded-md hover:bg-primary-600  disabled:bg-primary-100 transition-colors duration-150 px-2 w-fit h-[3.5rem]";
+        "bg-primary-500 font-bold text-white rounded-md hover:bg-primary-600  disabled:bg-[#3b0764] transition-colors duration-150 px-2 w-fit h-[3.5rem]";
     const defaultClasses = cn(normal, {
         " w-[5rem]": size === "small",
         " w-[12rem]": size === "medium",

@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { navLinks } from "./navigationLinks";
 import { MdClose } from "react-icons/md";
 import { motion, AnimatePresence } from "framer-motion";
@@ -23,12 +23,13 @@ const fadeInVariant = {
 export default function MobileNav({ setMobileNavVisible }) {
     const user = useAppStore((state) => state.user);
     const mobileSideNavRef = useRef(null);
+    // const { pathname } = useLocation();
+
     useClickAwayListener(mobileSideNavRef, closeSideMobileNav);
 
     function closeSideMobileNav() {
         setMobileNavVisible(false);
     }
-
     return (
         <AnimatePresence>
             <motion.div
@@ -46,7 +47,7 @@ export default function MobileNav({ setMobileNavVisible }) {
                     {/* welcome user if a user is logged in else auth buttons */}
                     {user ? (
                         <div className="flex items-center gap-4 font-inter">
-                            <div className="flex flex-col h-full justify-around">
+                            <div className="flex flex-col justify-around h-full">
                                 <p className="text-sm font-[700]">
                                     Hello, Anderson
                                 </p>
@@ -60,29 +61,21 @@ export default function MobileNav({ setMobileNavVisible }) {
                             <Link to={"/sign-up"}>Sign Up</Link>
                         </div>
                     )}
-                    <hr className="h-4  w-full" />
-                    {navLinks.map((item, index) => {
+                    <hr className="w-full h-4" />
+                    {navLinks.map((item) => {
+                        // const active = pathname.includes(item.link);
                         return (
-                            <motion.NavLink
+                            <NavLink
                                 to={item.link}
                                 key={item.id}
                                 className={({ isActive }) =>
                                     isActive
-                                        ? "text-primary-500 font-[600]"
-                                        : "text-black"
+                                        ? "text-primary-500 font-[700]"
+                                        : ""
                                 }
-                                initial={{ x: "100vw" }}
-                                animate={{
-                                    x: 0,
-                                    transition: {
-                                        delay: 0.1 * index,
-                                        duration: 0.5,
-                                        ease: "linear",
-                                    },
-                                }}
                             >
                                 {item.title}
-                            </motion.NavLink>
+                            </NavLink>
                         );
                     })}
                     <motion.p

@@ -19,7 +19,7 @@
 @layer components {
     /* scrollbar styling */
     ::-webkit-scrollbar {
-        width: 6px;
+        width: 5px;
     }
 
     ::-webkit-scrollbar-thumb {
@@ -155,5 +155,11 @@
     }
     .otp-input:active {
         border-color: red;
+    }
+
+    .top-bar::-webkit-scrollbar {
+        display: none;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
     }
 }
