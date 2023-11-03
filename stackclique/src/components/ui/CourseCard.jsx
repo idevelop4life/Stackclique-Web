@@ -16,7 +16,7 @@ export default function CourseCard({
     return (
         <div>
             {" "}
-            <div className="flex flex-col gap-2 bg-white min-h-[25rem] pb-4 rounded-sm overflow-hidden lg:hover:shadow-2xl transition-shadow duration-200">
+            <div className="flex flex-col gap-2 bg-white min-h-[30rem] pb-4 rounded-sm overflow-hidden lg:hover:shadow-2xl transition-shadow duration-200">
                 <div className="h-[13rem] relative w-full">
                     <img
                         src={img_url}
