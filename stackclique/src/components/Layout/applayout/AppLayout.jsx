@@ -1,12 +1,13 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
 export default function AppLayout() {
+    const { pathname } = useLocation();
     return (
-        <div className="bg-darkGrey min-h-screen pt-[80px] lg:pt-[120px]">
+        <div className="bg-appBackgroundColor flex flex-col min-h-screen pt-[80px] lg:pt-[120px]">
             <Header />
             {<Outlet />}
-            <Footer />
+            {pathname.includes("connect") ? null : <Footer />}
         </div>
     );
 }

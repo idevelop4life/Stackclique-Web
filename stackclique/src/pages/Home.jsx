@@ -1,9 +1,19 @@
-import { Hero } from "../components/HomeComponents";
+import {
+    AboutOurApp,
+    Hero,
+    WhyJoinStackclique,
+    HomeSecondSection,
+    BenefitsSection,
+} from "../components/HomeComponents";
 
 export default function Home() {
     return (
-        <main>
+        <section>
             <Hero />
-        </main>
+            <HomeSecondSection />
+            <WhyJoinStackclique />
+            <AboutOurApp />
+            <BenefitsSection />
+        </section>
     );
 }
