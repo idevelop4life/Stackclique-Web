@@ -80,7 +80,7 @@ export default function AboutUs() {
                             <div className="relative flex items-center justify-center md:w-1/2 ">
                                 <img
                                     src={item.image}
-                                    className="h-[15rem] w-[15rem] md:h-[20rem] md:w-[20rem] rounded-full"
+                                    className="h-[15rem] w-[15rem] md:h-[20rem] md:w-[20rem] rounded-full object-cover"
                                     alt=""
                                 />
                             </div>

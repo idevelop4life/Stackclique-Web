@@ -30,8 +30,12 @@ const SingleSlide = ({ url, id, setActiveIndex, swiper }) => {
     };
     return (
         <div className=" flex">
-            <div className="absolute w-full h-full">
-                <img src={url} alt="" className="object-fit z-[-100]" />
+            <div className="absolute w-full h-screen">
+                <img
+                    src={url}
+                    alt=""
+                    className="object-fit object-cover z-[-100] w-full"
+                />
             </div>
             <div className=" flex relative mt-[6rem] md:mt-[10rem] w-full px-4 md:px-[5rem] lg:px-[7rem] flex-col text-left text-white z-[100] ">
                 <h2 className="text-[1.5rem] md:text-[3.5rem] flex font-[600] lg:leading-[4.5rem] font-poppins">
@@ -104,7 +108,7 @@ export default function Hero() {
             </Swiper>
 
             {/* change slide buttons */}
-            <div className="absolute z-10 w-full mt-[4rem] px-4 md:mt-[5rem] md:px-[5rem] flex justify-between">
+            <div className="absolute z-10 w-full mt-[10rem] px-1 md:mt-[15rem] md:px-[2rem] flex justify-between">
                 <button
                     className=" bg-white text-primary-500 h-[1.5rem] w-[1.5rem] md:h-[2rem] md:w-[2rem] rounded-full flex items-center justify-center"
                     onClick={() => swiper?.slidePrev()}
