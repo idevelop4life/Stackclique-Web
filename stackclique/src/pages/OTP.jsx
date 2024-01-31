@@ -105,7 +105,7 @@ export default function OTP() {
                                     type={"button"}
                                     size="medium"
                                     rounded={"lg"}
-                                    variant={"outlined"}
+                                    variant={"light"}
                                     onClick={() => navigate("/sign-up")}
                                 >
                                     Cancel

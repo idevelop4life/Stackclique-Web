@@ -37,7 +37,8 @@
         &:active,
         &:hover,
         &:focus-visible {
-            background-color: $primary;
+            background-color: $primary !important;
+            color: $white;
             outline: 1px solid $primary;
             box-shadow: 0px 4px 26px 0px $primary-drk;
         }

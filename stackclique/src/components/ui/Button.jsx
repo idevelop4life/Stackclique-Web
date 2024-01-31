@@ -11,12 +11,18 @@ export default function Button({
     rounded,
     variant,
 }) {
-    
+    const btnType = () => {
+        switch (variant) {
+        case 'light':
+            return "btn-light";
+        default:
+            break;
+    }}
 
     return (
         <button
             type={type}
-            className={className}
+            className={`${className} ${btnType()}`}
             disabled={disabled}
             onClick={onClick}
         >
