@@ -1,0 +1,64 @@
+@use "../custom" as *;
+@use "./button" as *;
+@use "./mixins" as *;
+
+:root {
+    body {
+        background-color: $white;
+    }
+
+    img,
+    svg {
+        width: 100%;
+    }
+
+    .col_xxlg {
+        @media (max-width: 1536px) {
+            @include widthspread;
+        }
+    }
+    .col_xlg {
+        @media (max-width: 1280px) {
+            @include widthspread;
+        }
+    }
+    .col_lg {
+        @media (max-width: 1024px) {
+            @include widthspread;
+        }
+    }
+    .col_md {
+        @media (max-width: 768px) {
+            @include widthspread;
+        }
+    }
+    .col_sm {
+        @media (max-width: 640px) {
+            @include widthspread;
+        }
+    }
+    .col {
+        @include widthspread;
+    }
+
+    a.redirect_link {
+        color: $primary;
+        font-weight: 600;
+        line-height: 19px;
+        margin: auto 0.5rem;
+    }
+
+    .redirect_btn {
+        color: $primary;
+        font-weight: 600;
+        line-height: 19px;
+        margin: auto 0.5rem;
+    }
+}
+
+.otp-input {
+    &:focus-visible {
+        border: 1px solid $secondary;
+        outline-color: $secondary;
+    }
+}
