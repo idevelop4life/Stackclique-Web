@@ -1,0 +1,66 @@
+@use "../custom" as *;
+
+@mixin responsive($breakpoint) {
+    @if $breakpoint == mobile {
+        @media (max-width: 767px) {
+            @content;
+        }
+    } @else if $breakpoint == tablet {
+        @media (min-width: 768px) and (max-width: 1023px) {
+            @content;
+        }
+    } @else if $breakpoint == desktop {
+        @media (min-width: 1024px) {
+            @content;
+        }
+    } @else if $breakpoint == mediadown {
+        @media (max-width: 1023px) {
+            @content;
+        }
+    } @else if $breakpoint == mediaup {
+        @media (min-width: 768px) {
+            @content;
+        }
+    } @else {
+        @content;
+    }
+}
+
+@mixin widthspread {
+    &_1 {
+        width: calc(1 / 12 * 100%);
+    }
+    &_2 {
+        width: calc(2 / 12 * 100%);
+    }
+    &_3 {
+        width: calc(3 / 12 * 100%);
+    }
+    &_4 {
+        width: calc(4 / 12 * 100%);
+    }
+    &_5 {
+        width: calc(5 / 12 * 100%);
+    }
+    &_6 {
+        width: calc(6 / 12 * 100%);
+    }
+    &_7 {
+        width: calc(7 / 12 * 100%);
+    }
+    &_8 {
+        width: calc(8 / 12 * 100%);
+    }
+    &_9 {
+        width: calc(9 / 12 * 100%);
+    }
+    &_10 {
+        width: calc(10 / 12 * 100%);
+    }
+    &_11 {
+        width: calc(11 / 12 * 100%);
+    }
+    &_12 {
+        width: calc(12 / 12 * 100%);
+    }
+}

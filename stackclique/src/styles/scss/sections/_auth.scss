@@ -1,0 +1,93 @@
+@use "../custom" as *;
+@use "../components/typography" as *;
+@use "../components/root" as *;
+@use "../components/mixins" as *;
+
+.auth {
+    display: block;
+    min-height: 70%;
+    padding: 2.5rem 1.5rem;
+    @include responsive(mediadown) {
+        min-height: 50%;
+        padding: 2rem 1.5rem;
+    }
+
+    .brand_logo {
+        display: block;
+        width: clamp(9rem, 10%, 11.25rem);
+        height: auto;
+        margin-bottom: 3rem;
+    }
+
+    .auth_container {
+        width: 100%;
+        margin-top: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        .auth_form {
+            justify-content: center;
+            display: flex;
+            flex-wrap: wrap;
+
+            .form_header {
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                text-align: center;
+                justify-content: center;
+
+                h2,
+                p {
+                    width: 70%;
+                }
+            }
+
+            .form_redirect {
+                display: flex;
+                justify-content: center;
+                margin: 1.5rem auto;
+            }
+        }
+
+        .auth_img {
+            cursor: pointer;
+            width: auto;
+            max-height: 60dvh;
+            margin: auto;
+            opacity: 1;
+            @include responsive(mediaup) {
+                padding: 2rem 5%;
+            }
+            @include responsive(mediadown) {
+                display: none;
+            }
+        }
+    }
+}
+
+.social_redirect {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    justify-content: center;
+
+    .social_divider {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 1rem;
+        font-weight: 600;
+        color: $dark;
+    }
+
+    .social_links {
+        width: 80%;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+}

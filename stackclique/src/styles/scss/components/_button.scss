@@ -1,0 +1,76 @@
+@use "../custom" as *;
+@use "./typography" as *;
+
+.btn {
+    cursor: pointer !important;
+    display: flex;
+    min-width: 120px;
+    max-height: 52px;
+    margin: 1rem 0;
+    padding: 0.5rem 50px;
+    border-radius: 32px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(15px, 17px, 1.07rem);
+    line-height: 26px;
+    background-color: $primary !important;
+    color: $white;
+    outline: 1px solid $primary;
+    transition: 1s ease;
+
+    &:focus,
+    &:active,
+    &:hover,
+    &:focus-visible {
+        background-color: $primary-drk !important;
+        outline: 1px solid $primary-drk;
+        box-shadow: 0px 4px 26px 0px $primary-drk;
+    }
+
+    &.btn-light {
+        outline: 1px solid $primary;
+        background-color: $white !important;
+        color: $primary;
+
+        &:focus,
+        &:active,
+        &:hover,
+        &:focus-visible {
+            background-color: $primary !important;
+            color: $white;
+            outline: 1px solid $primary;
+            box-shadow: 0px 4px 26px 0px $primary-drk;
+        }
+    }
+
+    &:disabled {
+        cursor: not-allowed !important;
+        background-color: $dark !important;
+        outline: 1px solid $dark;
+
+        &:focus,
+        &:active,
+        &:hover,
+        &:focus-visible {
+            box-shadow: 0px 4px 26px 0px $dark;
+        }
+    }
+}
+
+// box-shadow: 0px 4px 26px 0px #7E077240;
+
+// width: Fixed (262px)
+// height: Hug (52px)
+// top: 481px
+// left: 1764px
+// padding: 13px, 191px, 13px, 191px
+// border-radius: 32px
+// gap: 10px
+
+// font-family: Poppins;
+// font-size: 17px;
+// font-weight: 500;
+// line-height: 26px;
+// letter-spacing: 0em;
+// text-align: left;
