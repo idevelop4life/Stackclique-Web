@@ -1,0 +1,76 @@
+@use "../components/typography" as *;
+@use "../components/mixins" as *;
+@use "../custom" as *;
+
+.hero {
+    position: relative;
+    display: flex;
+    aspect-ratio: 16/9;
+
+    @include responsive(mobile) {
+        aspect-ratio: 1/1;
+    }
+}
+
+.slider_item {
+    display: flex;
+    aspect-ratio: 16/9;
+
+    @include responsive(mobile) {
+        aspect-ratio: 1/1;
+    }
+
+    .bg_img {
+        width: 100%;
+        display: block;
+        position: absolute;
+        aspect-ratio: 16/9;
+        overflow: hidden;
+
+        @include responsive(mobile) {
+            aspect-ratio: 1/1;
+        }
+    }
+}
+
+.slider_indicator {
+    position: absolute;
+    display: flex;
+    z-index: 10;
+    bottom: 0;
+    right: 0.5rem;
+    gap: 1rem;
+    color: rgba($color: $white, $alpha: 0.25);
+    @include responsive(mobile) {
+        gap: 1.5rem;
+    }
+}
+
+.course_card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    background-color: $white;
+    min-height: 30rem;
+    padding-bottom: 1rem;
+    overflow: hidden;
+
+    .bookmark {
+        cursor: pointer;
+        position: absolute;
+        right: 1.25rem;
+        top: -1rem;
+        display: flex;
+        justify-content: center;
+        width: 1.75rem;
+        height: 1.75rem;
+        border-radius: 50%;
+        box-shadow: 0px 2px 5px rgba($color: $dark, $alpha: 0.4);
+        transition: 1s all ease;
+
+        &:hover {
+        box-shadow: 0px 2px 5px rgba($color: $dark, $alpha: 0.8);
+        }
+
+    }
+}

@@ -8,6 +8,8 @@ import MobileNav from "./MobileNav";
 import { navLinks } from "./navigationLinks";
 import { useAppStore } from "../../../store/useAppStore";
 import { Avatar } from "../../ui";
+import styles from "../../../styles/css/app.module.css";
+import logoImg from "../../../assets/svg/logo.svg"
 
 export default function Header() {
     const [mobileNavVisible, setMobileNavVisible] = useState(false);
@@ -17,24 +19,28 @@ export default function Header() {
         setMobileNavVisible(false);
     }, [pathname]);
     return (
-        <header className="fixed top-0 h-[80px] lg:h-[120px] left-0 right-0 bg-[#5A5F6B] backdrop-blur-xl z-[100]">
-            <div className="text-white text-xs md:text-sm bg-gray-600 lg:bg-black py-2 px-2 flex items-center justify-between mx-auto md:mx-[4rem] lg:mx-[7.37rem]">
-                <div className="flex items-center gap-4">
+        <header className={styles.header}>
+            <div className={styles.contact_strip}>
+                <div className="justify-start">
                     <MdOutlineEmail /> <p>Info@youremail.com</p>
                 </div>
-                <div className="flex items-center gap-4">
+                <div className="justify-center">
                     <BsTelephone /> <p>(480) 555-0103</p>
                 </div>
-                <div className="items-center hidden gap-4 md:flex">
+                <div className="justify-end">
                     <FaFacebookF /> <FaInstagram /> <FaTwitter /> <FaYoutube />
                 </div>
             </div>
 
-            <nav className="flex items-center font-inter justify-between min-h-[3rem] px-2 py-2 md:mx-[4rem] lg:py-[1rem] lg:mx-[7.37rem]">
-                <p className="font-[700] text-sm lg:text-[1.5rem] text-white font-poppins">
-                    STACK<span className="text-green">CLIQUE</span>
-                </p>
-                <ul className="hidden lg:flex gap-[3.12rem]">
+            <nav className={styles.navigation}>
+                <Link to={"/"} className={`${styles.brand_logo}`}>
+                    <img
+                        src={logoImg}
+                        alt="Stackclique Logo"
+                        title="Stackclique Logo"
+                    />
+                </Link>
+                <ul className={styles.nav_link}>
                     {navLinks.map((item) => {
                         return (
                             <NavLink

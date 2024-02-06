@@ -1,8 +1,16 @@
 import { createBrowserRouter } from "react-router-dom";
 import Authentication from "./components/Layout/Authentication";
-import { Login, OTP, SignUp, Home, AboutUs, Learn, Connect } from "./pages";
+import {
+    Login,
+    OTP,
+    SignUp,
+    Home,
+    AboutUs,
+    Learn,
+    Connect,
+    CourseDetail,
+} from "./pages";
 import AppLayout from "./components/Layout/applayout/AppLayout";
-
 export const router = createBrowserRouter([
     {
         element: <AppLayout />,

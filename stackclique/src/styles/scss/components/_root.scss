@@ -7,9 +7,12 @@
         background-color: $white;
     }
 
-    img,
-    svg {
+    img{
         width: 100%;
+    }
+
+    svg {
+        width: max-content;
     }
 
     .col_xxlg {
