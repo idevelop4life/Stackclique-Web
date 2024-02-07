@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\CourseController;
+use App\Http\Middleware\VerifyCsrfToken;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,6 +13,22 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+// Creating and fetching of courses routes
+
+Route::middleware(['web'])->group(function () {
+    // Your web routes here
+    Route::post('/courses', [CourseController::class, 'store']);
+    // Route::post('/courses', [CourseController::class, 'create']);
+    Route::get('/courses', [CourseController::class, 'getAllCourses']);
+    Route::get('/courses/{id}', [CourseController::class, 'getCourseById']);
+
+});
+
+
+// Route::post('/courses', [CourseController::class, 'create']);
+// Route::get('/courses', [CourseController::class, 'getAllCourses']);
+// Route::get('/courses/{id}', [CourseController::class, 'getCourseById']);
 
 Route::get('/', function () {
     return view('welcome');
