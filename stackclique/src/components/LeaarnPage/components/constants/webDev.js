@@ -1,4 +1,4 @@
-export const categories = [
+export const webDevs = [
     {
         tutor: "John Smith",
         title: "Web Development 101",
@@ -86,48 +86,5 @@ export const categories = [
         students_enrolled: 2000,
         img_url:
             "https://source.unsplash.com/a-man-sitting-at-a-table-looking-at-a-cell-phone-d0uZ4D7BnZ4",
-    },
-    {
-        tutor: "Linda Johnson",
-        title: "Cooking Essentials: From Beginner to Chef",
-        modules: 10,
-        likes: 185,
-        reviews: 27,
-        duration_hours: 25,
-        students_enrolled: 750,
-        img_url:
-            "https://source.unsplash.com/avocado-tomatoes-eggs-mushrooms-spring-onions-and-leaves-uQs1802D0CQ",
-    },
-    {
-        tutor: "Daniel Adams",
-        title: "Graphic Design: Creating Stunning Visuals",
-        modules: 12,
-        likes: 290,
-        reviews: 40,
-        duration_hours: 40,
-        students_enrolled: 1100,
-        img_url:
-            "https://source.unsplash.com/turned-on-macbook-on-table-beside-imac-g-YiX8ynmnY",
-    },
-    {
-        tutor: "Olivia Moore",
-        title: "Mobile App Development with Flutter",
-        modules: 11,
-        likes: 250,
-        reviews: 36,
-        duration_hours: 45,
-        students_enrolled: 1300,
-        img_url: "https://source.unsplash.com/man-using-laptop-VzJjPuk53sk",
-    },
-    {
-        tutor: "Charles Lee",
-        title: "Introduction to astrophysics",
-        modules: 8,
-        likes: 150,
-        reviews: 22,
-        duration_hours: 20,
-        students_enrolled: 700,
-        img_url:
-            "https://source.unsplash.com/full-moon-in-the-night-sky-wk966Ouqces",
     },
 ];

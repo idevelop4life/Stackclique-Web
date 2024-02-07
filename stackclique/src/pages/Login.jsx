@@ -7,7 +7,6 @@ import { json, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export default function Login() {
-
     const navigate = useNavigate();
     const formik = useFormik({
         initialValues: {
@@ -16,44 +15,46 @@ export default function Login() {
         },
         validationSchema: loginSchema,
         onSubmit: (values) => {
+            // handle form submition when submit button is clicked
 
-             // handle form submition when submit button is clicked
+            axios
+                .post("http://localhost:8000/api/login", values)
 
-             axios
-             .post("http://localhost:8000/api/login", values)
+                .then((response) => {
+                    console.log(response);
+                    if (
+                        response.status === 200 &&
+                        response.data.token != null
+                    ) {
+                        // pls anderson this particular page should not
+                        // be accessed if the user has being successfully registered
+                        // so you can place a kind of middileware to guard that, so he doesnt sign up multipl times thanks
 
-             .then((response) => {
-                 console.log(response);
-                 if (response.status === 200 && response.data.token != null) {
-                     // pls anderson this particular page should not
-                     // be accessed if the user has being successfully registered
-                     // so you can place a kind of middileware to guard that, so he doesnt sign up multipl times thanks
+                        // This contains info of the user that jus logged in and the login message
+                        const loggedinMessage = JSON.stringify(response.data);
 
-                     // This contains info of the user that jus logged in and the login message
-                     const loggedinMessage = JSON.stringify(response.data);
-
-                     navigate("/verification");
-                 } else {
-                     // Error message
-                     const errorStat = JSON.stringify(response.status);
-                 }
-             })
-             .catch((error) => {
-                 // Below are the information for errors in interacting with the database
-                 const errorStatus = JSON.stringify(error.response.status);
-                //  const errorMessage = JSON.stringify(
-                //      error.response.data.message,
-                //  );
-                 const errorData = JSON.stringify(
-                     error.response.data.errors,
-                 );
-                 console.log(
-                     "API request failed with status code:",
-                     errorStatus,
-                 );
-                //  console.log("ERROR:: ", errorData);
-                 console.log("ERROR:: ", errorData);
-             });
+                        navigate("/verification");
+                    } else {
+                        // Error message
+                        const errorStat = JSON.stringify(response.status);
+                    }
+                })
+                .catch((error) => {
+                    // Below are the information for errors in interacting with the database
+                    const errorStatus = JSON.stringify(error.response.status);
+                    //  const errorMessage = JSON.stringify(
+                    //      error.response.data.message,
+                    //  );
+                    const errorData = JSON.stringify(
+                        error.response.data.errors,
+                    );
+                    console.log(
+                        "API request failed with status code:",
+                        errorStatus,
+                    );
+                    //  console.log("ERROR:: ", errorData);
+                    console.log("ERROR:: ", errorData);
+                });
             // handle form submition when submit button is clicked
             // console.log(values);
         },

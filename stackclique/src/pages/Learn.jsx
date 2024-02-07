@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { TopTabs, Courses, BottomContent } from "../components/LeaarnPage";
+import { TopTabs, BottomContent } from "../components/LeaarnPage";
 
 export default function Learn() {
     const [tabIndex, setTabIndex] = useState(1);
@@ -11,7 +11,7 @@ export default function Learn() {
                 </h2>
             </section>
             <TopTabs tabIndex={tabIndex} setTabIndex={setTabIndex} />
-            <Courses />
+            {/* <Courses /> */}
             <BottomContent />
         </section>
     );
