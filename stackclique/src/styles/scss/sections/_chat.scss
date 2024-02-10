@@ -1,0 +1,451 @@
+@use "../custom" as *;
+@use "../components/typography" as *;
+@use "../components/mixins" as *;
+
+.chat_header {
+    width: 100%;
+    position: relative;
+    padding-top: 3rem;
+    background-color: $bg-white;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+
+    .channel_tab {
+        display: flex;
+        margin-top: 1rem;
+        background-color: $bg-white-light;
+        padding: clamp(0.75rem, 1rem, 2rem) clamp(1.75rem, 4rem, 20%);
+
+        .dropdown_menu {
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            margin-right: auto;
+
+            .menu_header {
+                display: flex;
+                align-items: center;
+                font-size: 1.5rem;
+                font-family: Montserrat, "Poppins", sans-serif;
+                font-weight: 500;
+                line-height: 24px;
+                letter-spacing: 0em;
+                text-align: left;
+                text-transform: capitalize;
+
+                span {
+                    margin: 0 0.25rem;
+                }
+            }
+
+            .menu_list {
+                display: none;
+                top: 2.5rem;
+                right: -6.5rem;
+
+                li {
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .tab_option {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+            gap: 1.5rem;
+
+            li {
+                display: flex;
+                align-items: center;
+                font-family: "Lato", "Poppins", sans-serif;
+                font-size: 1rem;
+                font-weight: 400;
+                line-height: 1.1875rem;
+                letter-spacing: 0em;
+                text-align: left;
+
+                span svg {
+                    width: 2.5rem;
+                    height: 2.5rem;
+                    margin: 0 0.25rem;
+                }
+            }
+        }
+    }
+
+    .setting_modal {
+        padding: 3.5rem 2.5rem;
+        display: flex;
+        flex-direction: column;
+        min-width: clamp(45dvw, 55dvw, 62dvw);
+        left: 50%;
+        transform: translate(-50%, 50%);
+
+        .setting_modal_header {
+            flex: 1;
+            margin-bottom: 0.5rem;
+            text-transform: capitalize;
+            font-family: Montserrat, "Poppins", sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1.5rem;
+            letter-spacing: 0em;
+            text-align: left;
+        }
+        .setting_modal_option {
+            cursor: pointer;
+            display: flex;
+            flex: 1;
+            gap: 2.5rem;
+
+            li {
+                font-family: Montserrat, "Poppins", sans-serif;
+                font-size: 1.5rem;
+                font-weight: 500;
+                line-height: 2.125rem;
+                letter-spacing: 0.36000001430511475px;
+                text-align: center;
+                padding-bottom: 1rem;
+
+                &.active {
+                    border-bottom: 2px solid $secondary;
+                    transition: 250ms all ease-in-out;
+                }
+
+                span {
+                    font-size: inherit;
+                    margin-left: 0.5rem;
+                    color: $text-span;
+                }
+            }
+        }
+        .setting_modal_body {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+
+            .body_info {
+                padding: 1rem 0.75rem;
+                border-radius: 8px;
+                border: 1px solid $dark;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                color: $black;
+                font-family: Montserrat, "Poppins", sans-serif;
+                font-size: 1rem;
+                font-weight: 500;
+                letter-spacing: 0.36000001430511475px;
+            }
+
+            .body_content {
+                width: 80%;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                // flex-direction: column;
+
+                h2 {
+                    width: fit-content;
+                    color: $black;
+                    font-family: Montserrat, "Poppins", sans-serif;
+                    font-size: 1.5rem;
+                    font-weight: 500;
+                    line-height: 34px;
+                }
+
+                ul {
+                    display: flex;
+                    flex: 1;
+                    flex-direction: column;
+                    gap: 0.1rem;
+                    padding-left: 0.5rem;
+                    overflow: auto;
+                    height: auto;
+
+                    li {
+                        display: flex;
+                        align-items: center;
+                        font-family: Montserrat, "Poppins", sans-serif;
+                        font-size: 1rem;
+                        // font-weight: 500;
+
+                        input[type="radio"] {
+                            margin-right: 0.35rem;
+
+                            &:checked {
+                                background-color: $primary;
+                                color: $primary;
+                            }
+                        }
+                    }
+
+                    .member_item {
+                        display: flex;
+                        align-items: center;
+                        font-weight: 500;
+                        font-size: 1.125rem;
+                        line-height: 34px;
+                        letter-spacing: 0.36000001430511475px;
+                        font-family: Montserrat, "Poppins", sans-serif;
+                        margin-left: 1.25rem;
+
+                        span {
+                            position: relative;
+                            margin-right: 1rem;
+                            border-radius: 50%;
+                            width: 1.5rem;
+                            height: 1.5rem;
+                            aspect-ratio: 1/1;
+                            overflow: hidden;
+
+                            img {
+                                position: absolute;
+                                top: 50%;
+                                left: 50%;
+                                transform: translate(-50%, -50%);
+                                width: max-content;
+                                aspect-ratio: 1/1;
+                            }
+                        }
+                    }
+                }
+
+                .input_group {
+                    margin-top: 1rem;
+                    margin-bottom: auto;
+                    margin-left: 1.5rem;
+                }
+            }
+        }
+    }
+}
+
+.channel_sidebar {
+    display: flex;
+    flex-direction: column;
+    padding: 1.75rem 2.75rem;
+    color: $text-white;
+    background-color: $primary;
+    width: clamp(15dvw, 25dvw, 33.6dvw);
+    min-height: clamp(25dvh, 30dvh, 40dvh);
+    height: auto;
+    gap: 1.5rem;
+
+    .channel_body {
+        display: flex;
+        flex-direction: column;
+        gap: 0.66rem;
+
+        h2 {
+            font-family: Inter, "Poppins", sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            line-height: 24px;
+            letter-spacing: 0em;
+            text-align: left;
+        }
+
+        a {
+            display: flex;
+            align-items: center;
+            font-size: 1.125rem;
+            font-weight: 500;
+            font-family: Inter, "Poppins", sans-serif;
+            line-height: 24px;
+            letter-spacing: 0em;
+
+            &.more {
+                font-size: 0.875rem;
+
+                svg {
+                    width: 1.25rem;
+                    height: 1.25rem;
+                    display: flex;
+                    align-items: center;
+
+                    g {
+                        display: flex;
+                        align-items: center;
+                    }
+                }
+            }
+
+            span {
+                background-color: $secondary;
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                margin-left: 0.66rem;
+            }
+        }
+    }
+}
+
+.msg_container {
+    width: 100%;
+    flex: 1;
+    padding: 2rem clamp(2rem, 3rem, 4rem);
+}
+
+.timestamp_bubble {
+    cursor: pointer;
+    min-width: clamp(6rem, 8rem, 9rem);
+    width: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0.25rem auto;
+    padding: 0.25rem 0.5rem;
+    border-radius: 10px;
+    gap: 10px;
+    box-shadow:
+        0px 2px 10px 0px #7e07720a,
+        0px 0px 1px 0.2px $secondary;
+    text-transform: capitalize;
+    font-family: "Lato", "Poppins", sans-serif;
+    font-size: .75rem;
+    font-weight: 400;
+    letter-spacing: 0em;
+}
+
+.chat_bubble {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1.25rem 0;
+
+    span {
+        position: relative;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 1.75rem;
+
+        img {
+            width: 35px;
+            height: 35px;
+            object-fit: cover;
+        }
+    }
+
+    &.mine {
+        justify-content: flex-end;
+
+        .chat_detail {
+            border-radius: 18px 0px 18px 18px;
+            background-color: $primary;
+            color: $white;
+            padding-left: 2rem;
+            padding-right: 1rem;
+            padding-top: 0.625rem;
+        }
+    }
+
+    .chat_detail {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        width: max-content;
+        max-width: clamp(20dvw, 35dvw, 38dvw);
+        background-color: $white;
+        border-radius: 0px 18px 18px 18px;
+        padding-top: 0.375rem;
+        padding-bottom: 0.375rem;
+        padding-left: 1rem;
+        padding-right: 2rem;
+
+        .chat_reply {
+            display: flex;
+            flex-direction: column;
+            background-color: rgba($color: $accent_02, $alpha: 0.3);
+            padding: 0.4rem .66rem;
+            border-radius: 4px;
+            border-left: 2px solid $secondary;
+            margin-bottom: .35rem;
+            overflow: hidden;
+
+            h5 {
+                font-family: "Lato", "Poppins", sans-serif;
+                font-size: 0.75rem;
+                font-weight: 700;
+                line-height: 18px;
+                letter-spacing: 0em;
+                text-align: left;
+                margin-bottom: 0.2rem;
+            }
+
+            p {
+                font-family: "Lato", "Poppins", sans-serif;
+                font-size: 0.75rem;
+                font-weight: 400;
+                line-height: 18px;
+                letter-spacing: 0em;
+                text-align: left;
+            }
+        }
+
+        .chat_header {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+            background-color: inherit;
+            padding: 0;
+            margin-top: 0.1rem;
+            margin-bottom: 0.25rem;
+
+            h2 {
+                font-family: "Lato", "Poppins", sans-serif;
+                font-size: 1.25rem;
+                font-weight: 700;
+                line-height: 24px;
+                letter-spacing: 0em;
+                text-align: left;
+                margin-right: 0.75rem;
+            }
+
+            span {
+                width: fit-content;
+                height: fit-content;
+                font-family: "Lato", "Poppins", sans-serif;
+                font-size: 0.75rem;
+                font-weight: 400;
+                line-height: 24px;
+                letter-spacing: 0em;
+                text-align: left;
+                color: $text-span;
+            }
+        }
+
+        .chat_text {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            background-color: inherit;
+            font-family: "Lato", "Poppins", sans-serif;
+            font-size: 0.875rem;
+            font-weight: 400;
+            line-height: 1.5rem;
+            letter-spacing: 0em;
+            text-align: left;
+        }
+
+        .timestamp {
+            display: flex;
+            justify-content: flex-end;
+            width: -webkit-fill-available;
+            height: fit-content;
+            font-size: 0.625rem;
+            line-height: 0.875rem;
+            border-radius: 0;
+            margin-right: 0;
+            margin-left: auto;
+        }
+    }
+}

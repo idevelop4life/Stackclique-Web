@@ -1,0 +1,86 @@
+@use "../custom" as *;
+@use "./typography" as *;
+
+.form_search_gen {
+    display: flex;
+    min-width: clamp(32.5dvw, 36.4dvw, 40dvw);
+    height: clamp(2.25rem, 2.375rem, 3rem);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0px 10px 12px -14px $black;
+    margin: 0.5rem auto;
+    button {
+        margin: 0;
+        width: clamp(3.5rem, 3.75rem, 4rem);
+        min-width: auto;
+        height: inherit;
+        border-radius: 0;
+        padding: 0.1rem;
+    }
+    .text-box {
+        flex: 1;
+        height: 100%;
+        padding: 0.5rem 1rem;
+        font-size: 0.75rem;
+        align-items: center;
+        color: $dark;
+
+        &::placeholder {
+            color: $dark;
+        }
+        &:focus-visible {
+            outline: none;
+        }
+        &::-webkit-search-cancel-button,
+        &::-webkit-search-results-button {
+            color: $primary !important;
+            background-color: $primary;
+        }
+    }
+}
+
+.form_search_minimal {
+    background-color: $accent;
+    display: flex;
+    align-items: center;
+    min-width: clamp(28dvw, 30dvw, 38dvw);
+    height: clamp(2.33rem, 2.8125rem, 3.5rem);
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 0.5rem 0;
+    padding: 0.25rem;
+
+    button {
+        margin: auto 0.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.5rem;
+        height: 1.5rem;
+
+        svg {
+            width: inherit;
+            height: inherit;
+        }
+    }
+
+    input {
+        flex: 1;
+        background-color: $accent;
+
+        &:focus-visible {
+            outline: none;
+        }
+
+        &::-webkit-search-cancel-button {
+            display: none;
+        }
+
+        &::placeholder,
+        &:-moz-placeholder {
+            text-transform: capitalize;
+        }
+    }
+}
+
+// .form
