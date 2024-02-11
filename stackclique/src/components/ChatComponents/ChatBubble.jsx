@@ -1,8 +1,18 @@
 import styles from "../../styles/css/app.module.css";
 import imgSample from "../../assets/pics/4.jpg";
-import { shortText, timeOfDay } from "../../utils/utils";
+import { getReply, timeOfDay } from "../../utils/utils";
+import BubbleReply from "./BubbleReply";
 
-function ChatBubble({ type, text, timestamp, profile, reply }) {
+function ChatBubble({
+    type,
+    text,
+    timestamp,
+    profile,
+    reply,
+    setReply,
+    msgId,
+    allMsg,
+}) {
     const bubbleType = type ? "send" : "receive";
     return (
         <div className={`${styles.chat_bubble} ${type ? styles.mine : ""}`}>
@@ -14,6 +24,28 @@ function ChatBubble({ type, text, timestamp, profile, reply }) {
                 ""
             )}
             <div className={styles.chat_detail}>
+                <div
+                    className={styles.reply_btn}
+                    onClick={() => {
+                        setReply(reply || getReply(msgId, allMsg));
+                    }}
+                >
+                    <svg
+                        width="10"
+                        height="6"
+                        viewBox="0 0 10 6"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            d="M1.3999 1.19995L4.9999 4.79995L8.5999 1.19995"
+                            stroke="#020202"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                        />
+                    </svg>
+                </div>
                 {bubbleType === "receive" ? (
                     <BubbleHeader name={profile?.name} time={timestamp} />
                 ) : (
@@ -33,15 +65,6 @@ function ChatBubble({ type, text, timestamp, profile, reply }) {
                     ""
                 )}
             </div>
-        </div>
-    );
-}
-
-function BubbleReply({ profile, text }) {
-    return (
-        <div className={styles.chat_reply}>
-            <h5>{profile?.name}</h5>
-            <p>{shortText(text, 110)}</p>
         </div>
     );
 }
