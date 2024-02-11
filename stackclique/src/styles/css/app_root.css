@@ -134,6 +134,7 @@ h5 {
   flex-direction: column;
   gap: 1.5rem;
   box-shadow: 0px 10px 12px -14px #242424;
+  transition: all 1s ease;
 }
 :root .modal_box.show {
   display: flex !important;
@@ -154,6 +155,12 @@ h5 {
 }
 :root .modal_backdrop.hidden {
   display: none;
+}
+@media (max-width: 767px) {
+  :root .modal_backdrop {
+    opacity: 0.8;
+    backdrop-filter: blur(2px);
+  }
 }
 @media (max-width: 1536px) {
   :root .col_xxlg_1 {
@@ -400,13 +407,19 @@ h5 {
 }
 
 .form_search_gen {
+  position: relative;
   display: flex;
-  min-width: 36.4dvw;
+  width: 36.4dvw;
   height: 2.375rem;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0px 10px 12px -14px #242424;
   margin: 0.5rem auto;
+}
+@media (max-width: 767px) {
+  .form_search_gen {
+    width: 75dvw;
+  }
 }
 .form_search_gen button {
   margin: 0;
@@ -483,6 +496,11 @@ h5 {
   border-radius: 4px;
   align-items: center;
 }
+@media (max-width: 767px) {
+  .form_chat_box {
+    padding: 0.66rem 0.75rem;
+  }
+}
 .form_chat_box .input_icon_group {
   cursor: pointer;
   position: relative;
@@ -490,6 +508,12 @@ h5 {
   width: 48px;
   height: 48px;
   margin: 4px;
+}
+@media (max-width: 767px) {
+  .form_chat_box .input_icon_group {
+    width: 32px;
+    height: 32px;
+  }
 }
 .form_chat_box .input_icon_group input[type=file] {
   cursor: pointer;

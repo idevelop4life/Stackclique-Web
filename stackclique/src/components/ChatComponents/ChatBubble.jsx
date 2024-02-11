@@ -12,6 +12,7 @@ function ChatBubble({
     setReply,
     msgId,
     allMsg,
+    user
 }) {
     const bubbleType = type ? "send" : "receive";
     return (
@@ -27,7 +28,7 @@ function ChatBubble({
                 <div
                     className={styles.reply_btn}
                     onClick={() => {
-                        setReply(reply || getReply(msgId, allMsg));
+                        setReply(getReply(msgId, allMsg));
                     }}
                 >
                     <svg
@@ -52,7 +53,11 @@ function ChatBubble({
                     ""
                 )}
                 {reply ? (
-                    <BubbleReply profile={reply?.user} text={reply?.text} />
+                    <BubbleReply
+                        profile={reply?.user}
+                        text={reply?.text}
+                        userInfo={user}
+                    />
                 ) : (
                     ""
                 )}
@@ -72,7 +77,7 @@ function ChatBubble({
 function BubbleHeader({ name, time }) {
     return (
         <div className={styles.chat_header}>
-            <h2>{name || "Unnamed"}</h2>
+            <h2>{name}</h2>
             <span>{timeOfDay(time)} </span>
         </div>
     );

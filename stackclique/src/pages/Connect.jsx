@@ -1,9 +1,8 @@
 import {
-    ConnectPageHeader,
     ConnectSideBar,
     MessageContainer,
 } from "../components/ConnectPage";
-import { ChannelList, ChatBox, Header } from "../components/ChatComponents";
+import { Header } from "../components/ChatComponents";
 import imgSample from "../assets/pics/4.jpg";
 import { useState } from "react";
 
@@ -40,7 +39,7 @@ export default function Connect() {
     return (
         <>
             <section className="flex relative flex-wrap">
-                <div className="w-[100%] bg-[#b3b6bd] h-[7rem]"></div>
+                <div className="w-[100%] bg-[#b3b6bd] h-[6rem] "></div>
                 <Header
                     users={users}
                     channelList={channelsList}
@@ -48,9 +47,7 @@ export default function Connect() {
                     updateChannel={setChannel}
                 />
 
-                <section 
-                className="flex relative w-[100%]"
-                >
+                <section className="flex relative w-[100%]">
                     <ConnectSideBar
                         channelList={channelsList}
                         curChannel={curChannel}

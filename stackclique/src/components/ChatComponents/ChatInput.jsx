@@ -1,11 +1,34 @@
+import { useEffect, useState } from "react";
 import styles from "../../styles/css/app.module.css";
 import "../../styles/css/app_root.css";
 import BubbleReply from "./BubbleReply";
+import { getCurrentTimestamp, randomIdNumber } from "../../utils/utils";
 
-function ChatInput({ reply, setReply }) {
+function ChatInput({ reply, setReply, user, currentMsg, setNewMesg }) {
+    const formInitial = {
+        id: randomIdNumber(),
+        user,
+        reply: null,
+        text: "",
+        timestamp: getCurrentTimestamp(),
+    };
+    const [formData, setFormData] = useState(formInitial);
+
+
     return (
         <>
-            <form className="form_chat_box">
+            <form
+                className="form_chat_box"
+                onSubmit={(e) => {
+                    e.preventDefault();
+                    // Just for test purposes
+                    setNewMesg([...currentMsg, formData]);
+
+                    // Clear values after submission
+                    setReply(formInitial.reply);
+                    setFormData(formInitial);
+                }}
+            >
                 {reply ? (
                     <div className={styles.onreply}>
                         <span
@@ -19,10 +42,8 @@ function ChatInput({ reply, setReply }) {
                         <div className={styles.onreply_box}>
                             <BubbleReply
                                 profile={reply?.user}
-                                text={
-                                    reply?.text ||
-                                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta itaque, facilis fugit ex sint cum molestias laboriosam esse blanditiis voluptate! Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta itaque, facilis fugit ex sint cum molestias laboriosam esse blanditiis voluptate!"
-                                }
+                                text={reply?.text }
+                                userInfo={user}
                             />
                         </div>
                     </div>
@@ -89,9 +110,20 @@ function ChatInput({ reply, setReply }) {
 
                 <textarea
                     name="msgText"
-                    id=""
+                    id="text"
+                    value={formData.text}
                     placeholder="Type here..."
                     className="input_field"
+                    onChange={(e) => {
+                        setFormData((prevData) => ({
+                            ...prevData,
+                            [e.target.id]: e.target.value,
+                            id: randomIdNumber(),
+                            reply: reply?.id || null,
+                            timestamp: getCurrentTimestamp(),
+                        }));
+                    }}
+                    required
                 ></textarea>
 
                 <div className="input_icon_group submit_btn">

@@ -315,6 +315,7 @@ h5 {
   width: fit-content;
 }
 .header .navigation {
+  z-index: 10;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -326,6 +327,18 @@ h5 {
     flex-wrap: wrap;
     margin: 0.75rem 2rem;
   }
+}
+.header .navigation::after {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: -webkit-fill-available;
+  height: 6rem;
+  display: flex;
+  background-color: rgba(179, 182, 189, 0.1);
+  margin: 0.75rem 4rem;
 }
 .header .navigation .brand_logo {
   display: block;
@@ -417,20 +430,38 @@ h5 {
 }
 
 .chat_header {
+  --heading-ts: 1.5rem;
+  --heading-ts-sm: 1rem;
   width: 100%;
   position: relative;
   padding-top: 3rem;
   background-color: #f3f3f3;
   display: flex;
-  flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
+}
+@media (max-width: 767px) {
+  .chat_header {
+    --heading-ts: 1.1rem;
+    --heading-ts-sm: 0.85rem;
+  }
+}
+@media (max-width: 767px) {
+  .chat_header {
+    padding-top: 1.75rem;
+  }
 }
 .chat_header .channel_tab {
   display: flex;
   margin-top: 1rem;
   background-color: #f7f7f7;
   padding: 1rem clamp(1.75rem, 4rem, 20%);
+  gap: 3rem;
+}
+@media (max-width: 767px) {
+  .chat_header .channel_tab {
+    padding: 1rem clamp(0.75rem, 1rem, 20%);
+  }
 }
 .chat_header .channel_tab .dropdown_menu {
   cursor: pointer;
@@ -441,7 +472,7 @@ h5 {
 .chat_header .channel_tab .dropdown_menu .menu_header {
   display: flex;
   align-items: center;
-  font-size: 1.5rem;
+  font-size: var(--heading-ts);
   font-family: Montserrat, "Poppins", sans-serif;
   font-weight: 500;
   line-height: 24px;
@@ -466,11 +497,16 @@ h5 {
   margin-left: auto;
   gap: 1.5rem;
 }
+@media (max-width: 767px) {
+  .chat_header .channel_tab .tab_option {
+    gap: 0.5rem;
+  }
+}
 .chat_header .channel_tab .tab_option li {
   display: flex;
   align-items: center;
   font-family: "Lato", "Poppins", sans-serif;
-  font-size: 1rem;
+  font-size: var(--heading-ts-sm);
   font-weight: 400;
   line-height: 1.1875rem;
   letter-spacing: 0em;
@@ -485,12 +521,18 @@ h5 {
   padding: 3.5rem 2.5rem;
   display: flex;
   flex-direction: column;
-  min-width: 55dvw;
+  width: 55dvw;
+  min-height: 60dvh;
   left: 50%;
   transform: translate(-50%, 50%);
 }
+@media (max-width: 767px) {
+  .chat_header .setting_modal {
+    width: 90dvw;
+    transform: translate(-50%, 40%);
+  }
+}
 .chat_header .setting_modal .setting_modal_header {
-  flex: 1;
   margin-bottom: 0.5rem;
   text-transform: capitalize;
   font-family: Montserrat, "Poppins", sans-serif;
@@ -503,12 +545,11 @@ h5 {
 .chat_header .setting_modal .setting_modal_option {
   cursor: pointer;
   display: flex;
-  flex: 1;
   gap: 2.5rem;
 }
 .chat_header .setting_modal .setting_modal_option li {
   font-family: Montserrat, "Poppins", sans-serif;
-  font-size: 1.5rem;
+  font-size: var(--heading-ts);
   font-weight: 500;
   line-height: 2.125rem;
   letter-spacing: 0.3600000143px;
@@ -521,7 +562,7 @@ h5 {
 }
 .chat_header .setting_modal .setting_modal_option li span {
   font-size: inherit;
-  margin-left: 0.5rem;
+  margin: 0 0.5rem;
   color: #727272;
 }
 .chat_header .setting_modal .setting_modal_body {
@@ -542,11 +583,22 @@ h5 {
   font-weight: 500;
   letter-spacing: 0.3600000143px;
 }
+@media (max-width: 767px) {
+  .chat_header .setting_modal .setting_modal_body .body_info {
+    width: 100%;
+  }
+}
 .chat_header .setting_modal .setting_modal_body .body_content {
   width: 80%;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  transition: all 1s ease;
+}
+@media (max-width: 767px) {
+  .chat_header .setting_modal .setting_modal_body .body_content {
+    width: 100%;
+  }
 }
 .chat_header .setting_modal .setting_modal_body .body_content h2 {
   width: fit-content;
@@ -622,6 +674,11 @@ h5 {
   height: auto;
   gap: 1.5rem;
 }
+@media (max-width: 767px) {
+  .channel_sidebar {
+    display: none;
+  }
+}
 .channel_sidebar .channel_body {
   display: flex;
   flex-direction: column;
@@ -671,6 +728,11 @@ h5 {
   flex: 1;
   padding: 1.25rem 3rem;
 }
+@media (max-width: 767px) {
+  .msg_container {
+    padding: 1.25rem 1rem;
+  }
+}
 
 .timestamp_bubble {
   cursor: pointer;
@@ -689,6 +751,11 @@ h5 {
   font-size: 0.75rem;
   font-weight: 400;
   letter-spacing: 0em;
+  transform: all 1s ease-in-out;
+}
+.timestamp_bubble:hover {
+  box-shadow: 0px 2px 10px 0px rgba(126, 7, 114, 0.0392156863), 0px 0px 2px 0.5px #13b351;
+  font-weight: 500;
 }
 
 .chat_bubble {
@@ -736,10 +803,15 @@ h5 {
   max-width: 34dvw;
   background-color: #ffffff;
   border-radius: 0px 18px 18px 18px;
-  padding-top: 1rem;
-  padding-bottom: 0.375rem;
+  padding-top: 0.85rem;
+  padding-bottom: 0.5rem;
   padding-left: 1rem;
   padding-right: 2rem;
+}
+@media (max-width: 767px) {
+  .chat_bubble .chat_detail {
+    max-width: 70dvw;
+  }
 }
 .chat_bubble .chat_detail .reply_btn {
   z-index: 18;
@@ -906,6 +978,33 @@ h5 {
 .onreply .onreply_box div {
   flex: 1;
   max-width: 100%;
+}
+
+.notauthorized {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  height: -webkit-fill-available;
+  margin: auto;
+}
+@media (max-width: 767px) {
+  .notauthorized {
+    width: 90%;
+    height: 60dvh;
+  }
+}
+.notauthorized h2 {
+  font-size: xx-large;
+  font-weight: 700;
+}
+.notauthorized p {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.notauthorized * {
+  margin: 0.5rem auto;
 }
 
 /*# sourceMappingURL=app.module.css.map */

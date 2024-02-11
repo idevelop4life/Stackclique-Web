@@ -20,9 +20,11 @@ export function timestampGroup(date) {
     switch (true) {
         case diffDate > wkms:
             return getDateText(msgDate);
-        case yesterday >= diffDate:
+        case diffDate <= wkms && diffDate > yesterday:
+            return getDayOfWeek(msgDate);
+        case yesterday >= diffDate && diffDate > today:
             return "Yesterday";
-        case today >= diffDate:
+        case diffDate <= today:
             return "Today";
         default:
             return "Invalid Date";
@@ -58,11 +60,34 @@ export function getMonth(date) {
     }
 }
 
+export function getDayOfWeek(date) {
+    switch (new Date(date).getDay()) {
+        case 0:
+            return "Sunday";
+        case 1:
+            return "Monday";
+        case 2:
+            return "Tuesday";
+        case 3:
+            return "Wednesday";
+        case 4:
+            return "Thursday";
+        case 5:
+            return "Friday";
+        case 6:
+            return "Saturday";
+    }
+}
+
 export function getDateText(date) {
-    const dd = new Date(date).getDay();
-    const mm = new Date(date).getMonth();
+    const dd = new Date(date).getDate();
+    const mm = getMonth(date);
     const yyyy = new Date(date).getFullYear();
-    return `${dd + 1} ${getMonth(mm)} ${yyyy}`;
+    return `${dd} ${mm} ${yyyy}`;
+}
+
+export function dateToTimestamp(date) {
+    return new Date(date).toISOString();
 }
 
 export function timeOfDay(date) {
@@ -138,6 +163,10 @@ export function getTimeMilliSeconds(date) {
     return new Date(date).getTime();
 }
 
+export function getCurrentTimestamp() {
+    return new Date().toISOString();
+}
+
 // @desc: For testing purposes
 export function randomTimestamp(start) {
     const startTime = new Date(start).getTime();
@@ -148,19 +177,6 @@ export function randomTimestamp(start) {
 
     return randTime.toISOString();
 }
-
-// export function timeGrouping(arr) {
-//     return arr.reduce((groups, item) => {
-//         const objGroup = {};
-//         const commonStamp = getDateFromTimestamp(item.timestamp);
-//         if (commonStamp) {
-//             !objGroup[commonStamp]
-//                 ? (objGroup[commonStamp] = new Array())
-//                 : null;
-//             objGroup[commonStamp].push(item);
-//         }
-//         groups.push(objGroup);
-//         return groups;
-//     }, []);
-//     // return new Array(group);
-// }
+export function randomIdNumber() {
+    return Date.now().toString(16) + Math.random().toString(16).substr(2);
+}

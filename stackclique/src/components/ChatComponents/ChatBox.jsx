@@ -8,26 +8,26 @@ import ChatBubble from "./ChatBubble";
 import styles from "../../styles/css/app.module.css";
 import { useEffect, useRef } from "react";
 
-function ChatBox({ data, setReply }) {
-    const userId = 1;
+function ChatBox({ data, setReply, user }) {
     const msgBox = useRef(null);
 
     useEffect(() => {
-        //  Scrool to the latest message
+        //  Scroll to the latest message
         const box = msgBox.current;
         box.scrollTop = box.scrollHeight;
-    }, []);
+    }, [data]);
 
     return (
         <section className={styles.chat_box} ref={msgBox}>
             <div className={styles.chat_shadow}></div>
+
             {timeGrouping(data).map((item, key) => {
                 return (
                     <ChatGroup
                         key={key}
                         data={item}
                         allMsg={data}
-                        userID={userId}
+                        user={user}
                         setReply={setReply}
                     />
                 );
@@ -42,18 +42,17 @@ function Timestamp({ date }) {
     );
 }
 
-function ChatGroup({ data, allMsg, userID, setReply }) {
+function ChatGroup({ data, allMsg, user, setReply }) {
     const objKey = data[0];
     return (
         <>
             <div className="mb-[2.5rem]">
                 <Timestamp date={getDateFromTimestamp(objKey)} />
                 {data[1].map((item, index) => {
-                    // console.log("Bubble Item: ", getReply(item.id, allMsg))
                     return (
                         <ChatBubble
                             key={index}
-                            type={userID === item?.user.id ? true : false}
+                            type={user?.id === item?.user.id ? true : false}
                             text={item?.text}
                             timestamp={item?.timestamp}
                             profile={item?.user}
@@ -61,6 +60,7 @@ function ChatGroup({ data, allMsg, userID, setReply }) {
                             reply={getReply(item?.reply, allMsg)}
                             allMsg={allMsg}
                             setReply={setReply}
+                            user={user}
                         />
                     );
                 })}

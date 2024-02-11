@@ -3,20 +3,34 @@
 @use "../components/mixins" as *;
 
 .chat_header {
+    --heading-ts: 1.5rem;
+    --heading-ts-sm: 1rem;
+    @include responsive(mobile) {
+        --heading-ts: 1.1rem;
+        --heading-ts-sm: 0.85rem;
+    }
     width: 100%;
     position: relative;
     padding-top: 3rem;
     background-color: $bg-white;
     display: flex;
-    flex-wrap: wrap;
     flex-direction: column;
     justify-content: center;
+
+    @include responsive(mobile) {
+        padding-top: 1.75rem;
+    }
 
     .channel_tab {
         display: flex;
         margin-top: 1rem;
         background-color: $bg-white-light;
         padding: clamp(0.75rem, 1rem, 2rem) clamp(1.75rem, 4rem, 20%);
+        gap: 3rem;
+
+        @include responsive(mobile) {
+            padding: clamp(0.75rem, 1rem, 2rem) clamp(0.75rem, 1rem, 20%);
+        }
 
         .dropdown_menu {
             cursor: pointer;
@@ -27,7 +41,7 @@
             .menu_header {
                 display: flex;
                 align-items: center;
-                font-size: 1.5rem;
+                font-size: var(--heading-ts);
                 font-family: Montserrat, "Poppins", sans-serif;
                 font-weight: 500;
                 line-height: 24px;
@@ -57,11 +71,15 @@
             margin-left: auto;
             gap: 1.5rem;
 
+            @include responsive(mobile) {
+                gap: 0.5rem;
+            }
+
             li {
                 display: flex;
                 align-items: center;
                 font-family: "Lato", "Poppins", sans-serif;
-                font-size: 1rem;
+                font-size: var(--heading-ts-sm);
                 font-weight: 400;
                 line-height: 1.1875rem;
                 letter-spacing: 0em;
@@ -80,12 +98,17 @@
         padding: 3.5rem 2.5rem;
         display: flex;
         flex-direction: column;
-        min-width: clamp(45dvw, 55dvw, 62dvw);
+        width: clamp(45dvw, 55dvw, 62dvw);
+        min-height: clamp(50dvh, 60dvh, 67dvh);
         left: 50%;
         transform: translate(-50%, 50%);
 
+        @include responsive(mobile) {
+            width: clamp(80dvw, 90dvw, 95dvw);
+            transform: translate(-50%, 40%);
+        }
+
         .setting_modal_header {
-            flex: 1;
             margin-bottom: 0.5rem;
             text-transform: capitalize;
             font-family: Montserrat, "Poppins", sans-serif;
@@ -98,12 +121,11 @@
         .setting_modal_option {
             cursor: pointer;
             display: flex;
-            flex: 1;
             gap: 2.5rem;
 
             li {
                 font-family: Montserrat, "Poppins", sans-serif;
-                font-size: 1.5rem;
+                font-size: var(--heading-ts);
                 font-weight: 500;
                 line-height: 2.125rem;
                 letter-spacing: 0.36000001430511475px;
@@ -117,7 +139,7 @@
 
                 span {
                     font-size: inherit;
-                    margin-left: 0.5rem;
+                    margin: 0 0.5rem;
                     color: $text-span;
                 }
             }
@@ -139,6 +161,9 @@
                 font-size: 1rem;
                 font-weight: 500;
                 letter-spacing: 0.36000001430511475px;
+                @include responsive(mobile) {
+                    width: 100%;
+                }
             }
 
             .body_content {
@@ -146,7 +171,11 @@
                 display: flex;
                 flex-wrap: wrap;
                 align-items: center;
-                // flex-direction: column;
+                transition: all 1s ease;
+
+                @include responsive(mobile) {
+                    width: 100%;
+                }
 
                 h2 {
                     width: fit-content;
@@ -235,6 +264,10 @@
     height: auto;
     gap: 1.5rem;
 
+    @include responsive(mobile) {
+        display: none;
+    }
+
     .channel_body {
         display: flex;
         flex-direction: column;
@@ -290,6 +323,10 @@
     width: 100%;
     flex: 1;
     padding: 1.25rem clamp(2rem, 3rem, 4rem);
+
+    @include responsive(mobile) {
+        padding: 1.25rem clamp(0.75rem, 1rem, 1.33rem);
+    }
 }
 
 .timestamp_bubble {
@@ -311,6 +348,14 @@
     font-size: 0.75rem;
     font-weight: 400;
     letter-spacing: 0em;
+    transform: all 1s ease-in-out;
+
+    &:hover {
+        box-shadow:
+            0px 2px 10px 0px #7e07720a,
+            0px 0px 2px 0.5px $secondary;
+        font-weight: 500;
+    }
 }
 
 .chat_bubble {
@@ -365,10 +410,14 @@
         max-width: clamp(20dvw, 34dvw, 38dvw);
         background-color: $white;
         border-radius: 0px 18px 18px 18px;
-        padding-top: 1rem;
-        padding-bottom: 0.375rem;
+        padding-top: 0.85rem;
+        padding-bottom: 0.5rem;
         padding-left: 1rem;
         padding-right: 2rem;
+
+        @include responsive(mobile) {
+            max-width: clamp(65dvw, 70dvw, 76dvw);
+        }
 
         .reply_btn {
             z-index: 18;
@@ -536,8 +585,8 @@
         cursor: pointer;
         position: absolute;
         top: 0.5rem;
-        right: .5rem;
-        font-size: .75rem;
+        right: 0.5rem;
+        font-size: 0.75rem;
         font-weight: 700;
     }
 
@@ -551,4 +600,34 @@
             max-width: 100%;
         }
     }
+}
+
+.notauthorized {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: -webkit-fill-available;
+    margin: auto;
+
+    @include responsive(mobile) {
+        width: 90%;
+        height: 60dvh;
+    }
+
+    h2 {
+        font-size: xx-large;
+        font-weight: 700;
+    }
+
+    p {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    * {
+        margin: 0.5rem auto;
+    }
+    // background-color: $black;
 }
