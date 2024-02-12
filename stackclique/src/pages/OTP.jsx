@@ -1,119 +1,173 @@
-import { useRef, useEffect, useState } from "react";
-import { Button } from "../components/ui";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
-function Input({ id, inputRef }) {
+import OtpInput from "react-otp-input";
+import { Backdrop, Button, Loader } from "../components/ui";
+import axios from "axios";
+
+export default function OTP() {
+    const navigate = useNavigate();
+    const [otp, setOtp] = useState("");
+    const [step, setStep] = useState(1);
+
+    const [errMessage, setErrMessage] = useState(false);
+    const [loading, setloading] = useState(false);
+
+    function submitOtp() {
+        //API call to validate the OTP
+        setloading(true);
+        axios
+            .post("http://localhost:8000/api/verf-user", {
+                otp,
+            })
+            .then((response) => {
+                console.log(response.data.user);
+
+                // Handle successfulresponse
+                if (response.data.success) {
+                    // redirecting the user here
+                    setErrMessage(false);
+                    setStep(2);
+                } else {
+                    // Indicating incorrect OTP
+                    setOtp("");
+                    setErrMessage(true);
+                }
+            })
+            .catch((error) => {
+                console.error("API request failed:", error);
+
+                // Handle APIfailure
+                setErrMessage(true); // Seterromessage
+            })
+            .finally(() => setloading(false));
+    }
+
     return (
-        <input
-            type="number"
-            id={id}
-            className="outline-none border  h-[2.5rem] w-[3rem] md:h-[3.5rem] md:w-[4.5625rem] text-center rounded-[0.5rem]  border-darkGrey disabled:bg-white disabled:border-darkGrey focus:border-green"
-            ref={inputRef}
-            maxLength="1"
-        />
+        <div>
+            {step === 1 ? (
+                <div className="font-poppins">
+                    <h1 className="text-primary-500 text-[2.5rem] lg:text-[3rem] font-[600] mt-4">
+                        Verification Code
+                    </h1>
+                    <p className="text-black">
+                        A verification code has been sent to your email account
+                    </p>
+                    <div className="">
+                        <div className="text-center">
+                            <OtpInput
+                                value={otp}
+                                onChange={setOtp}
+                                numInputs={4}
+                                renderSeparator={<span className="mx-1"></span>}
+                                renderInput={(props) => <input {...props} />}
+                                inputStyle="otp-input"
+                                containerStyle="otp-container"
+                                inputType="tel"
+                                shouldAutoFocus
+                            />
+                        </div>
+
+                        {errMessage && (
+                            <p className=" mt-2 text-sm text-red">
+                                OTP is not correct, Try Again
+                            </p>
+                        )}
+                        <div className="flex gap-6 mt-[2.63rem]">
+                            <p>Didn’t recieve any code ?</p>
+                            <button type="button" className="text-primary-500">
+                                Resend
+                            </button>
+                        </div>
+                        <div className="flex  gap-2 mt-[2.6rem]">
+                            <Button
+                                type={"button"}
+                                size="medium"
+                                rounded={"lg"}
+                                onClick={submitOtp}
+                            >
+                                Verify
+                            </Button>
+                            <Button
+                                type={"button"}
+                                size="medium"
+                                rounded={"lg"}
+                                variant={"outlined"}
+                                onClick={() => navigate("/sign-up")}
+                            >
+                                Cancel
+                            </Button>
+                        </div>
+                    </div>
+                    {loading && (
+                        <Backdrop>
+                            <Loader />
+                        </Backdrop>
+                    )}
+                </div>
+            ) : (
+                <Success />
+            )}
+        </div>
     );
 }
 
-export default function OTP() {
-    const formRef = useRef(null);
-    const input1Ref = useRef(null);
-    const [errMessage, setErrMessage] = useState(false);
-    const defaultOtp = "1234";
+// component to display success message
 
-    const inputValues = [];
-    useEffect(() => {
-        const form = formRef?.current;
-        const children = Array.from(form.children);
-        children.forEach((child) => {
-            child.value = "";
-            child.disabled = true;
-        });
-        input1Ref.current.disabled = false;
-        input1Ref.current?.focus();
-    }, []);
-
-    const handleOnKeyUp = (e) => {
-        const keyCode = e.keyCode || e.which;
-
-        const form = formRef?.current;
-        const children = Array.from(form.children);
-        const focusElement = document.activeElement;
-        const index = children.findIndex((child) => child === focusElement);
-        const currentIndexValue = children[index].value;
-
-        if (children[index].value != "" && index < children.length - 1) {
-            inputValues[index] = currentIndexValue;
-            children[index + 1].disabled = false;
-            children[index + 1].focus();
-            children[index].disabled = true;
-        }
-        if (index == children.length - 1 && currentIndexValue != "") {
-            inputValues[index] = currentIndexValue;
-            children[index].disabled = true;
-            submitOtp();
-        }
-        if (keyCode === 8 && index > 0 && index <= children.length) {
-            // when backspace is clicked
-            children[index].value = "";
-            children[index].disabled = true;
-            children[index - 1].disabled = false;
-            children[index - 1].value = "";
-            children[index - 1].focus();
-        }
-
-        function submitOtp() {
-            if (defaultOtp != inputValues.join("")) {
-                setErrMessage(true);
-                children.forEach((child) => {
-                    child.value = "";
-                    child.disabled = true;
-                });
-                children[0].disabled = false;
-                children[0].focus();
-            } else {
-                setErrMessage(false);
-            }
-        }
-    };
-
+const pathVariants = {
+    initial: { opacity: 0, pathLength: 0 },
+    final: {
+        opacity: 1,
+        pathLength: 1,
+        transition: {
+            duration: 1.2,
+            ease: "easeInOut",
+        },
+    },
+};
+function Success() {
     return (
-        <div className="font-poppins">
-            <h1 className="text-primary text-[2.5rem] lg:text-[3rem] font-[600] mt-4">
-                Verification Code
-            </h1>
-            <p className="text-black">
-                A verification code has been sent to samuel6@gmail.com
-            </p>
-            <div className="">
-                <form
-                    ref={formRef}
-                    onKeyUp={handleOnKeyUp}
-                    className=" mx-auto relative flex gap-4 mt-[3.25rem]"
+        <>
+            <div className="relative flex flex-col items-center font-inter gap-4">
+                <div className="w-[12rem] height-[12rem] mt-8 flex items-center justify-center">
+                    <svg
+                        viewBox="0 0 100 100"
+                        preserveAspectRatio="xMidYMid meet"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <motion.circle
+                            cx="50"
+                            cy="50"
+                            r="40"
+                            stroke="#7E0772"
+                            strokeWidth="5"
+                            fill="white"
+                            variants={pathVariants}
+                            initial="initial"
+                            animate="final"
+                        />
+                        <motion.path
+                            d="M25 50 L45 70 L75 35"
+                            stroke="#7E0772"
+                            strokeWidth="5"
+                            fill="none"
+                            variants={pathVariants}
+                            initial="initial"
+                            animate="final"
+                        />
+                    </svg>
+                </div>
+                <p className="font-[600] text-center">
+                    Email verified successfully
+                </p>
+                <Link
+                    to="/login"
+                    className="bg-primary text-primary-500 rounded-md py-2 px-4 font-[700] underline"
                 >
-                    <Input inputRef={input1Ref} />
-                    <Input />
-                    <Input />
-                    <Input />
-                </form>
-
-                {errMessage && (
-                    <p className=" mt-2 text-sm text-red-600">
-                        OTP is not correct, Try Again
-                    </p>
-                )}
-                <div className="flex gap-6 mt-[2.63rem]">
-                    <p>Didn’t recieve any code ?</p>
-                    <button type="button" className="text-primary">
-                        Resend
-                    </button>
-                </div>
-                <div className="flex md:w-[70%] gap-2 mt-[2.6rem]">
-                    <Button type={"button"}>Verify</Button>
-                    <Button type={"button"} bgWhite>
-                        Cancel
-                    </Button>
-                </div>
+                    login
+                </Link>
             </div>
-            <p className="mt-4">use 1234 for testing</p>
-        </div>
+        </>
     );
 }
