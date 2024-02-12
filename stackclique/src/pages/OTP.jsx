@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-
 import OtpInput from "react-otp-input";
 import { Backdrop, Button, Loader } from "../components/ui";
+import AuthGraphics from "../components/Layout/AuthGraphics";
+import "../styles/css/app_root.css";
+import styles from "../styles/css/app.module.css";
 import axios from "axios";
 
 export default function OTP() {
@@ -45,71 +47,87 @@ export default function OTP() {
     }
 
     return (
-        <div>
-            {step === 1 ? (
-                <div className="font-poppins">
-                    <h1 className="text-primary-500 text-[2.5rem] lg:text-[3rem] font-[600] mt-4">
-                        Verification Code
-                    </h1>
-                    <p className="text-black">
-                        A verification code has been sent to your email account
-                    </p>
-                    <div className="">
-                        <div className="text-center">
-                            <OtpInput
-                                value={otp}
-                                onChange={setOtp}
-                                numInputs={4}
-                                renderSeparator={<span className="mx-1"></span>}
-                                renderInput={(props) => <input {...props} />}
-                                inputStyle="otp-input"
-                                containerStyle="otp-container"
-                                inputType="tel"
-                                shouldAutoFocus
-                            />
-                        </div>
-
-                        {errMessage && (
-                            <p className=" mt-2 text-sm text-red">
-                                OTP is not correct, Try Again
+        <>
+            <section
+                className={`col_xxlg_5 col_xlg_5 col_lg_5 col_md_12 col_sm_12`}
+            >
+                {step === 1 ? (
+                    <div className={styles.auth_form}>
+                        <div className={styles.form_header}>
+                            <h1 className="text-primary-500 text-[2.5rem] lg:text-[3rem] font-[600] mt-4">
+                                Verification Code
+                            </h1>
+                            <p className="text-black">
+                                A verification code has been sent to your email
+                                account
                             </p>
+                        </div>
+                        <div className="">
+                            <div className="text-center">
+                                <OtpInput
+                                    value={otp}
+                                    onChange={setOtp}
+                                    numInputs={4}
+                                    renderSeparator={
+                                        <span className="mx-1"></span>
+                                    }
+                                    renderInput={(props) => (
+                                        <input {...props} />
+                                    )}
+                                    inputStyle="otp-input"
+                                    containerStyle="otp-container justify-evenly"
+                                    inputType="tel"
+                                    shouldAutoFocus
+                                />
+                            </div>
+
+                            {errMessage && (
+                                <p className=" mt-2 text-sm text-red">
+                                    OTP is not correct, Try Again
+                                </p>
+                            )}
+                            <div className="flex gap-6 mt-[2.63rem]">
+                                <p>Didn’t recieve any code ?</p>
+                                <button type="button" className="redirect_btn">
+                                    Resend
+                                </button>
+                            </div>
+                            <div className="flex  gap-2 mt-[2.6rem]">
+                                <Button
+                                    type={"button"}
+                                    size="medium"
+                                    rounded={"lg"}
+                                    onClick={submitOtp}
+                                >
+                                    Verify
+                                </Button>
+                                <Button
+                                    type={"button"}
+                                    size="medium"
+                                    rounded={"lg"}
+                                    variant={"light"}
+                                    onClick={() => navigate("/sign-up")}
+                                >
+                                    Cancel
+                                </Button>
+                            </div>
+                        </div>
+                        {loading && (
+                            <Backdrop>
+                                <Loader />
+                            </Backdrop>
                         )}
-                        <div className="flex gap-6 mt-[2.63rem]">
-                            <p>Didn’t recieve any code ?</p>
-                            <button type="button" className="text-primary-500">
-                                Resend
-                            </button>
-                        </div>
-                        <div className="flex  gap-2 mt-[2.6rem]">
-                            <Button
-                                type={"button"}
-                                size="medium"
-                                rounded={"lg"}
-                                onClick={submitOtp}
-                            >
-                                Verify
-                            </Button>
-                            <Button
-                                type={"button"}
-                                size="medium"
-                                rounded={"lg"}
-                                variant={"outlined"}
-                                onClick={() => navigate("/sign-up")}
-                            >
-                                Cancel
-                            </Button>
-                        </div>
                     </div>
-                    {loading && (
-                        <Backdrop>
-                            <Loader />
-                        </Backdrop>
-                    )}
-                </div>
-            ) : (
-                <Success />
-            )}
-        </div>
+                ) : (
+                    <Success />
+                )}
+            </section>
+            <section
+                className={`col_xxlg_5 col_xlg_5 col_lg_7 col_md_12 col_sm_12`}
+            >
+                <AuthGraphics type="verify" />
+            </section>
+        </>
     );
 }
 

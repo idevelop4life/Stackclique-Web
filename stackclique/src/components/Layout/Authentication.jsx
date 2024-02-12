@@ -1,8 +1,10 @@
 import { useLayoutEffect, useState } from "react";
-
-import { Outlet, useNavigate } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import Slider from "./Slider";
 import { Backdrop, Loader } from "../ui";
+import styles from "../../styles/css/app.module.css";
+import logo from "../../assets/svg/logo.svg";
+
 export default function Authentication() {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -28,16 +30,36 @@ export default function Authentication() {
     }
 
     return (
-        <div className="flex min-h-screen relative">
-            <section className="min-w-[51.25%] hidden lg:block">
-                <Slider />
+        <>
+            <section className={`${styles.auth}`}>
+                <Link to={"/"} className={`${styles.brand_logo}`}>
+                    <img
+                        src={logo}
+                        alt="Stackclique Logo"
+                        title="Stackclique Logo"
+                    />
+                </Link>
+                <section className={styles.auth_container}>
+                    <Outlet />
+                </section>
             </section>
-            <section className="w-full mx-auto min-h-full md:w-[60%] lg:min-w-[48.75%] py-[2rem] px-4 lg:px-[3.94rem] relative ">
-                <h3 className="text-primary-500 font-poppins font-[800]">
-                    STACK<span className="text-green">CLIQUE</span>
-                </h3>
-                <Outlet />
-            </section>
-        </div>
+        </>
     );
 }
+
+// function PreviousDesign() {
+//     return (
+//         <div className="flex min-h-screen relative">
+//             <section className="min-w-[51.25%] hidden lg:block">
+//                 <Slider />
+//             </section>
+//             <section className="w-full mx-auto min-h-full md:w-[60%] lg:min-w-[48.75%] py-[2rem] px-4 lg:px-[3.94rem] relative ">
+//                 <h3 className="text-primary-500 font-poppins font-[800]">
+//                     STACK<span className="text-green">CLIQUE</span>
+//                 </h3>
+
+//                 <Outlet />
+//             </section>
+//         </div>
+//     );
+// }
