@@ -1,9 +1,10 @@
 import { activeSlideData } from "./homeComponentsData";
 import { motion } from "framer-motion";
+import styles from "../../styles/css/app.module.css";
 
 export default function ActiveSlideIndicator({ activeIndex }) {
     return (
-        <div className="absolute right-2 z-10  text-darkGrey bottom-0 flex gap-4 md:gap-6 shadow-md">
+        <div className={`${styles.slider_indicator} shadow-md`}>
             {activeSlideData.map((item) => {
                 return (
                     <div
@@ -27,7 +28,7 @@ export default function ActiveSlideIndicator({ activeIndex }) {
                             >
                                 {item.header}
                             </p>
-                            <p className="">{item.subHeader}</p>
+                            <p className="lg:text-[.75rem]">{item.subHeader}</p>
                         </div>
                         {item.id == activeIndex && (
                             <motion.span
