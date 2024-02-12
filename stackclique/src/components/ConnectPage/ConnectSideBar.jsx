@@ -1,40 +1,82 @@
 import { Link } from "react-router-dom";
 import { FiChevronDown } from "react-icons/fi";
 import MembersCard from "./MembersCard";
+import styles from "../../styles/css/app.module.css";
 
-const channelsList = [
-    { id: 1, name: "Product Management" },
-    { id: 2, name: "UI/UX Designers" },
-    { id: 3, name: "Data Analysts" },
-    { id: 4, name: "Photography" },
-    { id: 5, name: "Cyber security" },
-    { id: 6, name: "App Developers" },
-];
-
-export default function ConnectSideBar() {
+export default function ConnectSideBar({ channelList, curChannel }) {
     return (
-        <aside className="flex flex-col items-center min-h-full px-4 text-white lg:w-2/12 md:w-3/12 bg-primary-500">
-            <h2 className="flex items-center gap-2 py-1 text-lg font-bold">
-                All Channels{" "}
-                <span>
-                    <FiChevronDown aria-hidden="true" />
-                </span>
-            </h2>
-            <div className="flex flex-col gap-4 mt-4 text-sm">
-                {channelsList.map((item) => (
-                    <Link key={item.id}>{item.name}</Link>
-                ))}
+        <aside className={styles.channel_sidebar}>
+            <div className={styles.channel_body}>
+                <h2 className="flex items-center gap-2 py-1 text-lg font-bold">
+                    All Channels{" "}
+                    <span>
+                        <FiChevronDown aria-hidden="true" />
+                    </span>
+                </h2>
+                <div className="flex flex-col gap-6 mt-4 text-sm">
+                    {channelList
+                        ?.filter((_, key) => key <= 8)
+                        ?.map((item, key) => {
+                            return (
+                                <Link key={item?.id}>
+                                    {item?.name}{" "}
+                                    {key === curChannel ? <span></span> : ""}
+                                </Link>
+                            );
+                        })}
+                    {channelList.length >= 8 ? (
+                        <Link className={styles.more}>
+                            View more
+                            <svg
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="ml-[.5rem]"
+                            >
+                                <g clipPath="url(#clip0_363_2604)">
+                                    <path
+                                        d="M0 10L0 14C0 19.5228 4.47715 24 10 24H14C19.5228 24 24 19.5228 24 14V10C24 4.47715 19.5228 0 14 0H10C4.47715 0 0 4.47715 0 10Z"
+                                        fill="#7E0772"
+                                    />
+                                    <path
+                                        d="M10.2002 15.6001L13.8002 12.0001L10.2002 8.4001"
+                                        stroke="white"
+                                        strokeWidth="1.2"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                    />
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_363_2604">
+                                        <rect
+                                            width="24"
+                                            height="24"
+                                            fill="white"
+                                            transform="matrix(0 -1 1 0 0 24)"
+                                        />
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </Link>
+                    ) : (
+                        ""
+                    )}
+                </div>
             </div>
-            <h2 className="flex items-center gap-2 py-1 mt-4 text-lg font-bold">
-                Direct Messages
-                <span>
-                    <FiChevronDown aria-hidden="true" />
-                </span>
-            </h2>
-            <div className="flex flex-col gap-2">
-                {Array.from({ length: 3 }, (_, index) => (
-                    <MembersCard key={index} />
-                ))}
+            <div className={styles.channel_body}>
+                <h2 className="flex items-center gap-2 py-1 mt-4 text-lg font-bold">
+                    Direct Messages
+                    <span>
+                        <FiChevronDown aria-hidden="true" />
+                    </span>
+                </h2>
+                <div className="flex flex-col gap-6 mt-4">
+                    {Array.from({ length: 3 }, (_, index) => (
+                        <MembersCard key={index} />
+                    ))}
+                </div>
             </div>
         </aside>
     );

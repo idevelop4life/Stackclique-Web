@@ -1,0 +1,100 @@
+@use "../custom" as *;
+@use "./typography" as *;
+
+.btn {
+    cursor: pointer !important;
+    display: flex;
+    min-width: 120px;
+    height: clamp(3rem, 52px, 6rem);
+    margin: 1rem 0;
+    padding: 0.5rem 20px;
+    border-radius: 32px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(15px, 17px, 1.07rem);
+    line-height: 26px;
+    background-color: $primary !important;
+    color: $white;
+    outline: 1px solid $primary;
+    transition: 1s ease;
+
+    &:focus,
+    &:active,
+    &:hover,
+    &:focus-visible {
+        background-color: $primary-drk !important;
+        outline: 1px solid $primary-drk;
+        box-shadow: 0px 4px 26px 0px $primary-drk;
+    }
+
+    &.btn-rect {
+        border-radius: 4px;
+    }
+
+    &.btn-light {
+        outline: 1px solid $primary;
+        background-color: $white !important;
+        color: $primary;
+
+        &:focus,
+        &:active,
+        &:hover,
+        &:focus-visible {
+            background-color: $primary !important;
+            color: $white;
+            outline: 1px solid $primary;
+            box-shadow: 0px 4px 26px 0px $primary-drk;
+        }
+    }
+
+    &:disabled {
+        cursor: not-allowed !important;
+        background-color: $dark !important;
+        outline: 1px solid $dark;
+
+        &:focus,
+        &:active,
+        &:hover,
+        &:focus-visible {
+            box-shadow: 0px 4px 26px 0px $dark;
+        }
+    }
+}
+
+.toggle_group {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: $dark;
+    border-radius: 30px;
+    padding: 6px;
+    width: 2.5rem;
+    height: 1rem;
+    margin: auto 0;
+        transition: all 500ms ease-in-out;
+    &:has(> input[type="checkbox"]:checked) {
+        background-color: $primary;
+    }
+
+    .toggle_btn_circle {
+        position: absolute;
+        left: 2px;
+        right: auto;
+        background-color: $white;
+        border-radius: 50%;
+        width: 0.85rem;
+        height: 0.85rem;
+        transition: all 2s ease-in-out;
+
+        &:has(+ input[type="checkbox"]:checked) {
+            left: auto;
+            right: 2px;
+        }
+    }
+
+    input[type="checkbox"] {
+        width: 100%;
+        opacity: 0%;
+    }
+}
