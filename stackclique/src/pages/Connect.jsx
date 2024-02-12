@@ -39,7 +39,7 @@ export default function Connect() {
     return (
         <>
             <section className="flex relative flex-wrap">
-                <div className="w-[100%] bg-[#b3b6bd] h-[6rem] "></div>
+                <div className="w-[100%] bg-[#b3b6bd] h-[5rem] "></div>
                 <Header
                     users={users}
                     channelList={channelsList}

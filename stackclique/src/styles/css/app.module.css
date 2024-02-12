@@ -512,6 +512,15 @@ h5 {
   letter-spacing: 0em;
   text-align: left;
 }
+.chat_header .channel_tab .tab_option li i {
+  font-style: normal;
+  font-size: 1rem;
+}
+@media (max-width: 767px) {
+  .chat_header .channel_tab .tab_option li {
+    font-size: 0;
+  }
+}
 .chat_header .channel_tab .tab_option li span svg {
   width: 2.5rem;
   height: 2.5rem;
@@ -726,11 +735,11 @@ h5 {
   position: relative;
   width: 100%;
   flex: 1;
-  padding: 1.25rem 3rem;
+  padding: 1rem 3rem;
 }
 @media (max-width: 767px) {
   .msg_container {
-    padding: 1.25rem 1rem;
+    padding: 0.25rem 0.5rem;
   }
 }
 
@@ -772,6 +781,11 @@ h5 {
   overflow: hidden;
   margin-right: 1.75rem;
 }
+@media (max-width: 767px) {
+  .chat_bubble span {
+    margin-right: 1rem;
+  }
+}
 .chat_bubble span img {
   width: 35px;
   height: 35px;
@@ -787,6 +801,14 @@ h5 {
   padding-left: 2rem;
   padding-right: 1rem;
   padding-top: 0.625rem;
+}
+@media (max-width: 767px) {
+  .chat_bubble.mine .chat_detail {
+    background-color: #ffffff;
+    color: #242424;
+    padding-left: 1.25rem;
+    padding-right: 0.75rem;
+  }
 }
 .chat_bubble.mine .chat_detail .reply_btn {
   right: 0.5rem;
@@ -811,6 +833,8 @@ h5 {
 @media (max-width: 767px) {
   .chat_bubble .chat_detail {
     max-width: 70dvw;
+    background-color: #7e0772;
+    color: #ffffff;
   }
 }
 .chat_bubble .chat_detail .reply_btn {
@@ -871,6 +895,11 @@ h5 {
   text-align: left;
   border-radius: 0;
   color: #727272;
+}
+@media (max-width: 767px) {
+  .chat_bubble .chat_detail .chat_header span {
+    color: #ffffff;
+  }
 }
 .chat_bubble .chat_detail .chat_text {
   display: flex;
@@ -955,7 +984,7 @@ h5 {
   z-index: 19;
   width: 100%;
   height: 5rem;
-  background-color: rgba(247, 247, 247, 0.9);
+  background-color: #ffffff;
   padding: 0.5rem 1.25rem;
   overflow: hidden;
   opacity: 1;

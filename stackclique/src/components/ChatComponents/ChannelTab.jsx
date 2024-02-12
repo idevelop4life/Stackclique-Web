@@ -2,16 +2,10 @@ import { useEffect, useState } from "react";
 import styles from "../../styles/css/app.module.css";
 import Search from "./Search";
 import { filterSearch } from "../../utils/utils";
-function ChannelTab({
-    pins,
-    users,
-    channelList,
-    curChannel,
-    updateChannel,
-}) {
+function ChannelTab({ pins, users, channelList, curChannel, updateChannel }) {
     const [optionModal, setOptionModal] = useState(false);
     const [editModal, setEditModal] = useState(false);
-    const category = channelList[curChannel]
+    const category = channelList[curChannel];
 
     return (
         <>
@@ -103,7 +97,7 @@ function ChannelTab({
                                 </defs>
                             </svg>
                         </span>
-                        {pins || 0} pinned
+                        <i>{pins || 0}</i> pinned
                     </li>
                     <li>
                         <span>
@@ -136,7 +130,7 @@ function ChannelTab({
                                 </defs>
                             </svg>
                         </span>
-                        {users?.length || 0} members
+                        <i>{users?.length || 0}</i> members
                     </li>
                 </ul>
             </div>

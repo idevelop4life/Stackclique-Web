@@ -85,6 +85,15 @@
                 letter-spacing: 0em;
                 text-align: left;
 
+                i {
+                    font-style: normal;
+                    font-size: 1rem;
+                }
+
+                @include responsive(mobile) {
+                    font-size: 0;
+                }
+
                 span svg {
                     width: 2.5rem;
                     height: 2.5rem;
@@ -322,10 +331,10 @@
     position: relative;
     width: 100%;
     flex: 1;
-    padding: 1.25rem clamp(2rem, 3rem, 4rem);
+    padding: 1rem clamp(2rem, 3rem, 4rem);
 
     @include responsive(mobile) {
-        padding: 1.25rem clamp(0.75rem, 1rem, 1.33rem);
+        padding: 0.25rem clamp(0.4rem, 0.5rem, 0.75rem);
     }
 }
 
@@ -372,6 +381,10 @@
         overflow: hidden;
         margin-right: 1.75rem;
 
+        @include responsive(mobile) {
+            margin-right: 1rem;
+        }
+
         img {
             width: 35px;
             height: 35px;
@@ -389,6 +402,13 @@
             padding-left: 2rem;
             padding-right: 1rem;
             padding-top: 0.625rem;
+
+            @include responsive(mobile) {
+                background-color: $white;
+                color: $black;
+                padding-left: 1.25rem;
+                padding-right: 0.75rem;
+            }
 
             .reply_btn {
                 right: 0.5rem;
@@ -417,6 +437,8 @@
 
         @include responsive(mobile) {
             max-width: clamp(65dvw, 70dvw, 76dvw);
+            background-color: $primary;
+            color: $white;
         }
 
         .reply_btn {
@@ -481,6 +503,9 @@
                 text-align: left;
                 border-radius: 0;
                 color: $text-span;
+                @include responsive(mobile) {
+                    color: $white;
+                }
             }
         }
 
@@ -573,7 +598,7 @@
     z-index: 19;
     width: 100%;
     height: 5rem;
-    background-color: rgba($color: $bg-white-light, $alpha: 0.9);
+    background-color: $white;
     padding: 0.5rem 1.25rem;
     overflow: hidden;
     opacity: 1;

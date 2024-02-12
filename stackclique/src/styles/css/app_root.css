@@ -492,13 +492,18 @@ h5 {
   min-height: 7dvh;
   background-color: #ffffff;
   border: 1px solid rgba(142, 140, 140, 0.5);
-  padding: 1.25rem 2.25rem;
+  padding: 1rem 2.25rem;
   border-radius: 4px;
   align-items: center;
+  transition: border 1s ease, box-shadow 1s ease;
 }
 @media (max-width: 767px) {
   .form_chat_box {
-    padding: 0.66rem 0.75rem;
+    padding: 0.4rem 0.75rem;
+  }
+  .form_chat_box:has(> .input_field:focus) {
+    border: 1px solid rgba(19, 179, 81, 0.5);
+    box-shadow: 0 0 1px 0.2px rgba(19, 179, 81, 0.8);
   }
 }
 .form_chat_box .input_icon_group {
@@ -511,8 +516,9 @@ h5 {
 }
 @media (max-width: 767px) {
   .form_chat_box .input_icon_group {
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
+    margin: 0 0.25rem;
   }
 }
 .form_chat_box .input_icon_group input[type=file] {
@@ -531,6 +537,8 @@ h5 {
   position: absolute;
   left: 50%;
   top: 50%;
+  width: inherit;
+  height: inherit;
   transform: translate(-50%, -50%);
 }
 .form_chat_box .input_icon_group button svg {
@@ -554,6 +562,13 @@ h5 {
   letter-spacing: 0em;
   text-align: left;
   color: #242424;
+  caret-color: #7e0772;
+}
+@media (max-width: 767px) {
+  .form_chat_box .input_field {
+    min-height: 2rem;
+    max-height: 3rem;
+  }
 }
 .form_chat_box .input_field:focus-visible, .form_chat_box .input_field:focus-within, .form_chat_box .input_field:focus {
   outline: none;
