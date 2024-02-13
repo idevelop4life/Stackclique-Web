@@ -277,7 +277,7 @@ h5 {
   min-height: 5.25rem;
   z-index: 100;
   backdrop-filter: blur(24px);
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(110, 110, 110, 0.2);
 }
 .header .contact_strip {
   display: flex;

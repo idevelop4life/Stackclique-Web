@@ -87,7 +87,7 @@
     min-height: clamp(4rem, 5.25rem, 8rem);
     z-index: 100;
     backdrop-filter: blur(24px);
-    background-color: rgba($color: $white, $alpha: 0.2);
+    background-color: rgba($color: $accent_02, $alpha: 0.2);
 
     .contact_strip {
         display: flex;
