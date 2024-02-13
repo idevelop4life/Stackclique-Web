@@ -15,8 +15,6 @@ export default function CourseCard({
     students_enrolled,
 }) {
     return (
-        <div>
-            {" "}
             <div
                 className={`${styles.course_card} rounded-sm lg:hover:shadow-2xl transition-shadow duration-200`}
             >
@@ -88,6 +86,5 @@ export default function CourseCard({
                     Enroll Course
                 </Button>
             </div>
-        </div>
     );
 }
