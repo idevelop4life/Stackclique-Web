@@ -72,17 +72,17 @@ export default function Hero() {
                 slidesPerView={1}
                 onSwiper={setSwiper}
                 speed={2000}
-                // effect={"fade"}
+                effect={"fade"}
                 navigation
-                // autoplay={{
-                //     delay: 6500,
-                //     disableOnInteraction: false,
-                // }}
+                autoplay={{
+                    delay: 6500,
+                    disableOnInteraction: false,
+                }}
                 pagination={{
                     clickable: true,
                     bulletClass: "hero-section-bullet",
                 }}
-                // loop={true}
+                loop={true}
                 className=" relative max-h-full"
 
                 // onSwiper={(swiper) => handleSwipe(swiper)}

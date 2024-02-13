@@ -18,21 +18,12 @@
     width: 100%;
     height: 100%;
 
-    // aspect-ratio: 16/9;
-    // @include responsive(mobile) {
-    //     aspect-ratio: 1/1;
-    // }
-
     .bg_img {
         width: 100%;
         height: -webkit-fill-available;
         display: block;
         position: absolute;
         overflow: hidden;
-        // aspect-ratio: 16/9;
-        // @include responsive(mobile) {
-        //     aspect-ratio: 1/1;
-        // }
 
         img {
             width: 100%;
