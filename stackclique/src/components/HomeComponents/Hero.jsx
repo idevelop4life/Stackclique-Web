@@ -34,7 +34,7 @@ const SingleSlide = ({ url, id, setActiveIndex, swiper }) => {
             <div className={styles.bg_img}>
                 <img src={url} alt="" className="object-fit z-[-100]" />
             </div>
-            <div className=" flex relative lg:mt-auto mt-auto lg:mb-[6rem] mb-auto w-full px-4 md:px-[5rem] lg:px-[7rem] flex-col text-left text-white z-[100] ">
+            <div className=" flex relative lg:mt-auto mt-auto lg:mb-[15%] mb-auto w-full px-4 md:px-[5rem] lg:px-[7rem] flex-col text-left text-white z-[100] ">
                 <h2 className="text-[1.5rem] md:text-[3.5rem] flex font-[600] lg:leading-[4.5rem] font-poppins">
                     A community <br /> designed to reward
                 </h2>
@@ -91,7 +91,7 @@ export default function Hero() {
                     return (
                         <SwiperSlide
                             key={item.id}
-                            className="text-center relative"
+                            className="text-center relative h-auto"
                         >
                             <SingleSlide
                                 url={item.slideImg}

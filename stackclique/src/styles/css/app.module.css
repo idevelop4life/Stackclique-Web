@@ -355,32 +355,32 @@ h5 {
 }
 
 .slider_item {
+  position: relative;
   display: flex;
-  aspect-ratio: 16/9;
-}
-@media (max-width: 767px) {
-  .slider_item {
-    aspect-ratio: 1/1;
-  }
+  width: 100%;
+  height: 100%;
 }
 .slider_item .bg_img {
   width: 100%;
+  height: -webkit-fill-available;
   display: block;
   position: absolute;
-  aspect-ratio: 16/9;
   overflow: hidden;
 }
-@media (max-width: 767px) {
-  .slider_item .bg_img {
-    aspect-ratio: 1/1;
-  }
+.slider_item .bg_img img {
+  width: 100%;
+  height: inherit;
+  object-fit: fill;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .slider_indicator {
   position: absolute;
   display: flex;
   z-index: 10;
-  bottom: 0;
+  bottom: 5%;
   right: 0.5rem;
   gap: 1rem;
   color: rgba(255, 255, 255, 0.25);
