@@ -328,18 +328,6 @@ h5 {
     margin: 0.75rem 2rem;
   }
 }
-.header .navigation::after {
-  content: "";
-  z-index: -1;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: -webkit-fill-available;
-  height: 6rem;
-  display: flex;
-  background-color: rgba(179, 182, 189, 0.1);
-  margin: 0.75rem 4rem;
-}
 .header .navigation .brand_logo {
   display: block;
   width: clamp(10rem, 20%, 11.25rem);
@@ -515,6 +503,7 @@ h5 {
 .chat_header .channel_tab .tab_option li i {
   font-style: normal;
   font-size: 1rem;
+  margin: 0 0.4rem;
 }
 @media (max-width: 767px) {
   .chat_header .channel_tab .tab_option li {
@@ -733,6 +722,8 @@ h5 {
 
 .msg_container {
   position: relative;
+  display: flex;
+  flex-wrap: wrap;
   width: 100%;
   flex: 1;
   padding: 1rem 3rem;
@@ -963,6 +954,7 @@ h5 {
 .chat_box {
   position: relative;
   max-height: 60dvh;
+  width: 100%;
   overflow: scroll;
   padding: 0.2rem 1rem;
 }

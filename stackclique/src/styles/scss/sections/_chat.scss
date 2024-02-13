@@ -88,6 +88,7 @@
                 i {
                     font-style: normal;
                     font-size: 1rem;
+                    margin: 0 0.4rem;
                 }
 
                 @include responsive(mobile) {
@@ -329,6 +330,8 @@
 
 .msg_container {
     position: relative;
+    display: flex;
+    flex-wrap: wrap;
     width: 100%;
     flex: 1;
     padding: 1rem clamp(2rem, 3rem, 4rem);
@@ -576,6 +579,7 @@
 .chat_box {
     position: relative;
     max-height: 60dvh;
+    width: 100%;
     overflow: scroll;
     padding: 0.2rem 1rem;
 

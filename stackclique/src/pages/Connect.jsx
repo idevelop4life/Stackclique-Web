@@ -44,7 +44,6 @@ export default function Connect() {
                     users={users}
                     channelList={channelsList}
                     curChannel={curChannel}
-                    updateChannel={setChannel}
                 />
 
                 <section className="flex relative w-[100%]">

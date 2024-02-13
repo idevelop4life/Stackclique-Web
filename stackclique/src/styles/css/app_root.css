@@ -488,11 +488,12 @@ h5 {
 .form_chat_box {
   position: relative;
   display: flex;
+  align-items: end;
   width: 100%;
   min-height: 7dvh;
   background-color: #ffffff;
   border: 1px solid rgba(142, 140, 140, 0.5);
-  padding: 1rem 2.25rem;
+  padding: 0.5rem 1.25rem;
   border-radius: 4px;
   align-items: center;
   transition: border 1s ease, box-shadow 1s ease;

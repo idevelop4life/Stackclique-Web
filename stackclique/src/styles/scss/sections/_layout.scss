@@ -138,19 +138,6 @@
             margin: 0.75rem clamp(1.5rem, 2rem, 4rem);
         }
 
-        &::after {
-            content: "";
-            z-index: -1;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: -webkit-fill-available;
-            height: 6rem;
-            display: flex;
-            background-color: rgba($color: #b3b6bd, $alpha: 0.1);
-            margin: 0.75rem clamp(4rem, 4rem, 7.37rem);
-        }
-
         .brand_logo {
             display: block;
             width: clamp(10rem, 20%, 11.25rem);
