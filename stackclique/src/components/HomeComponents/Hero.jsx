@@ -105,7 +105,7 @@ export default function Hero() {
             </Swiper>
 
             {/* change slide buttons */}
-            <div className="absolute z-10 w-full mt-[4rem] px-4 md:mt-[5rem] md:px-[5rem] flex justify-between">
+            <div className="absolute z-10 w-full mt-[10rem] px-1 md:mt-[15rem] md:px-[2rem] flex justify-between">
                 <button
                     className=" bg-white text-primary-500 h-[1.5rem] w-[1.5rem] md:h-[2rem] md:w-[2rem] rounded-full flex items-center justify-center"
                     onClick={() => swiper?.slidePrev()}
