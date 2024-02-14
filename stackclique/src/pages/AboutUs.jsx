@@ -2,9 +2,9 @@ import { Button } from "../components/ui";
 import AboutUsImg1 from "../assets/pics/about-us-1.webp";
 import AboutUsImg2 from "../assets/pics/about-us-2.webp";
 import AboutUsImg3 from "../assets/pics/about-us-3.webp";
-import MergeGit from "../assets/svg/merge-git.svg";
-import { ReactComponent as Idea } from "../assets/svg/idea.svg";
-import PersonalGrowth from "../assets/svg/personal-growth.svg";
+// import MergeGit from "../assets/svg/merge-git.svg";
+// import { ReactComponent as Idea } from "../assets/svg/idea.svg";
+// import PersonalGrowth from "../assets/svg/personal-growth.svg";
 import Faq from "../components/FaqComponent/Faq";
 
 const aboutUsDataWithAvatar = [
@@ -31,26 +31,26 @@ const aboutUsDataWithAvatar = [
     },
 ];
 
-const aboutUsDataWithIcons = [
-    {
-        id: 1,
-        title: "Title For this Text",
-        body: "Why kept very ever home mrs. Considered sympathize ten uncommonly occasional assistance sufficient not. Letter of on become he tended active enable to.Why kept very ever home mrs. Considered sympathize ten uncommonly occasional assistance sufficient not. ",
-        icon: MergeGit,
-    },
-    {
-        id: 2,
-        title: "Title For this Text",
-        body: "Why kept very ever home mrs. Considered sympathize ten uncommonly occasional assistance sufficient not. Letter of on become he tended active enable to.Why kept very ever home mrs. Considered sympathize ten uncommonly occasional assistance sufficient not. ",
-        icon: Idea,
-    },
-    {
-        id: 3,
-        title: "Title For this Text",
-        body: "Why kept very ever home mrs. Considered sympathize ten uncommonly occasional assistance sufficient not. Letter of on become he tended active enable to.Why kept very ever home mrs. Considered sympathize ten uncommonly occasional assistance sufficient not. ",
-        icon: PersonalGrowth,
-    },
-];
+// const aboutUsDataWithIcons = [
+//     {
+//         id: 1,
+//         title: "Title For this Text",
+//         body: "Why kept very ever home mrs. Considered sympathize ten uncommonly occasional assistance sufficient not. Letter of on become he tended active enable to.Why kept very ever home mrs. Considered sympathize ten uncommonly occasional assistance sufficient not. ",
+//         icon: MergeGit,
+//     },
+//     {
+//         id: 2,
+//         title: "Title For this Text",
+//         body: "Why kept very ever home mrs. Considered sympathize ten uncommonly occasional assistance sufficient not. Letter of on become he tended active enable to.Why kept very ever home mrs. Considered sympathize ten uncommonly occasional assistance sufficient not. ",
+//         icon: Idea,
+//     },
+//     {
+//         id: 3,
+//         title: "Title For this Text",
+//         body: "Why kept very ever home mrs. Considered sympathize ten uncommonly occasional assistance sufficient not. Letter of on become he tended active enable to.Why kept very ever home mrs. Considered sympathize ten uncommonly occasional assistance sufficient not. ",
+//         icon: PersonalGrowth,
+//     },
+// ];
 
 export default function AboutUs() {
     return (
@@ -88,7 +88,7 @@ export default function AboutUs() {
                     );
                 })}
 
-                <section>
+                {/* <section>
                     <h3 className="text-center font-poppins text-lg md:text-xl font-[600]">
                         Title For this Text And Title for this text
                     </h3>
@@ -110,7 +110,7 @@ export default function AboutUs() {
                             );
                         })}
                     </div>
-                </section>
+                </section> */}
 
                 <section className="flex flex-col gap-6">
                     <h2 className="text-lg md:text-2xl font-[600] font-poppins">
