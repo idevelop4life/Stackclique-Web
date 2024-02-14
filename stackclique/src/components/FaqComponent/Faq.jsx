@@ -94,6 +94,7 @@ const Faq = () => {
     );
 
     return (
+        <>
         <div className="xl:w-[60%] md:w-[80%] w-full mt-8 p-4 mx-auto">
             <div className="md:flex  gap-20 md:my-20 my-8">
                 <div>
@@ -148,6 +149,7 @@ const Faq = () => {
                 </p>
             )}
         </div>
+        </>
     );
 };
 
