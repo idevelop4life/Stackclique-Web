@@ -135,8 +135,8 @@ const Faq = () => {
                 filteredAccordionItems.map((item, index) => (
                     <>
                         <AccordionItem
-                            className="grid grid-cols-2"
                             key={index}
+                            className="grid grid-cols-2"
                             title={item.title}
                             content={item.content}
                         />
