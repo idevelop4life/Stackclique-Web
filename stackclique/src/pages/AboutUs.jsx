@@ -1,10 +1,9 @@
 import { Button } from "../components/ui";
-
 import AboutUsImg1 from "../assets/pics/about-us-1.webp";
 import AboutUsImg2 from "../assets/pics/about-us-2.webp";
 import AboutUsImg3 from "../assets/pics/about-us-3.webp";
 import MergeGit from "../assets/svg/merge-git.svg";
-import Idea from "../assets/svg/idea.svg";
+import { ReactComponent as Idea } from "../assets/svg/idea.svg";
 import PersonalGrowth from "../assets/svg/personal-growth.svg";
 import Faq from "../components/FaqComponent/Faq";
 
