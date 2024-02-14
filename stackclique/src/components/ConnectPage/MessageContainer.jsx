@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useOutletContext } from "react-router-dom";
 import styles from "../../styles/css/app.module.css";
 import { ChatBox, ChatInput } from "../ChatComponents";
 import {
@@ -11,11 +12,7 @@ import { useNavigate } from "react-router-dom";
 export default function MessageContainer({ msgModel, setMsgModel }) {
     const [getReply, setReply] = useState(null);
 
-    // For testing purposes
-    const person = {
-        id: 1,
-        name: "Unnamed Dev",
-    };
+    const [person] = useOutletContext();
 
     // Save user data here
     const [user, setUser] = useState(person);
