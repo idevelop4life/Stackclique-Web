@@ -1,10 +1,10 @@
-import {
-    ConnectSideBar,
-    MessageContainer,
-} from "../components/ConnectPage";
+import { ConnectSideBar, MessageContainer } from "../components/ConnectPage";
 import { Header } from "../components/ChatComponents";
 import imgSample from "../assets/pics/4.jpg";
 import { useState } from "react";
+import DirectMessage from "../components/ChatComponents/DirectMessage";
+import ChannelBar from "../components/ChatComponents/ChannelBar";
+import Search from "../components/ChatComponents/Search";
 
 export default function Connect() {
     const [curChannel, setChannel] = useState(0);
@@ -36,6 +36,59 @@ export default function Connect() {
         { id: 6, name: "App Developers" },
     ];
 
+    const [msgModel, setMsgModel] = useState([
+        {
+            id: 1,
+            user: {
+                id: 1,
+                name: "Unnamed Dev",
+            },
+            reply: null,
+            text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias in itaque ratione!",
+            timestamp: "2022-08-05T02:09:44.597Z",
+        },
+        {
+            id: 2,
+            user: {
+                id: 2,
+                name: "Agunwami",
+            },
+            reply: 1,
+            text: "Lorem ipsum dolor sit amet.",
+            timestamp: "2022-08-08T15:09:44.597Z",
+        },
+        {
+            id: 3,
+            user: {
+                id: 1,
+                name: "Unnamed Dev",
+            },
+            reply: null,
+            text: "Lorem ipsum dolor sit amet, consectetur adipisicing.",
+            timestamp: "2022-08-11T07:09:44.597Z",
+        },
+        {
+            id: 4,
+            user: {
+                id: 2,
+                name: "Agunwami",
+            },
+            reply: null,
+            text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias.",
+            timestamp: "2024-01-30T10:09:44.597Z",
+        },
+        {
+            id: 5,
+            user: {
+                id: 1,
+                name: "Unnamed Dev",
+            },
+            reply: null,
+            text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias in itaque ratione! Anu",
+            timestamp: "2024-02-09T11:08:48.597Z",
+        },
+    ]);
+
     return (
         <>
             <section className="flex relative flex-wrap">
@@ -44,14 +97,22 @@ export default function Connect() {
                     users={users}
                     channelList={channelsList}
                     curChannel={curChannel}
-                />
+                >
+                    <Search type={"classic"} placeholder="Search messages" />
+                </Header>
 
                 <section className="flex relative w-[100%]">
-                    <ConnectSideBar
-                        channelList={channelsList}
-                        curChannel={curChannel}
+                    <ConnectSideBar>
+                        <ChannelBar
+                            channelList={channelsList}
+                            curChannel={curChannel}
+                        />
+                        <DirectMessage type="notify" messages={msgModel} />
+                    </ConnectSideBar>
+                    <MessageContainer
+                        msgModel={msgModel}
+                        setMsgModel={setMsgModel}
                     />
-                    <MessageContainer />
                 </section>
             </section>
         </>

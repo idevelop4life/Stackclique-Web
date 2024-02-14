@@ -1,4 +1,10 @@
-function Search({ type, placeholder, classCustom, onChangeFun = null }) {
+function Search({
+    type,
+    placeholder,
+    classCustom,
+    onChangeFun = null,
+    customStyle,
+}) {
     switch (type) {
         case "classic":
             return (
@@ -6,6 +12,7 @@ function Search({ type, placeholder, classCustom, onChangeFun = null }) {
                     placeholder={placeholder}
                     classCustom={classCustom}
                     onChangeFun={onChangeFun}
+                    customStyle={customStyle}
                 />
             );
         case "minimalistic":
@@ -14,14 +21,18 @@ function Search({ type, placeholder, classCustom, onChangeFun = null }) {
                     placeholder={placeholder}
                     classCustom={classCustom}
                     onChangeFun={onChangeFun}
+                    customStyle={customStyle}
                 />
             );
     }
 }
 
-function Classic({ placeholder, classCustom, onChangeFun }) {
+function Classic({ placeholder, classCustom, onChangeFun, customStyle }) {
     return (
-        <div className={`form_search_gen ${classCustom || ""}`}>
+        <div
+            className={`form_search_gen ${classCustom || ""}`}
+            style={customStyle}
+        >
             <button type="submit" className="btn">
                 <svg
                     width="14"
@@ -48,9 +59,12 @@ function Classic({ placeholder, classCustom, onChangeFun }) {
     );
 }
 
-function Minimalistic({ placeholder, classCustom, onChangeFun }) {
+function Minimalistic({ placeholder, classCustom, onChangeFun, customStyle }) {
     return (
-        <div className={`form_search_minimal ${classCustom || ""}`}>
+        <div
+            className={`form_search_minimal ${classCustom || ""}`}
+            style={customStyle}
+        >
             <button type="submit" className="btn_mini">
                 <svg
                     width="24"

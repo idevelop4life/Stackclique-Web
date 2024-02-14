@@ -658,5 +658,112 @@
     * {
         margin: 0.5rem auto;
     }
-    // background-color: $black;
+}
+
+.notmessage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 65%;
+    height: -webkit-fill-available;
+    margin: auto;
+
+    @include responsive(mobile) {
+        width: 90%;
+        height: 60dvh;
+    }
+
+    h3 {
+        font-size: large;
+        font-weight: 700;
+    }
+
+    p {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    * {
+        margin: 0.5rem auto;
+    }
+}
+
+.msg_inbox {
+    --inner-gap: 0.25rem;
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin: 1rem 0;
+
+    img {
+        flex: 1;
+        width: clamp(32px, 46px, 50px);
+        height: clamp(32px, 46px, 50px);
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+    }
+
+    .inbox_detail {
+        flex: 7;
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        gap: var(--inner-gap);
+
+        h4 {
+            font-family: Montserrat, "Poppins", sans-serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            line-height: 22px;
+            letter-spacing: 0em;
+            text-align: left;
+        }
+
+        p {
+            font-family: Montserrat, "Poppins", sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            line-height: 18px;
+            letter-spacing: 0em;
+            text-align: left;
+        }
+    }
+
+    .inbox_info {
+        font-family: Montserrat, "Poppins", sans-serif;
+        flex: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: var(--inner-gap);
+
+        div {
+            font-size: 1rem;
+            font-weight: 500;
+            line-height: 20px;
+            letter-spacing: 0em;
+            text-align: left;
+            &.active {
+                color: $primary;
+            }
+        }
+
+        span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: clamp(16px, 18px, 21px);
+            height: clamp(16px, 18px, 21px);
+            padding: 6px;
+            color: $white;
+            background-color: $primary;
+            border-radius: 50%;
+            font-size: 0.625rem;
+            font-weight: 500;
+            line-height: 12px;
+            letter-spacing: 0px;
+        }
+    }
 }

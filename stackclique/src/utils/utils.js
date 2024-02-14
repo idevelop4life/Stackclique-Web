@@ -99,9 +99,9 @@ export function timeOfDay(date) {
     return `${clockHr}:${min <= 9 ? "0" + min : min} ${meridiam}`;
 }
 
-export function shortText(text, length = 30) {
+export function shortText(text, length = 30, out="") {
     if (text.length > length) {
-        return text.slice(0, length);
+        return text.slice(0, length)+out;
     } else {
         return text;
     }

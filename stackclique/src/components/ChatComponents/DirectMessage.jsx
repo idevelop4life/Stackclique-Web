@@ -1,4 +1,4 @@
-gitimport { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FiChevronDown } from "react-icons/fi";
 import MembersCard from "../ConnectPage/MembersCard";
 import styles from "../../styles/css/app.module.css";

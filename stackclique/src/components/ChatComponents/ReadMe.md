@@ -39,7 +39,11 @@ The current schema for this is:
 
 ### The Connect/Message section
 
+<<<<<<< HEAD
 Now let's look at the larger view, we'd need the a comprehensive list of message objects linked with the user's id. But we'll need to differentiate a group chat from an individual chat, probably by adding a boolean property.
+=======
+Now let's look at the larger view, we'd need the a comprehensive list of message objects linked with the user's id. But we'll need to differentiate a group chat from an individual chat, probably by adding a boolean property.s
+>>>>>>> main
 
 ```
 
