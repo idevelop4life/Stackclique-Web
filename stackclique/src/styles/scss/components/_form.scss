@@ -18,10 +18,13 @@
     button {
         margin: 0;
         width: clamp(3.5rem, 3.75rem, 4rem);
-        min-width: auto;
-        height: inherit;
         border-radius: 0;
         padding: 0.1rem;
+        min-width: auto;
+        height: -webkit-fill-available;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     .text-box {
         flex: 1;
@@ -97,7 +100,7 @@
     min-height: 7dvh;
     background-color: $white;
     border: 1px solid rgba($color: $dark, $alpha: 0.5);
-    padding: .5rem 1.25rem;
+    padding: 0.5rem 1.25rem;
     border-radius: 4px;
     align-items: center;
     transition:

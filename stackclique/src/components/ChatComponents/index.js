@@ -4,3 +4,7 @@ export { default as ChatBubble } from "./ChatBubble";
 export { default as BubbleReply } from "./BubbleReply";
 export { default as ChannelList } from "./ChannelList";
 export { default as ChatInput } from "./ChatInput";
+export { default as DirectMessage } from "./DirectMessage";
+export { default as ChannelBar } from "./ChannelBar";
+export { default as Search } from "./Search";
+export { default as CreateMessage } from "./CreateMessage";

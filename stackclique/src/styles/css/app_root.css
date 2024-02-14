@@ -111,6 +111,18 @@ h5 {
   opacity: 0%;
 }
 
+.msg_btn {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #7e0772 !important;
+  color: #ffffff;
+  border-radius: 16px;
+  margin: 0.5rem auto;
+}
+
 :root body {
   background-color: #ffffff;
 }
@@ -424,10 +436,13 @@ h5 {
 .form_search_gen button {
   margin: 0;
   width: 3.75rem;
-  min-width: auto;
-  height: inherit;
   border-radius: 0;
   padding: 0.1rem;
+  min-width: auto;
+  height: -webkit-fill-available;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .form_search_gen .text-box {
   flex: 1;

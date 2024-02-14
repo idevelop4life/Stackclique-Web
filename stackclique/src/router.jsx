@@ -8,7 +8,7 @@ import {
     AboutUs,
     Learn,
     Connect,
-    Message
+    Message,
 } from "./pages";
 import AppLayout from "./components/Layout/applayout/AppLayout";
 export const router = createBrowserRouter([
@@ -18,8 +18,8 @@ export const router = createBrowserRouter([
             { path: "/", element: <Home /> },
             { path: "/about", element: <AboutUs /> },
             { path: "/learn", element: <Learn /> },
-            { path: "/connect", element: <Connect /> }, 
-            { path: "/chat", element: <Message />}
+            { path: "/connect", element: <Connect /> },
+            { path: "/chat", element: <Message /> },
         ],
     },
     {
