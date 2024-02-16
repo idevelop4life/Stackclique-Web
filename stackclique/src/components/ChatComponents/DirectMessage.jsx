@@ -43,7 +43,6 @@ function PreviewMessage({ msg, customStyles, customClass, setMessage }) {
             style={customStyles}
         >
             {msg?.map((item, index) => {
-                console.log("Item: ", item.data);
                 const recentItem = sortByTime(item.data)[item.data.length - 1];
                 const dataItem = sortByTime(item.data).filter((item) => {
                     return !item.seen.includes(person.id);

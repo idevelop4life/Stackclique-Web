@@ -15,34 +15,6 @@ import { inboxSchema, msgSchema } from "../utils/messageSchema";
 function Message() {
     const [curChannel, setChannel] = useState(0);
 
-    const users = [
-        {
-            name: "Samson Peter",
-            img: imgSample,
-        },
-        {
-            name: "Peter Mapal",
-            img: imgSample,
-        },
-        {
-            name: "Sharon Connel",
-            img: imgSample,
-        },
-        {
-            name: "Aaron Walter",
-            img: imgSample,
-        },
-    ];
-
-    const channelsList = [
-        { id: 1, name: "Product Management" },
-        { id: 2, name: "UI/UX Designers" },
-        { id: 3, name: "Data Analysts" },
-        { id: 4, name: "Photography" },
-        { id: 5, name: "Cyber security" },
-        { id: 6, name: "App Developers" },
-    ];
-
     const chatInbox = inboxSchema.filter((item) => {
         return item.isGroupChat === true ? false : true;
     });

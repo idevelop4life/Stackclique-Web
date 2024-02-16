@@ -11,9 +11,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function MessageContainer({ msgModel, setMsgModel }) {
     const [getReply, setReply] = useState(null);
-
     const [person] = useOutletContext();
-
     // Save user data here
     const [user, setUser] = useState(person);
 
