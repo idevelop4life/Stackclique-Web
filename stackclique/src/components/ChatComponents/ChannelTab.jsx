@@ -97,7 +97,7 @@ function ChannelTab({ pins, users, channelList, curChannel }) {
                                 </defs>
                             </svg>
                         </span>
-                        <i>{pins || 0}</i> pinned
+                        <i>{category.pins.length || 0}</i> pinned
                     </li>
                     <li>
                         <span>
@@ -130,7 +130,7 @@ function ChannelTab({ pins, users, channelList, curChannel }) {
                                 </defs>
                             </svg>
                         </span>
-                        <i>{users?.length || 0}</i> members
+                        <i>{category.participants.length || 0}</i> members
                     </li>
                 </ul>
             </div>

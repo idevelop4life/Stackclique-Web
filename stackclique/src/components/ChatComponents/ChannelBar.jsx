@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { FiChevronDown } from "react-icons/fi"; 
 import styles from "../../styles/css/app.module.css";
 
-function ChannelBar({ channelList,curChannel }) {
+function ChannelBar({ channelList, curChannel, setChannel }) {
     return (
         <div className={styles.channel_body}>
             <h2 className="flex items-center gap-2 py-1 text-lg font-bold">
@@ -16,7 +16,10 @@ function ChannelBar({ channelList,curChannel }) {
                     ?.filter((_, key) => key <= 8)
                     ?.map((item, key) => {
                         return (
-                            <Link key={item?.id}>
+                            <Link key={item?.id} onClick={(e) => {
+                                e.preventDefault();
+                                setChannel(key)
+                            }}>
                                 {item?.name}{" "}
                                 {key === curChannel ? <span></span> : ""}
                             </Link>

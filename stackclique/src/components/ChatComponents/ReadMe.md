@@ -19,7 +19,6 @@ The current schema for this is:
         reply: null,
         text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias in itaque ratione!",
         timestamp: "2022-08-05T02:09:44.597Z",
-        isGroupChat: false, // Boolean indicating whether it's a group chat or individual chat
     },
     {
         id: 2,
@@ -30,7 +29,6 @@ The current schema for this is:
         reply: 1,   // message id
         text: "Lorem ipsum dolor sit amet.",
         timestamp: "2022-08-08T15:09:44.597Z",
-        isGroupChat: true, // Boolean indicating whether it's a group chat or individual chat
     },
     ...
 ]
@@ -39,12 +37,24 @@ The current schema for this is:
 
 ### The Connect/Message section
 
-<<<<<<< HEAD
 Now let's look at the larger view, we'd need the a comprehensive list of message objects linked with the user's id. But we'll need to differentiate a group chat from an individual chat, probably by adding a boolean property.
-=======
-Now let's look at the larger view, we'd need the a comprehensive list of message objects linked with the user's id. But we'll need to differentiate a group chat from an individual chat, probably by adding a boolean property.s
->>>>>>> main
 
 ```
+[
+    {
+        id: 12,
+        participants: [1, 2, 3], // Participants Id array
+        data: msgSchema,
+        isGroupChat: true, // Boolean indicating whether it's a group chat or individual chat
+    },
+
+    {
+        id: 13,
+        participants: [1, 2], // Participants Id array
+        data: msgSchema,
+        isGroupChat: false, // Boolean indicating whether it's a group chat or individual chat
+    },
+];
+
 
 ```
