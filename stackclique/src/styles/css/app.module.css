@@ -694,6 +694,9 @@ h5 {
   flex-direction: column;
   gap: 0.66rem;
 }
+.channel_sidebar .channel_body div {
+  cursor: pointer;
+}
 .channel_sidebar .channel_body h2 {
   font-family: Inter, "Poppins", sans-serif;
   font-size: 1.5rem;
@@ -703,6 +706,7 @@ h5 {
   text-align: left;
 }
 .channel_sidebar .channel_body a {
+  cursor: pointer;
   display: flex;
   align-items: center;
   font-size: 1.125rem;
@@ -730,6 +734,7 @@ h5 {
   height: 8px;
   border-radius: 50%;
   margin-left: 0.66rem;
+  transition: all 2s 1s ease;
 }
 
 .msg_container {
@@ -1069,6 +1074,7 @@ h5 {
 
 .msg_inbox {
   --inner-gap: 0.25rem;
+  cursor: pointer;
   width: 100%;
   display: flex;
   gap: 1rem;
