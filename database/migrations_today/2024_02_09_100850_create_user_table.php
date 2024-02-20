@@ -2,32 +2,22 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
-
-return new class extends Migration
+class CreateUsersTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->uuid('id')->primary()->default(DB::raw('uuid()'));
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->id();
             $table->string('username')->unique();
+            $table->string('email')->unique()->nullable();
+            $table->string('password');
             $table->string('profile_photo')->nullable();
             $table->string('cover_photo')->nullable();
+            $table->string('role')->default('User');
             $table->integer('level')->default(0);
-            $table->uuid('channel_id')->nullable();
-            $table->foreign('channel_id')->references('id')->on('channels');
-            $table->rememberToken();
             $table->timestamps();
+            $table->timestamp('updated_at')->useCurrentOnUpdate();
         });
     }
 

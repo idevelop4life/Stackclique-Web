@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CourseController;
 use App\Http\Middleware\VerifyCsrfToken;
+use App\Http\Controllers\CourseCategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,7 +18,14 @@ use App\Http\Middleware\VerifyCsrfToken;
 // Creating and fetching of courses routes
 
 Route::middleware(['web'])->group(function () {
-    // Your web routes here
+    // route for handling the course_category routes
+    Route::get('/categories', [CourseCategoryController::class,'index']);
+    Route::post('/categories', [CourseCategoryController::class,'store']);
+    Route::put('/categories/{id}', [CourseCategoryController::class,'update']);
+    Route::delete('/categories/{id}', [CourseCategoryController::class,'destroy']);
+
+    
+    // Your web routes here for courses operation
     Route::post('/courses', [CourseController::class, 'store']);
     // Route::post('/courses', [CourseController::class, 'create']);
     Route::get('/courses', [CourseController::class, 'getAllCourses']);
@@ -25,10 +33,6 @@ Route::middleware(['web'])->group(function () {
 
 });
 
-
-// Route::post('/courses', [CourseController::class, 'create']);
-// Route::get('/courses', [CourseController::class, 'getAllCourses']);
-// Route::get('/courses/{id}', [CourseController::class, 'getCourseById']);
 
 Route::get('/', function () {
     return view('welcome');
