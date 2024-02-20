@@ -48,7 +48,7 @@ const whyJoinData = [
 const FirstCard = () => {
     return (
         <div className="shadow-whyJoinCardBoxShadow relative flex flex-col bg-white w-full md:w-[23.125rem] mx-auto  rounded-[1.375rem] px-2 md:px-[2rem] py-[1.8rem]">
-            <h2 className="font-poppins font-[700]">
+            <h2 className="font-poppins font-[700] w-[80%] mb-[0.5rem]">
                 10000+ Tech Enthusiasts connected globally
             </h2>
             <div className="flex flex-col gap-6 mt-2">

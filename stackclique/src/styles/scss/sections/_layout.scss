@@ -1,0 +1,156 @@
+@use "../custom" as *;
+@use "../components/typography" as *;
+@use "../components/mixins" as *;
+
+.footer {
+    display: flex;
+    position: relative;
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+    padding-left: 3.25rem;
+    padding-right: 3.25rem;
+    align-items: flex-start;
+    color: $text-white;
+    background-color: $black;
+    gap: 1rem;
+
+    @include responsive(mediadown) {
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+
+    .footer_item {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        flex: 1;
+        gap: 1rem;
+
+        @include responsive(mediadown) {
+            margin-bottom: 1.5rem;
+        }
+
+        &.search_field {
+            flex: 2;
+            margin-top: auto;
+            margin-bottom: auto;
+            justify-content: center;
+            h2 {
+                text-align: center;
+            }
+
+            .social_list {
+                display: flex;
+                width: 60%;
+                justify-content: space-evenly;
+                align-items: center;
+                margin: 0.25rem auto;
+
+                a {
+                    width: 24px;
+                    height: 24px;
+
+                    svg {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+            }
+        }
+
+        h2 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            line-height: 24.59px;
+        }
+    }
+
+    .footer_credit {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        width: 70%;
+        left: 50%;
+        transform: translate(-50%, 0);
+        bottom: 1.25rem;
+        color: $text-white;
+        font-size: clamp(0.5rem, 0.8rem, 1.2rem);
+        font-family: "Roboto", "Poppins", san-serif;
+        line-height: 24px;
+    }
+}
+
+.header {
+    width: 100dvw;
+    position: fixed;
+    top: 0;
+    min-height: clamp(4rem, 5.25rem, 8rem);
+    z-index: 100;
+    backdrop-filter: blur(24px);
+    background-color: rgba($color: $accent_02, $alpha: 0.2);
+
+    .contact_strip {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: auto clamp(1.75rem, 4rem, 20%);
+        padding: 0.75rem clamp(0.75rem, 1.5rem, 2rem);
+        background-color: $black;
+        color: $text-white;
+
+        @include responsive(mediadown) {
+            flex-wrap: wrap;
+            margin: auto clamp(1.5rem, 2rem, 20%);
+            padding: 0.5rem clamp(0.5rem, 0.75rem, 1.5rem);
+        }
+
+        div {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-align: center;
+            min-width: 10%;
+
+            @include responsive(mobile) {
+                margin: 0.1rem auto;
+                gap: 0.25rem;
+
+                p {
+                    font-size: 9px;
+                }
+            }
+
+            svg {
+                width: fit-content;
+            }
+        }
+    }
+
+    .navigation {
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0.75rem clamp(4rem, 4rem, 7.37rem);
+        font-family: "Inter", "Poppins", sans-serif;
+        @include responsive(mobile) {
+            flex-wrap: wrap;
+            margin: 0.75rem clamp(1.5rem, 2rem, 4rem);
+        }
+
+        .brand_logo {
+            display: block;
+            width: clamp(10rem, 20%, 11.25rem);
+            height: auto;
+        }
+
+        .nav_link {
+            display: flex;
+            gap: 3.12rem;
+            // mix-blend-mode: difference;
+            @include responsive(mediadown) {
+                display: none;
+            }
+        }
+    }
+}

@@ -1,0 +1,776 @@
+@use "../custom" as *;
+@use "../components/typography" as *;
+@use "../components/mixins" as *;
+
+.chat_header {
+    --heading-ts: 1.5rem;
+    --heading-ts-sm: 1rem;
+    @include responsive(mobile) {
+        --heading-ts: 1.1rem;
+        --heading-ts-sm: 0.85rem;
+    }
+    width: 100%;
+    position: relative;
+    padding-top: 3rem;
+    background-color: $bg-white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @include responsive(mobile) {
+        padding-top: 1.75rem;
+    }
+
+    .channel_tab {
+        display: flex;
+        margin-top: 1rem;
+        background-color: $bg-white-light;
+        padding: clamp(0.75rem, 1rem, 2rem) clamp(1.75rem, 4rem, 20%);
+        gap: 3rem;
+
+        @include responsive(mobile) {
+            padding: clamp(0.75rem, 1rem, 2rem) clamp(0.75rem, 1rem, 20%);
+        }
+
+        .dropdown_menu {
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            margin-right: auto;
+
+            .menu_header {
+                display: flex;
+                align-items: center;
+                font-size: var(--heading-ts);
+                font-family: Montserrat, "Poppins", sans-serif;
+                font-weight: 500;
+                line-height: 24px;
+                letter-spacing: 0em;
+                text-align: left;
+                text-transform: capitalize;
+
+                span {
+                    margin: 0 0.25rem;
+                }
+            }
+
+            .menu_list {
+                display: none;
+                top: 2.5rem;
+                right: -6.5rem;
+
+                li {
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .tab_option {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+            gap: 1.5rem;
+
+            @include responsive(mobile) {
+                gap: 0.5rem;
+            }
+
+            li {
+                display: flex;
+                align-items: center;
+                font-family: "Lato", "Poppins", sans-serif;
+                font-size: var(--heading-ts-sm);
+                font-weight: 400;
+                line-height: 1.1875rem;
+                letter-spacing: 0em;
+                text-align: left;
+
+                i {
+                    font-style: normal;
+                    font-size: 1rem;
+                    margin: 0 0.4rem;
+                }
+
+                @include responsive(mobile) {
+                    font-size: 0;
+                }
+
+                span svg {
+                    width: 2.5rem;
+                    height: 2.5rem;
+                    margin: 0 0.25rem;
+                }
+            }
+        }
+    }
+
+    .setting_modal {
+        padding: 3.5rem 2.5rem;
+        display: flex;
+        flex-direction: column;
+        width: clamp(45dvw, 55dvw, 62dvw);
+        min-height: clamp(50dvh, 60dvh, 67dvh);
+        left: 50%;
+        transform: translate(-50%, 50%);
+
+        @include responsive(mobile) {
+            width: clamp(80dvw, 90dvw, 95dvw);
+            transform: translate(-50%, 40%);
+        }
+
+        .setting_modal_header {
+            margin-bottom: 0.5rem;
+            text-transform: capitalize;
+            font-family: Montserrat, "Poppins", sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1.5rem;
+            letter-spacing: 0em;
+            text-align: left;
+        }
+        .setting_modal_option {
+            cursor: pointer;
+            display: flex;
+            gap: 2.5rem;
+
+            li {
+                font-family: Montserrat, "Poppins", sans-serif;
+                font-size: var(--heading-ts);
+                font-weight: 500;
+                line-height: 2.125rem;
+                letter-spacing: 0.36000001430511475px;
+                text-align: center;
+                padding-bottom: 1rem;
+
+                &.active {
+                    border-bottom: 2px solid $secondary;
+                    transition: 250ms all ease-in-out;
+                }
+
+                span {
+                    font-size: inherit;
+                    margin: 0 0.5rem;
+                    color: $text-span;
+                }
+            }
+        }
+        .setting_modal_body {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+
+            .body_info {
+                padding: 1rem 0.75rem;
+                border-radius: 8px;
+                border: 1px solid $dark;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                color: $black;
+                font-family: Montserrat, "Poppins", sans-serif;
+                font-size: 1rem;
+                font-weight: 500;
+                letter-spacing: 0.36000001430511475px;
+                @include responsive(mobile) {
+                    width: 100%;
+                }
+            }
+
+            .body_content {
+                width: 80%;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                transition: all 1s ease;
+
+                @include responsive(mobile) {
+                    width: 100%;
+                }
+
+                h2 {
+                    width: fit-content;
+                    color: $black;
+                    font-family: Montserrat, "Poppins", sans-serif;
+                    font-size: 1.5rem;
+                    font-weight: 500;
+                    line-height: 34px;
+                }
+
+                ul {
+                    display: flex;
+                    flex: 1;
+                    flex-direction: column;
+                    gap: 0.1rem;
+                    padding-left: 0.5rem;
+                    overflow: auto;
+                    height: auto;
+
+                    li {
+                        display: flex;
+                        align-items: center;
+                        font-family: Montserrat, "Poppins", sans-serif;
+                        font-size: 1rem;
+                        // font-weight: 500;
+
+                        input[type="radio"] {
+                            margin-right: 0.35rem;
+
+                            &:checked {
+                                background-color: $primary;
+                                color: $primary;
+                            }
+                        }
+                    }
+
+                    .member_item {
+                        display: flex;
+                        align-items: center;
+                        font-weight: 500;
+                        font-size: 1.125rem;
+                        line-height: 34px;
+                        letter-spacing: 0.36000001430511475px;
+                        font-family: Montserrat, "Poppins", sans-serif;
+                        margin-left: 1.25rem;
+
+                        span {
+                            position: relative;
+                            margin-right: 1rem;
+                            border-radius: 50%;
+                            width: 1.5rem;
+                            height: 1.5rem;
+                            aspect-ratio: 1/1;
+                            overflow: hidden;
+
+                            img {
+                                position: absolute;
+                                top: 50%;
+                                left: 50%;
+                                transform: translate(-50%, -50%);
+                                width: max-content;
+                                aspect-ratio: 1/1;
+                            }
+                        }
+                    }
+                }
+
+                .input_group {
+                    margin-top: 1rem;
+                    margin-bottom: auto;
+                    margin-left: 1.5rem;
+                }
+            }
+        }
+    }
+}
+
+.channel_sidebar {
+    display: flex;
+    flex-direction: column;
+    padding: 1.75rem 2.75rem;
+    color: $text-white;
+    background-color: $primary;
+    width: clamp(15dvw, 25dvw, 33.6dvw);
+    min-height: clamp(25dvh, 30dvh, 40dvh);
+    height: auto;
+    gap: 1.5rem;
+
+    @include responsive(mobile) {
+        display: none;
+    }
+
+    .channel_body {
+        display: flex;
+        flex-direction: column;
+        gap: 0.66rem;
+        
+        div {
+            cursor: pointer;
+        }
+
+        h2 {
+            font-family: Inter, "Poppins", sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            line-height: 24px;
+            letter-spacing: 0em;
+            text-align: left;
+        }
+
+        a {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            font-size: 1.125rem;
+            font-weight: 500;
+            font-family: Inter, "Poppins", sans-serif;
+            line-height: 24px;
+            letter-spacing: 0em;
+
+            &.more {
+                font-size: 0.875rem;
+
+                svg {
+                    width: 1.25rem;
+                    height: 1.25rem;
+                    display: flex;
+                    align-items: center;
+
+                    g {
+                        display: flex;
+                        align-items: center;
+                    }
+                }
+            }
+
+            span {
+                background-color: $secondary;
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                margin-left: 0.66rem;
+                transition: all 2s 1s ease;
+            }
+        }
+    }
+}
+
+.msg_container {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    flex: 1;
+    padding: 1rem clamp(2rem, 3rem, 4rem);
+
+    @include responsive(mobile) {
+        padding: 0.25rem clamp(0.4rem, 0.5rem, 0.75rem);
+    }
+}
+
+.timestamp_bubble {
+    cursor: pointer;
+    min-width: clamp(6rem, 8rem, 9rem);
+    width: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0.25rem auto;
+    padding: 0.25rem 0.5rem;
+    border-radius: 10px;
+    gap: 10px;
+    box-shadow:
+        0px 2px 10px 0px #7e07720a,
+        0px 0px 1px 0.2px $secondary;
+    text-transform: capitalize;
+    font-family: "Lato", "Poppins", sans-serif;
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0em;
+    transform: all 1s ease-in-out;
+
+    &:hover {
+        box-shadow:
+            0px 2px 10px 0px #7e07720a,
+            0px 0px 2px 0.5px $secondary;
+        font-weight: 500;
+    }
+}
+
+.chat_bubble {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1.25rem 0;
+
+    span {
+        position: relative;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 1.75rem;
+
+        @include responsive(mobile) {
+            margin-right: 1rem;
+        }
+
+        img {
+            width: 35px;
+            height: 35px;
+            object-fit: cover;
+        }
+    }
+
+    &.mine {
+        justify-content: flex-end;
+
+        .chat_detail {
+            border-radius: 18px 0px 18px 18px;
+            background-color: $primary;
+            color: $white;
+            padding-left: 2rem;
+            padding-right: 1rem;
+            padding-top: 0.625rem;
+
+            @include responsive(mobile) {
+                background-color: $white;
+                color: $black;
+                padding-left: 1.25rem;
+                padding-right: 0.75rem;
+            }
+
+            .reply_btn {
+                right: 0.5rem;
+                svg {
+                    path {
+                        stroke: $text-white;
+                    }
+                }
+            }
+        }
+    }
+
+    .chat_detail {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        width: max-content;
+        max-width: clamp(20dvw, 34dvw, 38dvw);
+        background-color: $white;
+        border-radius: 0px 18px 18px 18px;
+        padding-top: 0.85rem;
+        padding-bottom: 0.5rem;
+        padding-left: 1rem;
+        padding-right: 2rem;
+
+        @include responsive(mobile) {
+            max-width: clamp(65dvw, 70dvw, 76dvw);
+            background-color: $primary;
+            color: $white;
+        }
+
+        .reply_btn {
+            z-index: 18;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            opacity: 0;
+            position: absolute;
+            top: 0.5rem;
+            right: 2rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 3px;
+            background-color: rgba($color: $accent, $alpha: 0.35);
+
+            &:hover {
+                opacity: 1;
+            }
+
+            svg {
+                margin: auto;
+                width: 12px;
+                height: 12px;
+                path {
+                    stroke: $dark;
+                }
+            }
+        }
+
+        .chat_header {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+            background-color: inherit;
+            padding: 0;
+            margin-top: 0.1rem;
+            margin-bottom: 0.25rem;
+
+            h2 {
+                max-width: 70%;
+                font-family: "Lato", "Poppins", sans-serif;
+                font-size: 1.25rem;
+                font-weight: 700;
+                line-height: 24px;
+                letter-spacing: 0em;
+                text-align: left;
+                margin-right: 0.75rem;
+            }
+
+            span {
+                width: fit-content;
+                height: fit-content;
+                font-family: "Lato", "Poppins", sans-serif;
+                font-size: 0.75rem;
+                font-weight: 400;
+                line-height: 24px;
+                letter-spacing: 0em;
+                text-align: left;
+                border-radius: 0;
+                color: $text-span;
+                @include responsive(mobile) {
+                    color: $white;
+                }
+            }
+        }
+
+        .chat_text {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            background-color: inherit;
+            font-family: "Lato", "Poppins", sans-serif;
+            font-size: 0.875rem;
+            font-weight: 400;
+            line-height: 1.5rem;
+            letter-spacing: 0em;
+            text-align: left;
+        }
+
+        .timestamp {
+            display: flex;
+            justify-content: flex-end;
+            width: -webkit-fill-available;
+            height: fit-content;
+            font-size: 0.625rem;
+            line-height: 0.875rem;
+            border-radius: 0;
+            margin-right: 0;
+            margin-left: auto;
+        }
+    }
+}
+
+.chat_reply {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba($color: $accent_02, $alpha: 0.3);
+    padding: 0.4rem 0.66rem;
+    border-radius: 4px;
+    border-left: 2px solid $secondary;
+    margin-bottom: 0.35rem;
+    overflow: hidden;
+
+    h5 {
+        flex: 1;
+        max-width: 60%;
+        font-family: "Lato", "Poppins", sans-serif;
+        font-size: 0.75rem;
+        font-weight: 700;
+        line-height: 18px;
+        letter-spacing: 0em;
+        text-align: left;
+        margin-bottom: 0.2rem;
+    }
+
+    p {
+        width: 100%;
+        font-family: "Lato", "Poppins", sans-serif;
+        font-size: 0.75rem;
+        font-weight: 400;
+        line-height: 18px;
+        letter-spacing: 0em;
+        text-align: left;
+    }
+}
+
+.chat_box {
+    position: relative;
+    max-height: 60dvh;
+    width: 100%;
+    overflow: scroll;
+    padding: 0.2rem 1rem;
+
+    .chat_shadow {
+        background-image: linear-gradient(180deg, $bg-white, transparent);
+        width: 100%;
+        height: 2rem;
+        position: sticky;
+        top: -0.5rem;
+        left: 0;
+        z-index: 10;
+    }
+}
+
+.onreply {
+    position: absolute;
+    left: 0;
+    bottom: 99.5%;
+    border-radius: 4px 4px 0 0;
+    z-index: 19;
+    width: 100%;
+    height: 5rem;
+    background-color: $white;
+    padding: 0.5rem 1.25rem;
+    overflow: hidden;
+    opacity: 1;
+    transition:
+        bottom 1s ease,
+        opacity 1s linear;
+
+    .cancelBtn {
+        cursor: pointer;
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        font-size: 0.75rem;
+        font-weight: 700;
+    }
+
+    .onreply_box {
+        display: flex;
+        overflow: hidden;
+        height: -webkit-fill-available;
+        max-height: 4rem;
+        div {
+            flex: 1;
+            max-width: 100%;
+        }
+    }
+}
+
+.notauthorized {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: -webkit-fill-available;
+    margin: auto;
+
+    @include responsive(mobile) {
+        width: 90%;
+        height: 60dvh;
+    }
+
+    h2 {
+        font-size: xx-large;
+        font-weight: 700;
+    }
+
+    p {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    * {
+        margin: 0.5rem auto;
+    }
+}
+
+.notmessage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 65%;
+    height: -webkit-fill-available;
+    margin: auto;
+
+    @include responsive(mobile) {
+        width: 90%;
+        height: 60dvh;
+    }
+
+    h3 {
+        font-size: large;
+        font-weight: 700;
+    }
+
+    p {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    * {
+        margin: 0.5rem auto;
+    }
+}
+
+.msg_inbox {
+    --inner-gap: 0.25rem;
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin: 1rem 0;
+
+    img {
+        flex: 1;
+        width: clamp(32px, 46px, 50px);
+        height: clamp(32px, 46px, 50px);
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+    }
+
+    .inbox_detail {
+        flex: 7;
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        gap: var(--inner-gap);
+
+        h4 {
+            font-family: Montserrat, "Poppins", sans-serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            line-height: 22px;
+            letter-spacing: 0em;
+            text-align: left;
+        }
+
+        p {
+            font-family: Montserrat, "Poppins", sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            line-height: 18px;
+            letter-spacing: 0em;
+            text-align: left;
+        }
+    }
+
+    .inbox_info {
+        font-family: Montserrat, "Poppins", sans-serif;
+        flex: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: var(--inner-gap);
+
+        div {
+            font-size: 1rem;
+            font-weight: 500;
+            line-height: 20px;
+            letter-spacing: 0em;
+            text-align: left;
+            &.active {
+                color: $primary;
+            }
+        }
+
+        span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: clamp(16px, 18px, 21px);
+            height: clamp(16px, 18px, 21px);
+            padding: 6px;
+            color: $white;
+            background-color: $primary;
+            border-radius: 50%;
+            font-size: 0.625rem;
+            font-weight: 500;
+            line-height: 12px;
+            letter-spacing: 0px;
+        }
+    }
+}

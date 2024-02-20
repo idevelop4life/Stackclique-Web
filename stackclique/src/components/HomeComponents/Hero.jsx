@@ -12,6 +12,7 @@ import "swiper/css/autoplay";
 
 import { slideData } from "./homeComponentsData";
 import ActiveSlideIndicator from "./ActiveSlideIndicator";
+import styles from "../../styles/css/app.module.css";
 
 const SingleSlide = ({ url, id, setActiveIndex, swiper }) => {
     const [newsletterValue, setNewsLetterValue] = useState("");
@@ -29,11 +30,15 @@ const SingleSlide = ({ url, id, setActiveIndex, swiper }) => {
         setNewsLetterValue(e.target.value);
     };
     return (
-        <div className=" flex">
-            <div className="absolute w-full h-full">
-                <img src={url} alt="" className="object-fit z-[-100]" />
+        <div className={styles.slider_item}>
+            <div className={styles.bg_img}>
+                <img
+                    src={url}
+                    alt=""
+                    className="object-cover z-[-100] w-full h-[400px]"
+                />
             </div>
-            <div className=" flex relative mt-[6rem] md:mt-[10rem] w-full px-4 md:px-[5rem] lg:px-[7rem] flex-col text-left text-white z-[100] ">
+            <div className=" flex relative lg:mt-auto mt-auto lg:mb-[15%] mb-auto w-full px-4 md:px-[5rem] lg:px-[7rem] flex-col text-left text-white z-[100] ">
                 <h2 className="text-[1.5rem] md:text-[3.5rem] flex font-[600] lg:leading-[4.5rem] font-poppins">
                     A community <br /> designed to reward
                 </h2>
@@ -65,13 +70,13 @@ export default function Hero() {
     const [activeIndex, setActiveIndex] = useState(null);
 
     return (
-        <section className=" relative flex h-[20rem] md:h-[35rem]">
+        <section className={styles.hero}>
             <Swiper
                 modules={[Autoplay, EffectFade, Navigation, Pagination]}
                 slidesPerView={1}
                 onSwiper={setSwiper}
                 speed={2000}
-                // effect={"fade"}
+                effect={"fade"}
                 navigation
                 autoplay={{
                     delay: 6500,
@@ -90,7 +95,7 @@ export default function Hero() {
                     return (
                         <SwiperSlide
                             key={item.id}
-                            className="text-center relative max-h-[35rem]"
+                            className="text-center relative h-auto"
                         >
                             <SingleSlide
                                 url={item.slideImg}
@@ -104,7 +109,7 @@ export default function Hero() {
             </Swiper>
 
             {/* change slide buttons */}
-            <div className="absolute z-10 w-full mt-[4rem] px-4 md:mt-[5rem] md:px-[5rem] flex justify-between">
+            <div className="absolute z-10 w-full mt-[10rem] px-1 md:mt-[15rem] md:px-[2rem] flex justify-between">
                 <button
                     className=" bg-white text-primary-500 h-[1.5rem] w-[1.5rem] md:h-[2rem] md:w-[2rem] rounded-full flex items-center justify-center"
                     onClick={() => swiper?.slidePrev()}

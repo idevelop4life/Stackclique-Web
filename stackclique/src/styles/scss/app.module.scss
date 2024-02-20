@@ -3,3 +3,6 @@
 @use "./components/typography" as *;
 
 @use "./sections/auth" as *;
+@use "./sections/layout" as *;
+@use "./sections/components" as *;
+@use "./sections/chat" as *;
