@@ -8,7 +8,6 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
@@ -35,15 +34,13 @@ class AuthController extends Controller
         $validatedData = $req->validate([
             'username' => 'required|string|unique:users',
             'email' => 'required|email|unique:users',
-            'level' => 'sometimes',
             'password' => 'required|string|min:6',
         ]);
 
         try {
             // Attempt to create a new user
             // The verification code
-            $verf_code = $this->generateRefcode($req->name);
-
+            $verf_code = AuthController::generateRefcode($req->name);
             $user = User::create([
                 'name' => $validatedData['username'],
                 'username' => $validatedData['username'],
@@ -66,7 +63,7 @@ class AuthController extends Controller
             ];
 
             // Send the verification mail
-            // Mail::to($validatedData['email'])->send(new VerfEmail($verf_dets));
+            Mail::to($validatedData['email'])->send(new VerfEmail($verf_dets));
 
             // Return the response to the front-end.
             return response()->json([
@@ -104,14 +101,10 @@ class AuthController extends Controller
 
             /**  @var User $user */
             $user = Auth::user();
-
-            $user->token = $user->createToken('main')->plainTextToken;
-
-            session()->put('access_token', $user->token);
-
+            $token = $user->createToken('main')->plainTextToken;
             return response()->json([
                 'user' => $user,
-                'token' => $user->token,
+                'token' => $token,
                 'message' => 'Data Checked. You are now logged in.',
                 'error' => null,
             ]);
@@ -125,38 +118,15 @@ class AuthController extends Controller
 
     }
 
-    public function token(){
-
-        if (!session()->isStarted()) {
-            session()->start();
-        }
-
-        $user = Auth::user();
-
-    
-        // Retrieve the access token from the session
-        $session = session()->get('access_token');
-
-        return response()->json([
-            'session' => $session,
-            'name' => $user->email,
-        ]);
-    }
-
-    public function logout(Request $request)
+    public function logout(Request $req)
     {
-        if ($request->user()) {
-            dd($request->user());
-            // Revoke the current user's token
-            $request->user()->tokens()->delete();
-            // Auth::logout();
-            return response()->json(['message' => 'Successfully logged out']);
-        }
-        return response()->json(['message' => 'User not authenticated'], 401);
+
+        /** @var User $user */
+
+        $user = $req->user();
+        $user->currentAccessToken()->delete();
+        return response('', 204);
     }
-
-
-
 
     // Verification of Users
 

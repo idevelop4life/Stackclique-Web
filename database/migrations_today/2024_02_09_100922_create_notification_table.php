@@ -9,13 +9,8 @@ class CreateNotificationsTable extends Migration
     {
         Schema::create('notifications', function (Blueprint $table) {
             $table->id();
-<<<<<<< HEAD:database/migrations_today/2024_02_09_100922_create_notification_table.php
             $table->string('message');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-=======
-            $table->foreignId('user_id');
-            $table->text('message');
->>>>>>> 71329d2b024dcef7d41cf681f5c63d817da349e0:database/migrations/2023_09_23_123613_create_notifications_table.php
             $table->timestamps();
         });
     }
