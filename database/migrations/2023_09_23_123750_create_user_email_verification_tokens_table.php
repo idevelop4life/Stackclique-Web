@@ -15,7 +15,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('user_email_verification_tokens', function (Blueprint $table) {
-            $table->uuid('id')->primary()->default(DB::raw('uuid()'));
+            $table->id();
             $table->string('email', 255)->unique();
             $table->integer('otp');
             $table->boolean('verified')->default(false);

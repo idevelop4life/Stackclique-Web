@@ -15,15 +15,14 @@ return new class extends Migration
     public function up()
     {
         Schema::create('course_modules', function (Blueprint $table) {
-            $table->uuid('id')->primary()->default(DB::raw('uuid()'));
+            $table->id();
+            $table->foreignId('course_id');
             $table->string('name', 255);
             $table->string('title', 255);
             $table->text('content');
-            $table->uuid('course_id');
             $table->string('video_url', 255);
             $table->string('cover_photo', 255);
             $table->string('profile_photo', 255);
-            $table->foreign('course_id')->references('id')->on('courses');
             $table->timestamps();
         });
     }

@@ -15,14 +15,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('course_reviews', function (Blueprint $table) {
-            $table->uuid('id')->primary()->default(DB::raw('uuid()'));
-            $table->uuid('course_id');
+            $table->id();
+            $table->foreignId('course_id');
+            $table->foreignId('user_id');
+            $table->foreignId('review_user_id');
             $table->integer('rating');
-            $table->uuid('user_id');
-            $table->uuid('review_user_id');
             $table->text('text');
-            $table->foreign('course_id')->references('id')->on('courses');
-            $table->foreign('review_user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
