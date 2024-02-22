@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CourseController;
 use App\Http\Middleware\VerifyCsrfToken;
@@ -38,6 +39,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+<<<<<<< HEAD
 Auth::routes([
     'verify' => true
 ]);
@@ -66,3 +68,9 @@ Route::post('/email/verification-notification', function (Request $request) {
  
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+=======
+Route::get('home', function () {
+    $user = Auth::user();
+    return $user->email;
+});
+>>>>>>> 71329d2b024dcef7d41cf681f5c63d817da349e0
