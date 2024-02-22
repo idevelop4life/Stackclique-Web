@@ -15,12 +15,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('chats', function (Blueprint $table) {
-            $table->uuid('id')->primary()->default(DB::raw('uuid()'));
-            $table->uuid('sender_id');
+            $table->id();
+            $table->foreignId('sender_id')->nullable();
+            $table->foreignId('channel_id')->nullable();
             $table->text('message');
-            $table->uuid('channel_id');
-            $table->foreign('sender_id')->references('id')->on('users');
-            $table->foreign('channel_id')->references('id')->on('channels');
             $table->timestamps();
         });
     }

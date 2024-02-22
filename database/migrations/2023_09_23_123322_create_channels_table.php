@@ -15,7 +15,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('channels', function (Blueprint $table) {
-            $table->uuid('id')->primary()->default(DB::raw('uuid()'));
+            $table->id();
+            $table->uuid();
             $table->string('name');
             $table->timestamps();
         });

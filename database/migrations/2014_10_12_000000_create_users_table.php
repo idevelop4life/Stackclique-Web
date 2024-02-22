@@ -15,7 +15,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->uuid('id')->primary()->default(DB::raw('uuid()'));
+            // $table->uuid('id')->primary()->default(DB::raw('uuid()'));
+            $table->id();
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
@@ -23,9 +24,9 @@ return new class extends Migration
             $table->string('username')->unique();
             $table->string('profile_photo')->nullable();
             $table->string('cover_photo')->nullable();
-            $table->integer('level')->default(0);
-            $table->uuid('channel_id')->nullable();
-            $table->foreign('channel_id')->references('id')->on('channels');
+            // $table->integer('level')->default(0);
+            $table->enum('level',['beginner','intermidiate','advanced'])->default('beginner');
+            $table->foreignId('channel_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
