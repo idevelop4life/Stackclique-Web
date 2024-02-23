@@ -26,7 +26,6 @@ return new class extends Migration
             $table->string('cover_photo')->nullable();
             // $table->integer('level')->default(0);
             $table->enum('level',['beginner','intermidiate','advanced'])->default('beginner');
-            $table->foreignId('channel_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
