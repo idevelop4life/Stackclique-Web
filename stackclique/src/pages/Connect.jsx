@@ -5,7 +5,7 @@ import { useState } from "react";
 import DirectMessage from "../components/ChatComponents/DirectMessage";
 import ChannelBar from "../components/ChatComponents/ChannelBar";
 import Search from "../components/ChatComponents/Search";
-import { inboxSchema, msgSchema } from "../utils/messageSchema";
+import { inboxSchema } from "../utils/messageSchema";
 
 export default function Connect() {
     const [curChannel, setChannel] = useState(0);
