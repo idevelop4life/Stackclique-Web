@@ -30,3 +30,19 @@ export const SignUpSchema = Yup.object({
         .min(5, "Password is too short - should be 5 chars minimum.")
         .matches(/[a-zA-Z\d]/, "Password can only contain Latin letters."),
 });
+
+export const ContactUsSchema = Yup.object({
+    firstName: Yup.string()
+        .min(2, "Too Short!")
+        .max(25, "Too Long!")
+        .required("Required"),
+    lastName: Yup.string().min(2, "Too Short!").max(25, "Too Long!"),
+    email: Yup.string().email("Invalid email addresss`").required("Required"),
+    phoneNumber: Yup.string()
+        .required("Phone number is required")
+        .matches(
+            /^([0]{1}|\+?[234]{3})([7-9]{1})([0|1]{1})([\d]{1})([\d]{7})$/g,
+            "Invalid phone number",
+        ),
+    message: Yup.string().required(),
+});

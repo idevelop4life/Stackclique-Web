@@ -17,7 +17,7 @@ const tabsData = [
         content: <Categories />,
     },
     {
-        label: "app development",
+        label: "app-development",
         content: <AppDevelopment />,
     },
     {
@@ -51,6 +51,7 @@ import UiUx from "./components/UiUx";
 import CyberSecurity from "./components/CyberSecurity";
 import ProductManagement from "./components/ProductManagment";
 import TechnicalWritting from "./components/TechWriting";
+import { Link } from "react-router-dom";
 
 export default function TopTabs() {
     const [activeTabIndex, setActiveTabIndex] = useState(0);
@@ -58,10 +59,10 @@ export default function TopTabs() {
     return (
         <div>
             <div className="flex items-center justify-center gap-16 space-x-3 border-b">
-                {/* Loop through tab data and render button for each. */}
+                {/* Loop through tab data and render Link for each. */}
                 {tabsData.map((tab, idx) => {
                     return (
-                        <button
+                        <Link
                             key={idx}
                             className={`py-2 border-b-4 transition-colors duration-300 uppercase  ${
                                 idx === activeTabIndex
@@ -72,7 +73,7 @@ export default function TopTabs() {
                             onClick={() => setActiveTabIndex(idx)}
                         >
                             {tab.label}
-                        </button>
+                        </Link>
                     );
                 })}
             </div>

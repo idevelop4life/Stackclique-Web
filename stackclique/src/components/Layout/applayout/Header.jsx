@@ -9,7 +9,7 @@ import { navLinks } from "./navigationLinks";
 import { useAppStore } from "../../../store/useAppStore";
 import { Avatar } from "../../ui";
 import styles from "../../../styles/css/app.module.css";
-import logoImg from "../../../assets/svg/logo.svg"
+import logoImg from "../../../assets/svg/logo.svg";
 
 export default function Header() {
     const [mobileNavVisible, setMobileNavVisible] = useState(false);

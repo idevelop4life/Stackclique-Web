@@ -23,8 +23,8 @@ export default function Contact() {
             <div className="bg-gradient-to-r from-[#C326B3] via-[#5D1656] to-[#5C0052] w-full h-60 flex items-center justify-center">
                 <p className="text-white text-4xl">Stackclique Help Centre </p>
             </div>
-            <div className="flex flex-col w-full gap-6 mt-6 lg:max-w-[30%] md:max-w-[50%] mx-auto px-6">
-                <h1 className="flex items-center justify-center text-3xl">
+            <div className="flex flex-col w-full gap-6 mt-6 xl:max-w-[30%] md:max-w-[50%] mx-auto px-6">
+                <h1 className="flex items-center justify-center md:text-3xl text-2xl">
                     Hello! How May We Help You
                 </h1>
                 <form
@@ -95,6 +95,7 @@ export default function Contact() {
                         onChange={formik.handleChange}
                         value={formik.values.message}
                         rows="6"
+                        cols={72}
                     />
                     {formik.errors.message ? (
                         <span className=" text-red">
@@ -102,13 +103,15 @@ export default function Contact() {
                         </span>
                     ) : null}
                     <Button
-                        className="bg-gradient-to-r from-[#C326B3] via-[#5D1656] to-[#5C0052] w-full flex items-center justify-center text-white text-2xl py-4 rounded-2xl"
-                        disabled={
-                            Object.entries(formik.errors).length > 0 ||
-                            !formik.values.email ||
-                            !formik.values.password ||
-                            !formik.values.username
-                        }
+                        className="bg-gradient-to-r from-[#C326B3] via-[#5D1656] to-[#5C0052] p-6 w-full flex items-center justify-center text-white text-2xl py-4 rounded-2xl"
+                        // disabled={
+                        //     Object.entries(formik.errors).length > 0 ||
+                        //     !formik.values.email ||
+                        //     !formik.values.firstName ||
+                        //     !formik.values.lastName ||
+                        //     !formik.values.phone ||
+                        //     !formik.values.message
+                        // }
                         type={"submit"}
                     >
                         Sign Up
