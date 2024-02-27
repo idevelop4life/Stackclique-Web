@@ -93,15 +93,4 @@ export const appDevs = [
         img_url:
             "https://source.unsplash.com/man-in-black-and-gray-suit-action-figure-naSAHDWRNbQ",
     },
-    {
-        tutor: "David Wilson",
-        title: "Spanish Language Crash Course",
-        modules: 7,
-        likes: 112,
-        reviews: 18,
-        duration_hours: 12,
-        students_enrolled: 550,
-        img_url:
-            "https://source.unsplash.com/a-neon-sign-is-lit-up-in-the-dark-PapkdyVWXlU",
-    },
 ];
