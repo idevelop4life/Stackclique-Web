@@ -39,7 +39,7 @@ const SingleSlide = ({ url, id, setActiveIndex, swiper }) => {
                     loading="lazy"
                     width={"1080"}
                     height={"720"}
-                    className="object-fit z-[-100]"
+                    className="object-fit z-[-100] w-full h-[400px]"
                 />
             </div>
             <div className=" flex relative lg:mt-auto mt-auto lg:mb-[15%] mb-auto w-full px-4 md:px-[5rem] lg:px-[7rem] flex-col text-left text-white z-[100] ">

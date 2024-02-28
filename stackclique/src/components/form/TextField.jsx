@@ -1,4 +1,3 @@
-"use client";
 import { useState } from "react";
 import { MdVisibilityOff, MdVisibility } from "react-icons/md";
 export default function TextField({

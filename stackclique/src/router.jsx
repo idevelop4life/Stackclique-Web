@@ -11,6 +11,7 @@ import {
     Message,
 } from "./pages";
 import AppLayout from "./components/Layout/applayout/AppLayout";
+import Contact from "./pages/Contact";
 export const router = createBrowserRouter([
     {
         element: <AppLayout />,
@@ -20,6 +21,7 @@ export const router = createBrowserRouter([
             { path: "/learn", element: <Learn /> },
             { path: "/connect", element: <Connect /> },
             { path: "/chat", element: <Message /> },
+            { path: "/contact", element: <Contact /> },
         ],
     },
     {

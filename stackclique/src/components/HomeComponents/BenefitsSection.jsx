@@ -18,7 +18,7 @@ const benefitsSectionData = [
 
 export default function BenefitsSection() {
     return (
-        <section className="px-4 md:px-[3rem] font-poppins relative h-[42.1875rem] ">
+        <section className="px-4 md:px-[3rem] font-poppins relative lg:h-[42.1875rem] md:h-[50rem] h-screen ">
             <p className="top-0 left-0 w-full text-primary-500">
                 Benefit from a range of features
             </p>
@@ -38,7 +38,7 @@ export default function BenefitsSection() {
                     <>
                         <div
                             key={item.id}
-                            className={`md:w-[14rem] lg:w-[18rem] z-[20] relative ${
+                            className={`md:w-[14rem] lg:w-[18rem] z-[20] relative space-y-6 ${
                                 item.id == 1
                                     ? "md:mb-[2rem]"
                                     : item.id == 2

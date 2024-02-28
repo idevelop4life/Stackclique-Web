@@ -4,7 +4,6 @@ import { Button } from "../components/ui";
 import { TextField } from "../components/form";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import axiosClient from "../axios-client";
 
 export default function Login() {
     const formik = useFormik({
@@ -18,21 +17,18 @@ export default function Login() {
             // handle form submition when submit button is clicked
             console.log(values);
 
-            axios.post('http://localhost:8000/api/signup', values)
+            axios
+                .post("http://localhost:8000/api/signup", values)
 
                 .then(
-                    response => alert(JSON.stringify(response.data))
+                    (response) => alert(JSON.stringify(response.data)),
 
-                    // if this response goes through the dashboard should be shown 
-
-                    )
-                .catch(error => {
-                    console.log("ERROR:: ",error.response.data);
-
-                    });
-
+                    // if this response goes through the dashboard should be shown
+                )
+                .catch((error) => {
+                    console.log("ERROR:: ", error.response.data);
+                });
         },
-
     });
 
     return (

@@ -96,14 +96,3 @@ export default function Connect() {
         </>
     );
 }
-
-{
-    /* <section className="flex relative flex-wrap">
-                <div className="w-[100%] bg-[#b3b6bd] h-[7rem]"></div>
-                <Header users={users} />
-                <section className="w-[100%] h-[50dvh]">
-                    <ChannelList />
-                    <ChatBox />
-                </section>
-            </section> */
-}
