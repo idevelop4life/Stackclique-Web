@@ -12,7 +12,7 @@ export default function Learn() {
                 desc="Acquire More Knowledge And Build any Appropriate Career Skills of your choice with STACKCLIQUE"
             />
             <section className="min-h-screen">
-                <section className="bg-[url('../public/svg/learn-screen-header.svg')] min-h-[12rem] md:min-h-[13rem] w-full flex justify-center">
+                <section className="bg-[url('/svg/learn-screen-header.svg')] min-h-[12rem] md:min-h-[13rem] w-full flex justify-center">
                     <h2 className="text-lg font-bold text-white font-inter mt-auto mb-[2rem] text-[1.5rem] ">
                         Courses
                     </h2>

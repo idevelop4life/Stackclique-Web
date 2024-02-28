@@ -34,10 +34,10 @@ export default function BenefitsSection() {
                     top: "8rem",
                 }}
             >
-                {benefitsSectionData.map((item) => (
+                {benefitsSectionData.map((item, index) => (
                     <>
                         <div
-                            key={item.id}
+                            key={index}
                             className={`md:w-[14rem] lg:w-[18rem] z-[20] relative space-y-6 ${
                                 item.id == 1
                                     ? "md:mb-[2rem]"
