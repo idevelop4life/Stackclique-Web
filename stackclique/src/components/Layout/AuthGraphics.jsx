@@ -9,25 +9,48 @@ function AuthGraphics({ type = "login" }) {
         const title = "Login Account";
         return (
             <>
-                <img src={loginImg} alt={title} className={`${auth_img}`} />
+                <img
+                    src={loginImg}
+                    alt={title}
+                    title={title}
+                    loading="lazy"
+                    width={"300"}
+                    height={"300"}
+                    className={`${auth_img}`}
+                />
             </>
         );
     } else if (type === "signup") {
         const title = "Create Account";
         return (
             <>
-                <img src={signupImg} alt={title} className={`${auth_img}`} />
+                <img
+                    src={signupImg}
+                    alt={title}
+                    title={title}
+                    loading="lazy"
+                    width={"300"}
+                    height={"300"}
+                    className={`${auth_img}`}
+                />
             </>
         );
     } else if (type === "verify") {
         const title = "Verify Your Account";
         return (
             <>
-                <img src={verifyImg} alt={title} className={`${auth_img}`} />
+                <img
+                    src={verifyImg}
+                    alt={title}
+                    title={title}
+                    loading="lazy"
+                    width={"300"}
+                    height={"300"}
+                    className={`${auth_img}`}
+                />
             </>
         );
-    }
-    else {
+    } else {
         return <></>;
     }
 }

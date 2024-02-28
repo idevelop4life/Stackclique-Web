@@ -13,6 +13,10 @@ export default function Avatar({ img, size, bgColor }) {
             <img
                 src={img || AvatarImg}
                 alt="avatar"
+                title="avatar"
+                loading="lazy"
+                width={"80"}
+                height={"80"}
                 className="object-cover w-full h-full"
             />
         </div>

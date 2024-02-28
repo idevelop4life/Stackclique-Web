@@ -12,14 +12,21 @@ function ChatBubble({
     setReply,
     msgId,
     allMsg,
-    user
+    user,
 }) {
     const bubbleType = type ? "send" : "receive";
     return (
         <div className={`${styles.chat_bubble} ${type ? styles.mine : ""}`}>
             {bubbleType === "receive" ? (
                 <span>
-                    <img src={profile?.img || imgSample} alt={profile?.name} />
+                    <img
+                        src={profile?.img || imgSample}
+                        alt={profile?.name}
+                        loading="lazy"
+                        title={profile?.name}
+                        width={"80"}
+                        height={"80"}
+                    />
                 </span>
             ) : (
                 ""

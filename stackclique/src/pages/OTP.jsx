@@ -7,6 +7,7 @@ import AuthGraphics from "../components/Layout/AuthGraphics";
 import "../styles/css/app_root.css";
 import styles from "../styles/css/app.module.css";
 import axios from "axios";
+import MetaTags from "../components/seo/MetaTags";
 
 export default function OTP() {
     const navigate = useNavigate();
@@ -48,6 +49,7 @@ export default function OTP() {
 
     return (
         <>
+            <MetaTags />
             <section
                 className={`col_xxlg_5 col_xlg_5 col_lg_5 col_md_12 col_sm_12`}
             >

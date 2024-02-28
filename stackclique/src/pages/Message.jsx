@@ -10,30 +10,52 @@ import {
     Search,
     CreateMessage,
 } from "../components/ChatComponents";
-import { inboxSchema, msgSchema } from "../utils/messageSchema";
+import { inboxSchema, msgSchema, userAccounts } from "../utils/messageSchema";
+import MetaTags from "../components/seo/MetaTags";
+import { useOutletContext } from "react-router-dom";
 
 function Message() {
-    const [curChannel, setChannel] = useState(0);
-
+    const [person] = useOutletContext();
+    // const [showSidebar, setSidebar] = useState(true)
     const chatInbox = inboxSchema.filter((item) => {
         return item.isGroupChat === true ? false : true;
     });
-
     const [msgModel, setMsgModel] = useState(chatInbox);
-    const [msgInbox, setMsgInbox] = useState(null)
-
+    const [msgInbox, setMsgInbox] = useState(null);
+    const userName = [
+        ...new Set(
+            msgInbox
+                ?.filter((el) => {
+                    return el.user.id !== person.id;
+                })
+                .map((el) => el.user.name),
+        ),
+    ];
     return (
         <>
+            <MetaTags
+                title={
+                    !msgInbox
+                        ? "Messages"
+                        : `${
+                              userName.length > 1
+                                  ? `${userName[0]} and ${userName.length - 1}`
+                                  : `${userName[0]}`
+                          } - Messages`
+                }
+                desc="Connect with other great minds now on Stackclique"
+            />
             <section className="flex relative flex-wrap">
                 <div className="w-[100%] bg-[#b3b6bd] h-[7rem]"></div>
                 <section className="flex relative w-[100%]">
                     <ConnectSideBar
                         customStyle={{
-                            width: 48 + "dvw",
+                            minWidth: 48 + "dvw",
                             backgroundColor: "#d9d9d9",
                             color: "#242424",
                             justifyContent: "center",
                         }}
+                        showSidebar={msgInbox ? false : true}
                     >
                         <div className="flex relative gap-6 items-center mb-[1rem]">
                             <Search

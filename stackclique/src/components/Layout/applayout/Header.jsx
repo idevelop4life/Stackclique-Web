@@ -38,6 +38,9 @@ export default function Header() {
                         src={logoImg}
                         alt="Stackclique Logo"
                         title="Stackclique Logo"
+                        loading="lazy"
+                        width={"340"}
+                        height={"40"}
                     />
                 </Link>
                 <ul className={styles.nav_link}>
@@ -84,7 +87,14 @@ export default function Header() {
                         mobileNavVisible ? "hidden" : "flex"
                     }  items-center justify-center rounded-full lg:hidden bg- w-[1.6rem] h-[1.6rem] `}
                 >
-                    <img src={Menu} alt="menu" />
+                    <img
+                        src={Menu}
+                        alt="menu"
+                        title="menu"
+                        loading="lazy"
+                        width={"24"}
+                        height={"24"}
+                    />
                 </button>
                 {mobileNavVisible && (
                     <MobileNav setMobileNavVisible={setMobileNavVisible} />

@@ -9,6 +9,7 @@ import AuthGraphics from "../components/Layout/AuthGraphics";
 import "../styles/css/app_root.css";
 import styles from "../styles/css/app.module.css";
 import SocialRedirect from "../components/ui/SocialRedirect";
+import MetaTags from "../components/seo/MetaTags";
 
 export default function Login() {
     const navigate = useNavigate();
@@ -68,6 +69,9 @@ export default function Login() {
 
     return (
         <>
+            <MetaTags
+                title={`Log into your Stackclique account`}
+            />
             <section
                 className={`col_xxlg_5 col_xlg_5 col_lg_5 col_md_12 col_sm_12`}
             >

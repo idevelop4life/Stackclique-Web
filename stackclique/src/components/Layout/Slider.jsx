@@ -16,10 +16,10 @@ import { FaAngleLeft } from "react-icons/fa";
 
 export default function Slider() {
     const slides = [
-        <img src={pic1} alt="" key={1} />,
-        <img src={pic2} alt="" key={2} />,
-        <img src={pic3} alt="" key={3} />,
-        <img src={pic4} alt="" key={4} />,
+        <img src={pic1} alt="slider" title="slider" key={1} />,
+        <img src={pic2} alt="slider" title="slider" key={2} />,
+        <img src={pic3} alt="slider" title="slider" key={3} />,
+        <img src={pic4} alt="slider" title="slider" key={4} />,
     ];
 
     return (

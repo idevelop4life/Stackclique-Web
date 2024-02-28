@@ -75,7 +75,7 @@ const FirstCard = () => {
             </div>
 
             <span className="absolute -top-8 -right-6 ">
-                <img src={Shield} height={50} width={50} alt="shield icon" />
+                <img src={Shield} height={50} width={50} alt="shield icon" title="protection" loading="lazy" />
             </span>
         </div>
     );

@@ -74,7 +74,12 @@ function PreviewMessage({ msg, customStyles, customClass, setMessage }) {
 function Inbox({ profile, text, timestamp, msg, sender, click }) {
     return (
         <div className={styles.msg_inbox} onClick={click}>
-            <img src={imgSample} alt="" />
+            <img
+                src={imgSample}
+                alt={profile?.name}
+                title={profile?.name}
+                loading="lazy"
+            />
             <div className={styles.inbox_detail}>
                 <h4>{profile?.name || "Unnamed Dev"}</h4>
                 <p className="flex items-center">
