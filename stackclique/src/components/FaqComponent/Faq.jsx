@@ -95,60 +95,65 @@ const Faq = () => {
 
     return (
         <>
-        <div className="xl:w-[60%] md:w-[80%] w-full mt-8 p-4 mx-auto">
-            <div className="md:flex  gap-20 md:my-20 my-8">
-                <div>
-                    <h1 className="text-3xl font-bold my-10">
-                        What Can We help you find ?
-                    </h1>
-                    <div className="relative flex items-center">
-                        <input
-                            type="text"
-                            placeholder="Ask us anything"
-                            className="p-2 pl-8 pr-4 border-none border-gray-300 w-full hover:outline-[#7E0772] outline-none rounded-lg"
-                            onChange={(e) => setSearchTerm(e.target.value)}
-                        />
-                        <div className="absolute left-2 top-3 text-gray-400 text-xl ">
-                            <CiSearch />
+            <div className="xl:w-[60%] md:w-[80%] w-full mt-8 p-4 mx-auto">
+                <div className="md:flex  gap-20 md:my-20 my-8">
+                    <div>
+                        <h1 className="text-3xl font-bold my-10">
+                            What Can We help you find ?
+                        </h1>
+                        <div className="relative flex items-center">
+                            <input
+                                type="text"
+                                placeholder="Ask us anything"
+                                className="p-2 pl-8 pr-4 border-none border-gray-300 w-full hover:outline-[#7E0772] outline-none rounded-lg"
+                                onChange={(e) => setSearchTerm(e.target.value)}
+                            />
+                            <div className="absolute left-2 top-3 text-gray-400 text-xl ">
+                                <CiSearch />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="flex relative">
+                        <div className="absolute -top-10 -left-6 md:block hidden">
+                            <img
+                                src={faqImage1}
+                                alt="question"
+                                title="question"
+                                loading="lazy"
+                                className="xl:w-28 xl:h-28 lg:h-20 lg:w-20 md:w-16 md:h-16 w-10 h-10"
+                            />
+                        </div>
+                        <div className="bg-[#edd7ea] rounded-tr-full rounded-tl-full rounded-br-sm rounded-bl-2xl md:block hidden">
+                            <img
+                                src={faqImage2}
+                                alt="question"
+                                title="question"
+                                loading="lazy"
+                                className="md:w-[300px] w-[100px] h-auto z-10"
+                            />
                         </div>
                     </div>
                 </div>
 
-                <div className="flex relative">
-                    <div className="absolute -top-10 -left-6 md:block hidden">
-                        <img
-                            src={faqImage1}
-                            alt="question"
-                            className="xl:w-28 xl:h-28 lg:h-20 lg:w-20 md:w-16 md:h-16 w-10 h-10"
-                        />
-                    </div>
-                    <div className="bg-[#edd7ea] rounded-tr-full rounded-tl-full rounded-br-sm rounded-bl-2xl md:block hidden">
-                        <img
-                            src={faqImage2}
-                            alt="question"
-                            className="md:w-[300px] w-[100px] h-auto z-10"
-                        />
-                    </div>
-                </div>
+                {filteredAccordionItems.length > 0 ? (
+                    filteredAccordionItems.map((item, index) => (
+                        <>
+                            <AccordionItem
+                                key={index}
+                                className="grid grid-cols-2"
+                                title={item.title}
+                                content={item.content}
+                            />
+                        </>
+                    ))
+                ) : (
+                    <p>
+                        Sorry, we couldn&apos;t find any answer for your
+                        question.
+                    </p>
+                )}
             </div>
-
-            {filteredAccordionItems.length > 0 ? (
-                filteredAccordionItems.map((item, index) => (
-                    <>
-                        <AccordionItem
-                            key={index}
-                            className="grid grid-cols-2"
-                            title={item.title}
-                            content={item.content}
-                        />
-                    </>
-                ))
-            ) : (
-                <p>
-                    Sorry, we couldn&apos;t find any answer for your question.
-                </p>
-            )}
-        </div>
         </>
     );
 };

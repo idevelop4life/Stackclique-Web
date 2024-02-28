@@ -44,7 +44,14 @@ export default function AboutOurApp() {
             </p>
             <div className="relative w-full flex flex-col-reverse md:flex-row gap-4 mt-[3.75rem] justify-evenly">
                 <div className="self-center">
-                    <img src={MobileAppScreen} alt="" />
+                    <img
+                        src={MobileAppScreen}
+                        alt="mobile preview"
+                        title="mobile preview"
+                        loading="lazy"
+                        width={"360"}
+                        height={"530"}
+                    />
                 </div>
 
                 <div className="flex flex-col justify-evenly md:w-1/2 gap-y-4 md:gap-y-4 font-inter ">

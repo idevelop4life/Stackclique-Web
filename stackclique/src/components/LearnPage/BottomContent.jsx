@@ -33,14 +33,18 @@ export default function BottomContent() {
                 <Link to={"#"}>
                     <img
                         src={PlayStoreLogo}
-                        alt="play store logo"
+                        alt="playstore logo"
+                        title="playstore logo"
+                        loading="lazy"
                         className="w-auto max-h-[2.5rem]"
                     />
                 </Link>
                 <Link to={"#"}>
                     <img
                         src={AppStoreLogo}
-                        alt="play store logo"
+                        alt="app store logo"
+                        title="app store logo"
+                        loading="lazy"
                         className="w-auto max-h-[2.5rem]"
                     />
                 </Link>

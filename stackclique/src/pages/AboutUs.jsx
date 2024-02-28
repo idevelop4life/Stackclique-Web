@@ -6,6 +6,7 @@ import AboutUsImg3 from "../assets/pics/about-us-3.webp";
 // import { ReactComponent as Idea } from "../assets/svg/idea.svg";
 // import PersonalGrowth from "../assets/svg/personal-growth.svg";
 import Faq from "../components/FaqComponent/Faq";
+import MetaTags from "../components/seo/MetaTags";
 
 const aboutUsDataWithAvatar = [
     {
@@ -54,41 +55,45 @@ const aboutUsDataWithAvatar = [
 
 export default function AboutUs() {
     return (
-        <section className="px-4 lg:px-[7.6rem] py-8">
-            <div className="flex flex-col gap-[7rem]">
-                {aboutUsDataWithAvatar.map((item) => {
-                    return (
-                        <article
-                            key={item.id}
-                            className={`flex  flex-col gap-2 ${
-                                item.id % 2 == 0
-                                    ? "md:flex-row-reverse items-center"
-                                    : "md:flex-row items-center"
-                            } `}
-                        >
-                            <div className="px-4 md:w-1/2">
-                                <h3 className="text-xs md:text-sm font-[600] font-poppins">
-                                    {item.subtitle}
-                                </h3>
-                                <h2 className="text-lg md:text-xl font-[600] font-poppins">
-                                    {item.title}
-                                </h2>
-                                <p className="text-sm md:text-md font-inter">
-                                    {item.body}
-                                </p>
-                            </div>
-                            <div className="relative flex items-center justify-center md:w-1/2 ">
-                                <img
-                                    src={item.image}
-                                    className="h-[15rem] w-[15rem] md:h-[20rem] md:w-[20rem] rounded-full object-cover"
-                                    alt=""
-                                />
-                            </div>
-                        </article>
-                    );
-                })}
+        <>
+            <MetaTags />
+            <section className="px-4 lg:px-[7.6rem] py-8">
+                <div className="flex flex-col gap-[7rem]">
+                    {aboutUsDataWithAvatar.map((item) => {
+                        return (
+                            <article
+                                key={item.id}
+                                className={`flex  flex-col gap-2 ${
+                                    item.id % 2 == 0
+                                        ? "md:flex-row-reverse items-center"
+                                        : "md:flex-row items-center"
+                                } `}
+                            >
+                                <div className="px-4 md:w-1/2">
+                                    <h3 className="text-xs md:text-sm font-[600] font-poppins">
+                                        {item.subtitle}
+                                    </h3>
+                                    <h2 className="text-lg md:text-xl font-[600] font-poppins">
+                                        {item.title}
+                                    </h2>
+                                    <p className="text-sm md:text-md font-inter">
+                                        {item.body}
+                                    </p>
+                                </div>
+                                <div className="relative flex items-center justify-center md:w-1/2 ">
+                                    <img
+                                        src={item.image}
+                                        className="h-[15rem] w-[15rem] md:h-[20rem] md:w-[20rem] rounded-full object-cover"
+                                        alt={item.title}
+                                        title={item.title}
+                                        loading="lazy"
+                                    />
+                                </div>
+                            </article>
+                        );
+                    })}
 
-                {/* <section>
+                    {/* <section>
                     <h3 className="text-center font-poppins text-lg md:text-xl font-[600]">
                         Title For this Text And Title for this text
                     </h3>
@@ -112,24 +117,25 @@ export default function AboutUs() {
                     </div>
                 </section> */}
 
-                <section className="flex flex-col gap-6">
-                    <h2 className="text-lg md:text-2xl font-[600] font-poppins">
-                        Work With Us to contribute to the Community
-                    </h2>
-                    <p className="md:w-[24.35rem] text-sm text-darkGrey">
-                        Why kept very ever home mrs. Considered sympathize ten
-                        uncommonly occasional assistance sufficient not. Letter
-                        of on become he tended active enable to.Why kept very
-                        ever home mrs. Considered sympathize ten uncommonly
-                        occasional assistance sufficient not.{" "}
-                    </p>
+                    <section className="flex flex-col gap-6">
+                        <h2 className="text-lg md:text-2xl font-[600] font-poppins">
+                            Work With Us to contribute to the Community
+                        </h2>
+                        <p className="md:w-[24.35rem] text-sm text-darkGrey">
+                            Why kept very ever home mrs. Considered sympathize
+                            ten uncommonly occasional assistance sufficient not.
+                            Letter of on become he tended active enable to.Why
+                            kept very ever home mrs. Considered sympathize ten
+                            uncommonly occasional assistance sufficient not.{" "}
+                        </p>
 
-                    <Button width="small" rounded="small">
-                        <a href="/contact">CONTACT US </a>
-                    </Button>
-                </section>
-                <Faq />
-            </div>
-        </section>
+                        <Button width="small" rounded="small">
+                            <a href="/contact">CONTACT US </a>
+                        </Button>
+                    </section>
+                    <Faq />
+                </div>
+            </section>
+        </>
     );
 }

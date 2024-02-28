@@ -263,7 +263,33 @@
     }
 }
 
+.sidebar_backdrop {
+    display: none;
+    z-index: 39;
+
+    @include responsive(mobile) {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba($color: $accent, $alpha: 0.1);
+        backdrop-filter: blur(2px);
+        transition: display 1s ease;
+
+        &.hide {
+            display: none;
+        }
+    }
+}
+
 .channel_sidebar {
+    --header-size: 1.5rem;
+    @include responsive(mobile) {
+        --header-size: 1.25rem;
+    }
+    z-index: 40;
     display: flex;
     flex-direction: column;
     padding: 1.75rem 2.75rem;
@@ -275,21 +301,32 @@
     gap: 1.5rem;
 
     @include responsive(mobile) {
-        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100dvw;
+        height: 100dvh;
+        padding: 1.5rem 1.25rem;
+        min-height: clamp(45dvh, 50dvh, 60dvh);
+        transition: left 2s ease;
+
+        &.hide {
+            left: -100%;
+        }
     }
 
     .channel_body {
         display: flex;
         flex-direction: column;
         gap: 0.66rem;
-        
+
         div {
             cursor: pointer;
         }
 
         h2 {
             font-family: Inter, "Poppins", sans-serif;
-            font-size: 1.5rem;
+            font-size: var(--header-size);
             font-weight: 600;
             line-height: 24px;
             letter-spacing: 0em;
@@ -304,7 +341,10 @@
             font-weight: 500;
             font-family: Inter, "Poppins", sans-serif;
             line-height: 24px;
-            letter-spacing: 0em;
+
+            @include responsive(mobile) {
+                font-size: 1rem;
+            }
 
             &.more {
                 font-size: 0.875rem;
@@ -335,6 +375,7 @@
 }
 
 .msg_container {
+    z-index: 35;
     position: relative;
     display: flex;
     flex-wrap: wrap;
@@ -343,6 +384,7 @@
     padding: 1rem clamp(2rem, 3rem, 4rem);
 
     @include responsive(mobile) {
+        // display: none;
         padding: 0.25rem clamp(0.4rem, 0.5rem, 0.75rem);
     }
 }

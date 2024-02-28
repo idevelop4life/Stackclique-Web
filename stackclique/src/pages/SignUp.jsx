@@ -12,6 +12,7 @@ import AuthGraphics from "../components/Layout/AuthGraphics";
 import "../styles/css/app_root.css";
 import styles from "../styles/css/app.module.css";
 import SocialRedirect from "../components/ui/SocialRedirect";
+import MetaTags from "../components/seo/MetaTags";
 // import axiosClient from "../axios-client";
 
 export default function SignUp() {
@@ -57,6 +58,7 @@ export default function SignUp() {
 
     return (
         <>
+            <MetaTags title={`Create your Stackclique account`} />
             <section
                 className={`col_xxlg_5 col_xlg_4 col_lg_5 col_md_12 col_sm_12`}
             >
@@ -178,4 +180,3 @@ export default function SignUp() {
         </>
     );
 }
-

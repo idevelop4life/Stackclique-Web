@@ -21,7 +21,9 @@ export default function CourseCard({
                 <div className="h-[13rem] relative w-full">
                     <img
                         src={img_url}
-                        alt=""
+                        alt={title}
+                        title={title}
+                        loading="lazy"
                         className="object-cover w-full h-full"
                     />
                 </div>

@@ -673,7 +673,30 @@ h5 {
   margin-left: 1.5rem;
 }
 
+.sidebar_backdrop {
+  display: none;
+  z-index: 39;
+}
+@media (max-width: 767px) {
+  .sidebar_backdrop {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(239, 239, 239, 0.1);
+    backdrop-filter: blur(2px);
+    transition: display 1s ease;
+  }
+  .sidebar_backdrop.hide {
+    display: none;
+  }
+}
+
 .channel_sidebar {
+  --header-size: 1.5rem;
+  z-index: 40;
   display: flex;
   flex-direction: column;
   padding: 1.75rem 2.75rem;
@@ -686,7 +709,22 @@ h5 {
 }
 @media (max-width: 767px) {
   .channel_sidebar {
-    display: none;
+    --header-size: 1.25rem;
+  }
+}
+@media (max-width: 767px) {
+  .channel_sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100dvw;
+    height: 100dvh;
+    padding: 1.5rem 1.25rem;
+    min-height: 50dvh;
+    transition: left 2s ease;
+  }
+  .channel_sidebar.hide {
+    left: -100%;
   }
 }
 .channel_sidebar .channel_body {
@@ -699,7 +737,7 @@ h5 {
 }
 .channel_sidebar .channel_body h2 {
   font-family: Inter, "Poppins", sans-serif;
-  font-size: 1.5rem;
+  font-size: var(--header-size);
   font-weight: 600;
   line-height: 24px;
   letter-spacing: 0em;
@@ -713,7 +751,11 @@ h5 {
   font-weight: 500;
   font-family: Inter, "Poppins", sans-serif;
   line-height: 24px;
-  letter-spacing: 0em;
+}
+@media (max-width: 767px) {
+  .channel_sidebar .channel_body a {
+    font-size: 1rem;
+  }
 }
 .channel_sidebar .channel_body a.more {
   font-size: 0.875rem;
@@ -738,6 +780,7 @@ h5 {
 }
 
 .msg_container {
+  z-index: 35;
   position: relative;
   display: flex;
   flex-wrap: wrap;
