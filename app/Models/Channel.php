@@ -9,8 +9,13 @@ use App\Models\User;
 class Channel extends Model
 {
     use HasFactory;
-    public $guarded = [];
+    // public $guarded = [];
 
+    protected $fillable = [
+        'name',
+        'user_id'
+    ];
+    
     public function user(){
         $this->hasMany(User::class);
     }

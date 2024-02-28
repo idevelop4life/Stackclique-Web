@@ -14,11 +14,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('channels', function (Blueprint $table) {
+        Schema::create('course_modules', function (Blueprint $table) {
             $table->id();
-            // $table->uuid();
-            $table->foreignId('user_id')->nullable();
-            $table->string('name');
+            $table->foreignId('course_id');
+            $table->string('name', 255);
+            $table->string('title', 255);
+            $table->text('content');
+            $table->string('video_url', 255);
+            $table->string('cover_photo', 255);
+            $table->string('profile_photo', 255);
             $table->timestamps();
         });
     }
@@ -30,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('channels');
+        Schema::dropIfExists('course_modules');
     }
 };

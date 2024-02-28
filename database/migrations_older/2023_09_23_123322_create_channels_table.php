@@ -16,8 +16,7 @@ return new class extends Migration
     {
         Schema::create('channels', function (Blueprint $table) {
             $table->id();
-            // $table->uuid();
-            $table->foreignId('user_id')->nullable();
+            $table->uuid();
             $table->string('name');
             $table->timestamps();
         });

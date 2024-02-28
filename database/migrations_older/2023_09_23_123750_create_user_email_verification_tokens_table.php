@@ -14,11 +14,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('channels', function (Blueprint $table) {
+        Schema::create('user_email_verification_tokens', function (Blueprint $table) {
             $table->id();
-            // $table->uuid();
-            $table->foreignId('user_id')->nullable();
-            $table->string('name');
+            $table->string('email', 255)->unique();
+            $table->integer('otp');
+            $table->boolean('verified')->default(false);
+            $table->timestamp('expiredAt')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('channels');
+        Schema::dropIfExists('user_email_verification_tokens');
     }
 };

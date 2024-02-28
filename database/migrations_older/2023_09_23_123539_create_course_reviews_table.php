@@ -14,11 +14,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('channels', function (Blueprint $table) {
+        Schema::create('course_reviews', function (Blueprint $table) {
             $table->id();
-            // $table->uuid();
-            $table->foreignId('user_id')->nullable();
-            $table->string('name');
+            $table->foreignId('course_id');
+            $table->foreignId('user_id');
+            $table->foreignId('review_user_id');
+            $table->integer('rating');
+            $table->text('text');
             $table->timestamps();
         });
     }
@@ -30,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('channels');
+        Schema::dropIfExists('course_reviews');
     }
 };

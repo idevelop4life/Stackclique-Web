@@ -12,8 +12,9 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+// use Illuminate\Http\Request;
 
-class AuthController extends Controller
+class OldAuthController extends Controller
 {
 
     // A static function to make a verf code and pin
@@ -35,7 +36,8 @@ class AuthController extends Controller
         $validatedData = $req->validate([
             'username' => 'required|string|unique:users',
             'email' => 'required|email|unique:users',
-            'level' => 'sometimes',
+            // 'level' => 'sometimes',
+            'phone_number' => 'required|integer|unique:users',
             'password' => 'required|string|min:6',
         ]);
 
@@ -48,12 +50,13 @@ class AuthController extends Controller
                 'name' => $validatedData['username'],
                 'username' => $validatedData['username'],
                 'email' => $validatedData['email'],
+                'phone_number' => $validatedData['phone_number'],
                 'password' => bcrypt($validatedData['password']),
                 'verf_pin' => $verf_code,
             ]);
 
             event(new Registered($user));
-
+            
             Auth::login($user);
 
             // Make the token to login the user
@@ -193,19 +196,19 @@ class AuthController extends Controller
         }
 
 
-        // dd($user);
+        dd($user);
 
-        // if (User::where('verf_pin',$req->otp)) {
+        if (User::where('verf_pin',$req->otp)) {
 
 
-        //     $user->email_verified_at = now()->format('Y-m-d');
-        //     $user->save();
+            $user->email_verified_at = now()->format('Y-m-d');
+            $user->save();
 
-        //   return response()->json(['user'=> $user]);
+          return response()->json(['user'=> $user]);
 
-        // } else {
+        } else {
 
-        // }
+        }
 
     }
 }
