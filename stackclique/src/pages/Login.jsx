@@ -3,7 +3,7 @@ import { loginSchema } from "../components/form/validationRegex";
 import { Button } from "../components/ui";
 import { CheckButton, TextField } from "../components/form";
 import { Link } from "react-router-dom";
-import { json, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import AuthGraphics from "../components/Layout/AuthGraphics";
 import "../styles/css/app_root.css";
@@ -36,11 +36,13 @@ export default function Login() {
 
                         // This contains info of the user that jus logged in and the login message
                         const loggedinMessage = JSON.stringify(response.data);
+                        console.log(loggedinMessage.response);
 
                         navigate("/verification");
                     } else {
                         // Error message
                         const errorStat = JSON.stringify(response.status);
+                        console.log(errorStat.error.status);
                     }
                 })
                 .catch((error) => {
@@ -151,4 +153,3 @@ export default function Login() {
         </>
     );
 }
-

@@ -4,6 +4,7 @@ export const appDevs = [
         title: "Mobile App Development with Flutter",
         modules: 11,
         likes: 250,
+        category: "app-development",
         reviews: 36,
         duration_hours: 45,
         students_enrolled: 1300,
@@ -14,12 +15,40 @@ export const appDevs = [
         title: "Web Development 101",
         modules: 12,
         likes: 248,
+        category: "web-development",
         reviews: 35,
         duration_hours: 30,
         students_enrolled: 1200,
         img_url:
             "https://source.unsplash.com/person-using-black-laptop-computer-jKL2PvKN8Q0",
     },
+
+    {
+        tutor: "David Wilson",
+        title: "Ui/Ux Design",
+        modules: 7,
+        likes: 112,
+        category: "ui-ux",
+        reviews: 18,
+        duration_hours: 12,
+        students_enrolled: 550,
+        img_url:
+            "https://source.unsplash.com/a-neon-sign-is-lit-up-in-the-dark-PapkdyVWXlU",
+    },
+
+    {
+        tutor: "John Smith",
+        title: "Product Management",
+        modules: 12,
+        likes: 248,
+        category: "product-management",
+        reviews: 35,
+        duration_hours: 30,
+        students_enrolled: 1200,
+        img_url:
+            "https://source.unsplash.com/person-using-black-laptop-computer-jKL2PvKN8Q0",
+    },
+
     {
         tutor: "Emily Davis",
         title: "Data Science Fundamentals",
@@ -63,16 +92,5 @@ export const appDevs = [
         students_enrolled: 1800,
         img_url:
             "https://source.unsplash.com/man-in-black-and-gray-suit-action-figure-naSAHDWRNbQ",
-    },
-    {
-        tutor: "David Wilson",
-        title: "Spanish Language Crash Course",
-        modules: 7,
-        likes: 112,
-        reviews: 18,
-        duration_hours: 12,
-        students_enrolled: 550,
-        img_url:
-            "https://source.unsplash.com/a-neon-sign-is-lit-up-in-the-dark-PapkdyVWXlU",
     },
 ];
