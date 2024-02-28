@@ -7,8 +7,10 @@ import "./index.css";
 import { Toaster } from "react-hot-toast";
 import { ToastContainer, Zoom } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { HelmetProvider } from "react-helmet-async";
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
+        <HelmetProvider>
         <RouterProvider router={router} />
         <Toaster />
         <ToastContainer
@@ -17,5 +19,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             hideProgressBar
             theme="dark"
         />
+        </HelmetProvider>
     </React.StrictMode>,
 );

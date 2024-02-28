@@ -309,7 +309,7 @@ function Members({ users }) {
                         return (
                             <li key={key} className={styles.member_item}>
                                 <span>
-                                    <img src={el.img} alt={`${el.name}`} />
+                                    <img src={el.img} alt={`${el.name}`} loading="lazy" title={el.name} />
                                 </span>
                                 {el.name}
                             </li>

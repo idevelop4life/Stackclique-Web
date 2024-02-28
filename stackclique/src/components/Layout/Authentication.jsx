@@ -37,6 +37,9 @@ export default function Authentication() {
                         src={logo}
                         alt="Stackclique Logo"
                         title="Stackclique Logo"
+                        loading="lazy"
+                        width={"337"}
+                        height={"41"}
                     />
                 </Link>
                 <section className={styles.auth_container}>

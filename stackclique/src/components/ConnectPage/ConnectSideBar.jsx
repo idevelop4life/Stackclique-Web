@@ -7,10 +7,12 @@ export default function ConnectSideBar({
     customStyle = {},
     customClass = "",
     children,
+    showSidebar,
 }) {
+    const isHidden = !showSidebar ? `${styles.hide}`: "";
     return (
         <aside
-            className={`${styles.channel_sidebar} ${customClass}`}
+            className={`${styles.channel_sidebar} ${customClass} ${isHidden}`}
             style={customStyle}
         >
             {children}

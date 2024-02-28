@@ -15,13 +15,16 @@ export default function CourseCard({
     students_enrolled,
 }) {
     return (
+        <div>
             <div
                 className={`${styles.course_card} rounded-sm lg:hover:shadow-2xl transition-shadow duration-200`}
             >
                 <div className="h-[13rem] relative w-full">
                     <img
                         src={img_url}
-                        alt=""
+                        alt={title}
+                        title={title}
+                        loading="lazy"
                         className="object-cover w-full h-full"
                     />
                 </div>
@@ -86,5 +89,6 @@ export default function CourseCard({
                     Enroll Course
                 </Button>
             </div>
+        </div>
     );
 }

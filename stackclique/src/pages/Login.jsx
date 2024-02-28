@@ -3,12 +3,13 @@ import { loginSchema } from "../components/form/validationRegex";
 import { Button } from "../components/ui";
 import { CheckButton, TextField } from "../components/form";
 import { Link } from "react-router-dom";
-import { json, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import AuthGraphics from "../components/Layout/AuthGraphics";
 import "../styles/css/app_root.css";
 import styles from "../styles/css/app.module.css";
 import SocialRedirect from "../components/ui/SocialRedirect";
+import MetaTags from "../components/seo/MetaTags";
 
 export default function Login() {
     const navigate = useNavigate();
@@ -36,11 +37,13 @@ export default function Login() {
 
                         // This contains info of the user that jus logged in and the login message
                         const loggedinMessage = JSON.stringify(response.data);
+                        console.log(loggedinMessage.response);
 
                         navigate("/verification");
                     } else {
                         // Error message
                         const errorStat = JSON.stringify(response.status);
+                        console.log(errorStat.error.status);
                     }
                 })
                 .catch((error) => {
@@ -66,6 +69,9 @@ export default function Login() {
 
     return (
         <>
+            <MetaTags
+                title={`Log into your Stackclique account`}
+            />
             <section
                 className={`col_xxlg_5 col_xlg_5 col_lg_5 col_md_12 col_sm_12`}
             >
