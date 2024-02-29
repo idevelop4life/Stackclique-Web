@@ -7,3 +7,4 @@ export { default as Learn } from "./Learn";
 export { default as Connect } from "./Connect";
 export { default as Message } from "./Message";
 export { default as Contact } from "./Contact";
+export { default as LearnDetail } from "./LearnCourse";
