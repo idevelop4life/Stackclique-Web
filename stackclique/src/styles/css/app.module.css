@@ -1294,6 +1294,24 @@ h5 {
   .course .course_outline {
     gap: 1.5rem;
     grid-template-columns: 1fr;
+    margin: 2rem 4%;
+  }
+}
+.course .course_outline .no_mobile {
+  display: block;
+}
+@media (max-width: 767px) {
+  .course .course_outline .no_mobile {
+    display: none;
+  }
+}
+.course .course_outline .no_desktop {
+  display: none;
+}
+@media (max-width: 767px) {
+  .course .course_outline .no_desktop {
+    display: block;
+    margin-bottom: 3rem;
   }
 }
 .course .course_outline h2 {
@@ -1302,13 +1320,35 @@ h5 {
   line-height: 34px;
   margin-bottom: 1.5rem;
 }
+.course .course_outline h2 a {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 34px;
+  color: #7e0772;
+  text-decoration: underline;
+}
+.course .course_outline h3,
+.course .course_outline h4 {
+  font-weight: 600;
+}
 .course .course_outline div {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 @media (max-width: 767px) {
   .course .course_outline div {
-    margin-bottom: 0.5rem;
+    margin-bottom: 2.5rem;
   }
+}
+.course .course_outline .feature_list {
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 18px;
+  text-align: left;
 }
 .course .course_outline .checklist {
   margin-inline-start: 2rem;
@@ -1330,7 +1370,6 @@ h5 {
 .course .course_instructor {
   position: relative;
   gap: 3rem;
-  margin: 4rem 7.5%;
 }
 .course .course_instructor h2 {
   font-size: 1.5rem;
@@ -1345,17 +1384,21 @@ h5 {
   margin-bottom: 1.25rem;
 }
 .course .course_instructor .course_instructor_detail {
-  width: 50%;
+  width: 70%;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2.5rem;
   margin-bottom: 3rem;
+  align-items: flex-end;
 }
 @media (max-width: 767px) {
   .course .course_instructor .course_instructor_detail {
     width: 100%;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 .course .course_instructor .course_instructor_detail .instructor_profile {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1378,6 +1421,32 @@ h5 {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%) scale(1.2);
+}
+.course .course_instructor .course_instructor_detail div {
+  display: block;
+}
+.course .course_instructor .course_instructor_detail div span {
+  display: flex;
+  width: 100%;
+  height: 4rem;
+}
+.course .course_instructor .course_instructor_detail div p {
+  font-size: 1rem;
+  font-weight: 400;
+  text-align: left;
+}
+.course .course_instructor .course_instructor_bio {
+  width: 60%;
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 34px;
+  text-align: left;
+  margin-bottom: 3rem;
+}
+@media (max-width: 767px) {
+  .course .course_instructor .course_instructor_bio {
+    width: 100%;
+  }
 }
 
 .course_enroll {
