@@ -655,5 +655,70 @@ h5 {
   color: #727272;
   font-variant-numeric: tabular-nums;
 }
+.dropdown.mini .dropdown_header {
+  position: relative;
+  display: block;
+  background-color: #ffe9fd;
+}
+.dropdown.mini .dropdown_header.open {
+  background-color: rgba(255, 233, 253, 0.7);
+}
+.dropdown.mini .dropdown_header .header_section_detail {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-align: left;
+  margin: 0;
+}
+.dropdown.mini .dropdown_header .header_section_detail span {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: left;
+  margin: 0 0.35rem;
+}
+.dropdown.mini .dropdown_header .header_section_title {
+  display: flex;
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+}
+.dropdown.mini .dropdown_header .header_section_title span {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  right: 1rem;
+  top: 1rem;
+}
+.dropdown.mini .dropdown_header .header_section_title span svg {
+  width: inherit;
+  height: inherit;
+}
+.dropdown.mini .dropdown_content {
+  margin-inline-start: 1.5rem;
+}
+@media (max-width: 767px) {
+  .dropdown.mini .dropdown_content {
+    margin-inline-start: 0.75rem;
+  }
+}
+.dropdown.mini .dropdown_content li {
+  margin: 2rem 0;
+}
+@media (max-width: 767px) {
+  .dropdown.mini .dropdown_content li {
+    margin: 1rem 0;
+  }
+}
+.dropdown.mini .dropdown_content li span {
+  width: 24px;
+  height: 24px;
+  margin-right: 1.25rem;
+}
 
 /*# sourceMappingURL=app_root.css.map */
