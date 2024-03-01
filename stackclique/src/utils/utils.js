@@ -99,9 +99,9 @@ export function timeOfDay(date) {
     return `${clockHr}:${min <= 9 ? "0" + min : min} ${meridiam}`;
 }
 
-export function shortText(text, length = 30, out="") {
+export function shortText(text, length = 30, out = "") {
     if (text.length > length) {
-        return text.slice(0, length)+out;
+        return text.slice(0, length) + out;
     } else {
         return text;
     }
@@ -167,7 +167,21 @@ export function getCurrentTimestamp() {
     return new Date().toISOString();
 }
 
+export function sumCourseTimestamp(item, minute = false) {
+    const sumTime = item
+        ?.map((el) => {
+            return el.timestamp;
+        })
+        ?.reduce((acc, value) => {
+            const [min, sec] = value?.split(":")?.map(Number);
+            const toMin = sec / 60;
+            return acc + (min + toMin);
+        }, 0);
+    const mins = Math.floor(sumTime);
+    const sec = Math.round((sumTime - mins) * 60);
 
+    return minute ? `${mins}` : `${mins}:${sec < 10 ? "0" : ""}${sec}`;
+}
 
 // @desc: For testing purposes
 export function randomTimestamp(start) {

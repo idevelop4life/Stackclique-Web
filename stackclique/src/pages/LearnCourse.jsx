@@ -17,7 +17,6 @@ function LearnCourse() {
     return (
         <>
             <section className={styles.course}>
-                <Hero courses={courses} />
                 <Outline />
             </section>
         </>

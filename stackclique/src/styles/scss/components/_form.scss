@@ -211,7 +211,7 @@
         transition: background-color 1s ease;
 
         &.open {
-        background-color: #bababa;
+            background-color: #bababa;
         }
 
         span {
@@ -261,6 +261,78 @@
                 line-height: 34px;
                 color: $text-span;
                 font-variant-numeric: tabular-nums;
+            }
+        }
+    }
+
+    &.mini {
+        .dropdown_header {
+            position: relative;
+            display: block;
+            background-color: #ffe9fd;
+
+            &.open {
+                background-color: rgba($color: #ffe9fd, $alpha: 0.7);
+            }
+
+            .header_section_detail {
+                display: flex;
+                align-items: center;
+                width: 100%;
+                font-size: 1.125rem;
+                font-weight: 700;
+                letter-spacing: 0.02em;
+                text-align: left;
+                margin: 0;
+
+                span {
+                    display: flex;
+                    align-items: center;
+                    font-size: 1rem;
+                    font-weight: 500;
+                    text-align: left;
+                    margin: 0 0.35rem;
+                }
+            }
+
+            .header_section_title {
+                display: flex;
+                font-size: 1.125rem;
+                font-weight: 500;
+                line-height: 24px;
+                text-align: left;
+
+                span {
+                    position: absolute;
+                    width: 16px;
+                    height: 16px;
+                    right: 1rem;
+                    top: 1rem;
+
+                    svg {
+                        width: inherit;
+                        height: inherit;
+                    }
+                }
+            }
+        }
+
+        .dropdown_content {
+            margin-inline-start: 1.5rem;
+            @include responsive(mobile) {
+                margin-inline-start: 0.75rem;
+            }
+            li {
+                margin: 2rem 0;
+                @include responsive(mobile) {
+                    margin: 1rem 0;
+                }
+
+                span {
+                    width: 24px;
+                    height: 24px;
+                    margin-right: 1.25rem;
+                }
             }
         }
     }
