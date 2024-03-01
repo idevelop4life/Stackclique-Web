@@ -1,11 +1,53 @@
+import { useState } from "react";
 import styles from "../../styles/css/app.module.css";
 
 function CourseInfo() {
+    const { active } = styles;
+    const [activeOption, setActiveOption] = useState(0);
+    const modalOption = [
+        {
+            title: "Course Info",
+        },
+        {
+            title: "Q&A ",
+        },
+        {
+            title: <>Files</>,
+        },
+    ];
     return (
         <section>
-            <CourseOverview />
+            <section>
+                <ul className={styles.option_menu}>
+                    {modalOption.map((value, key) => {
+                        return (
+                            <li
+                                key={key}
+                                className={activeOption === key ? active : ""}
+                                onClick={() => {
+                                    setActiveOption(key);
+                                }}
+                            >
+                                {value.title}
+                            </li>
+                        );
+                    })}
+                </ul>
+            </section>
+            <InfoOption activeItem={activeOption} />
         </section>
     );
+}
+
+function InfoOption({ activeItem }) {
+    switch (activeItem) {
+        case 0:
+            return <CourseOverview />;
+        case 1:
+            return <QA />;
+        case 2:
+            return <Info />;
+    }
 }
 
 function CourseOverview() {
@@ -100,6 +142,14 @@ function CourseOverview() {
             </div>
         </>
     );
+}
+
+function QA() {
+    return <div>Q and A</div>;
+}
+
+function Info() {
+    return <div>Info on the course</div>;
 }
 
 export default CourseInfo;

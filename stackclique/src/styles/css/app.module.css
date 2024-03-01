@@ -123,6 +123,27 @@ h5 {
   margin: 0.5rem auto;
 }
 
+.control_btn {
+  border: none;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  width: 34px;
+  height: 34px;
+}
+@media (max-width: 767px) {
+  .control_btn {
+    padding: 0.333rem;
+    width: 24px;
+    height: 24px;
+  }
+}
+.control_btn:focus, .control_btn:focus-within {
+  border: 1px solid #ffffff;
+}
+
 .auth {
   display: block;
   min-height: 70%;
@@ -1290,17 +1311,17 @@ h5 {
   min-height: 80dvh;
   margin: 3rem 7.5%;
 }
-@media (max-width: 767px) {
+@media (max-width: 1023px) {
   .course .course_outline {
     gap: 1.5rem;
     grid-template-columns: 1fr;
-    margin: 2rem 4%;
+    margin: 3.8rem 4% 2rem 4%;
   }
 }
 .course .course_outline .no_mobile {
   display: block;
 }
-@media (max-width: 767px) {
+@media (max-width: 1023px) {
   .course .course_outline .no_mobile {
     display: none;
   }
@@ -1308,7 +1329,7 @@ h5 {
 .course .course_outline .no_desktop {
   display: none;
 }
-@media (max-width: 767px) {
+@media (max-width: 1023px) {
   .course .course_outline .no_desktop {
     display: block;
     margin-bottom: 3rem;
@@ -1357,6 +1378,27 @@ h5 {
 }
 .course .course_outline .checklist li {
   margin-bottom: 1.25rem;
+}
+.course .course_outline .option_menu {
+  display: flex;
+  gap: 3rem;
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid rgba(184, 184, 184, 0.6);
+}
+.course .course_outline .option_menu li {
+  cursor: pointer;
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.02em;
+  text-align: left;
+  transition: color 150ms ease-in-out, border-bottom 150ms ease-in-out;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid transparent;
+}
+.course .course_outline .option_menu li.active {
+  color: #7e0772;
+  border-bottom: 2px solid #7e0772;
 }
 .course .course_enroll_section {
   position: relative;
