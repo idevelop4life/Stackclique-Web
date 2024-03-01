@@ -1,8 +1,8 @@
 // import { webDevs } from "./constants/webDev";
 import { CourseCard } from "../../ui";
-import { data } from "./constants/data";
+import { courses } from "../coursesTestData";
 export default function WebDevelopment() {
-    const filteredWebDev = data.filter((el) => {
+    const filteredWebDev = courses.filter((el) => {
         el.category === "web-development";
     });
     return (

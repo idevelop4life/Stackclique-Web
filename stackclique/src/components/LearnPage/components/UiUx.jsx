@@ -1,8 +1,8 @@
 import { CourseCard } from "../../ui";
-import { data } from "./constants/data";
+import { courses } from "../coursesTestData";
 // import { uiUx } from "./constants/ux";
 export default function UiUx() {
-    const filteredUiUx = data.filter((el) => {
+    const filteredUiUx = courses.filter((el) => {
         el.category === "ui-ux";
     });
     return (

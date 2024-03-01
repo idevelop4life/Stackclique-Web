@@ -1,9 +1,7 @@
 import { CourseCard } from "../../ui";
-// import { appDevs } from "./constants/appDevs";
-import { data } from "./constants/data";
-// import { useParams } from "react-router-dom";
+import { courses } from "../coursesTestData";
 export default function AppDevelopment() {
-    const filteredAppDev = data.filter((el) => {
+    const filteredAppDev = courses.filter((el) => {
         el.category === "app-development";
     });
     // const params = useParams();

@@ -60,10 +60,10 @@ export default function TopTabs() {
                     );
                 })}
             </div>
-            {/* Show active tab content.
+            Show active tab content.
             <div className="py-4">
                 <p>{tabsData[activeTabIndex].content}</p>
-            </div> */}
+            </div>
         </div>
     );
 }

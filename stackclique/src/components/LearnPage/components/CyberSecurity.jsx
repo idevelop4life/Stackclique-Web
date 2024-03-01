@@ -1,8 +1,8 @@
 import { CourseCard } from "../../ui";
-import { data } from "./constants/data";
+import { courses } from "../coursesTestData";
 // import { cyberSec } from "./constants/cyberSecurity";
 export default function CyberSecurity() {
-    const filteredCyberSec = data.filter((el) => {
+    const filteredCyberSec = courses.filter((el) => {
         el.category === "cyber-security";
     });
     return (

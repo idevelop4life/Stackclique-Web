@@ -1,8 +1,8 @@
 import { CourseCard } from "../../ui";
-import { data } from "./constants/data";
+import { courses } from "../coursesTestData";
 // import { techWritings } from "./constants/techwriting";
 export default function TechnicalWritting() {
-    const filteredTechWriting = data.filter((el) => {
+    const filteredTechWriting = courses.filter((el) => {
         el.category === "technical-writting";
     });
     return (

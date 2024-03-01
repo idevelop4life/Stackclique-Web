@@ -1,11 +1,10 @@
-import React from "react";
 import { useLocation } from "react-router-dom";
-import { data } from "../LearnPage/components/constants/data";
+import { courses } from "../LearnPage/coursesTestData";
 
 const CourseDetails = () => {
     const { pathname } = useLocation();
 
-    const courseDetails = data.find(
+    const courseDetails = courses.filter(
         (el) => pathname === `/${el.title.split(" ").join("-").toLowerCase()}`,
     );
 

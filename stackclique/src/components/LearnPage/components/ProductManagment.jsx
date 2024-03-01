@@ -1,8 +1,8 @@
 import { CourseCard } from "../../ui";
-import { data } from "./constants/data";
+import { courses } from "../coursesTestData";
 // import { productmangs } from "./constants/productmang";
 export default function ProductManagement() {
-    const filteredProdMag = data.filter((el) => {
+    const filteredProdMag = courses.filter((el) => {
         el.category === "product-management";
     });
     return (

@@ -6,7 +6,6 @@ import styles from "../../styles/css/app.module.css";
 import { useNavigate } from "react-router-dom";
 
 export default function CourseCard({
-    _id,
     title,
     img_url,
     modules,
@@ -90,7 +89,7 @@ export default function CourseCard({
                     size={"medium"}
                     className="self-center h-[2.5rem] mt-auto btn btn-rect"
                     onClick={() => {
-                        navigate(`/course/${_id}`);
+                        navigate(`/course/${title}`);
                     }}
                 >
                     Enroll Course

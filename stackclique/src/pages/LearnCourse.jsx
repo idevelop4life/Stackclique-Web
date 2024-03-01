@@ -7,7 +7,7 @@ function LearnCourse() {
     const { courseId } = useParams();
 
     const course = courses.filter((el) => {
-        return el._id === courseId;
+        return el.title === courseId;
     });
 
     if (!course) {
@@ -17,7 +17,7 @@ function LearnCourse() {
     return (
         <>
             <section className={styles.course}>
-                <Hero />
+                <Hero courses={courses} />
                 <Outline />
             </section>
         </>
