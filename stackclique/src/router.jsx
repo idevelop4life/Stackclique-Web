@@ -9,6 +9,7 @@ import {
     Learn,
     Connect,
     Message,
+    LearnDetail,
 } from "./pages";
 import AppLayout from "./components/Layout/applayout/AppLayout";
 import Contact from "./pages/Contact";
@@ -18,10 +19,14 @@ export const router = createBrowserRouter([
         children: [
             { path: "/", element: <Home /> },
             { path: "/about", element: <AboutUs /> },
-            { path: "/learn", element: <Learn /> },
+            {
+                path: "/learn",
+                element: <Learn />,
+            },
             { path: "/connect", element: <Connect /> },
             { path: "/chat", element: <Message /> },
             { path: "/contact", element: <Contact /> },
+            { path: "/course/:courseId", element: <LearnDetail /> },
         ],
     },
     {

@@ -1,5 +1,6 @@
 export const courses = [
     {
+        _id: 1,
         tutor: "John Smith",
         title: "Web Development 101",
         modules: 12,
@@ -11,6 +12,7 @@ export const courses = [
             "https://source.unsplash.com/person-using-black-laptop-computer-jKL2PvKN8Q0",
     },
     {
+        _id: 2,
         tutor: "Emily Davis",
         title: "Data Science Fundamentals",
         modules: 10,
@@ -22,6 +24,7 @@ export const courses = [
             "https://source.unsplash.com/man-in-black-long-sleeve-shirt-using-computer-_Fx34KeqIEw",
     },
     {
+        _id: 3,
         tutor: "Michael Johnson",
         title: "Digital Marketing Masterclass",
         modules: 8,
@@ -33,6 +36,7 @@ export const courses = [
             "https://source.unsplash.com/a-woman-sitting-at-a-table-using-a-laptop-computer-m2lu-XzB8as",
     },
     {
+        _id: 4,
         tutor: "Sarah Miller",
         title: "Photography Basics",
         modules: 6,
@@ -44,6 +48,7 @@ export const courses = [
             "https://source.unsplash.com/black-dslr-camera-floating-over-mans-hand-at-the-woods-WxM465oM4j4",
     },
     {
+        _id: 5,
         tutor: "Alice Brown",
         title: "Artificial Intelligence for Beginners",
         modules: 15,
@@ -55,6 +60,7 @@ export const courses = [
             "https://source.unsplash.com/man-in-black-and-gray-suit-action-figure-naSAHDWRNbQ",
     },
     {
+        _id: 6,
         tutor: "David Wilson",
         title: "Spanish Language Crash Course",
         modules: 7,
@@ -66,6 +72,7 @@ export const courses = [
             "https://source.unsplash.com/a-neon-sign-is-lit-up-in-the-dark-PapkdyVWXlU",
     },
     {
+        _id: 7,
         tutor: "Sophia Clark",
         title: "Yoga and Meditation Mastery",
         modules: 9,
@@ -77,6 +84,7 @@ export const courses = [
             "https://source.unsplash.com/woman-in-black-panty-kneeling-on-floor-rX8gBeg2WM0",
     },
     {
+        _id: 8,
         tutor: "Robert Taylor",
         title: "Financial Planning and Investment Strategies",
         modules: 14,
@@ -88,6 +96,7 @@ export const courses = [
             "https://source.unsplash.com/a-man-sitting-at-a-table-looking-at-a-cell-phone-d0uZ4D7BnZ4",
     },
     {
+        _id: 9,
         tutor: "Linda Johnson",
         title: "Cooking Essentials: From Beginner to Chef",
         modules: 10,
@@ -99,6 +108,7 @@ export const courses = [
             "https://source.unsplash.com/avocado-tomatoes-eggs-mushrooms-spring-onions-and-leaves-uQs1802D0CQ",
     },
     {
+        _id: 10,
         tutor: "Daniel Adams",
         title: "Graphic Design: Creating Stunning Visuals",
         modules: 12,
@@ -110,6 +120,7 @@ export const courses = [
             "https://source.unsplash.com/turned-on-macbook-on-table-beside-imac-g-YiX8ynmnY",
     },
     {
+        _id: 11,
         tutor: "Olivia Moore",
         title: "Mobile App Development with Flutter",
         modules: 11,
@@ -120,6 +131,7 @@ export const courses = [
         img_url: "https://source.unsplash.com/man-using-laptop-VzJjPuk53sk",
     },
     {
+        _id: 12,
         tutor: "Charles Lee",
         title: "Introduction to astrophysics",
         modules: 8,
