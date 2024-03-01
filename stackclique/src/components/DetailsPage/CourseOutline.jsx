@@ -1,10 +1,10 @@
-import styles from "../../styles/css/app.module.css";
+// import styles from "../../styles/css/app.module.css";
 import EnrollCourse from "./EnrollCourse";
-import Instructor from "./Instructor";
+// import Instructor from "./Instructor";
 import ViewCourse from "./ViewCourse";
 function CourseOutline() {
     // Simulate if the user is logged and has enrolled for the course
-    const hasEnrolled = true;
+    const hasEnrolled = false;
     const content = [
         {
             header: "Course Content",

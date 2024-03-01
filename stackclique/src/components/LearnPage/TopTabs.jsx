@@ -27,13 +27,14 @@ const tabsData = [
 ];
 
 import { useState } from "react";
-import WebDevelopment from "./components/WebDevelopment";
-import AppDevelopment from "./components/AppDevelopment";
-import UiUx from "./components/UiUx";
-import CyberSecurity from "./components/CyberSecurity";
-import ProductManagement from "./components/ProductManagment";
-import TechnicalWritting from "./components/TechWriting";
+
 import { Link } from "react-router-dom";
+import AppDevelopment from "../../pages/AppDevelopment";
+import CyberSecurity from "../../pages/CyberSecurity";
+import WebDevelopment from "../../pages/WebDevelopment";
+import UiUx from "../../pages/UiUx";
+import ProductManagement from "../../pages/ProductManagment";
+import TechnicalWritting from "../../pages/TechWriting";
 
 export default function TopTabs() {
     const [activeTabIndex, setActiveTabIndex] = useState(0);
@@ -60,7 +61,7 @@ export default function TopTabs() {
                     );
                 })}
             </div>
-            Show active tab content.
+            {/* Show active tab content. */}
             <div className="py-4">
                 <p>{tabsData[activeTabIndex].content}</p>
             </div>

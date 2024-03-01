@@ -1,9 +1,10 @@
-import { CourseCard } from "../../ui";
-import { courses } from "../coursesTestData";
+import { CourseCard } from "../components/ui";
+import { courses } from "../components/LearnPage/coursesTestData";
 export default function AppDevelopment() {
-    const filteredAppDev = courses.filter((el) => {
-        el.category === "app-development";
-    });
+    let category = "app-development";
+
+    const filteredAppDev = courses.filter((el) => el.category === category);
+
     // const params = useParams();
 
     // const url = title.split(" ").join("-").toLowerCase();
@@ -12,7 +13,7 @@ export default function AppDevelopment() {
     //     (el) => el.params === el.title.split(" ").join("-").toLowerCase(),
     // );
 
-    // console.log(path);
+    console.log(filteredAppDev);
     return (
         <section className="px-4 lg:px-[7rem] flex flex-col gap-6">
             <section className="grid gap-4 mt-4 grid-col-1 md:grid-cols-3 lg:grid-cols-4">

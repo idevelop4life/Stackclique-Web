@@ -1,7 +1,7 @@
-import { Outline } from ".";
+// import { Outline } from ".";
 import styles from "../../styles/css/app.module.css";
-import { courses } from "../LearnPage/coursesTestData";
-import { Button, CourseCard } from "../ui";
+// import { courses } from "../LearnPage/coursesTestData";
+import { Button } from "../ui";
 import CourseDropdown from "./CourseDropdown";
 import CourseHero from "./CourseHero";
 import Instructor from "./Instructor";

@@ -1,10 +1,10 @@
-import { CourseCard } from "../../ui";
-import { courses } from "../coursesTestData";
+import { CourseCard } from "../components/ui";
+import { courses } from "../components/LearnPage/coursesTestData";
 // import { productmangs } from "./constants/productmang";
 export default function ProductManagement() {
-    const filteredProdMag = courses.filter((el) => {
-        el.category === "product-management";
-    });
+    const filteredProdMag = courses.filter(
+        (el) => el.category === "product-management",
+    );
     return (
         <section className="px-4 lg:px-[7rem] flex flex-col gap-6">
             <section className="grid gap-4 mt-4 grid-col-1 md:grid-cols-3 lg:grid-cols-4">

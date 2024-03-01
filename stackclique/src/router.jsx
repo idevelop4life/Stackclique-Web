@@ -10,15 +10,17 @@ import {
     Connect,
     Message,
     LearnDetail,
+    // LearnDetail,
 } from "./pages";
 import AppLayout from "./components/Layout/applayout/AppLayout";
 import Contact from "./pages/Contact";
-import AppDevelopment from "./components/LearnPage/components/AppDevelopment";
-import UiUx from "./components/LearnPage/components/UiUx";
-import WebDevelopment from "./components/LearnPage/components/WebDevelopment";
-import TechnicalWritting from "./components/LearnPage/components/TechWriting";
-import ProductManagement from "./components/LearnPage/components/ProductManagment";
-import CyberSecurity from "./components/LearnPage/components/CyberSecurity";
+import AppDevelopment from "./pages/AppDevelopment";
+import UiUx from "./pages/UiUx";
+import WebDevelopment from "./pages/WebDevelopment";
+import TechnicalWritting from "./pages/TechWriting";
+import ProductManagement from "./pages/ProductManagment";
+import CyberSecurity from "./pages/CyberSecurity";
+// import CourseDetails from "./components/DetailsPage/CourseDetails";
 // import CourseDetails from "./components/DetailsPage/CourseDetails";
 export const router = createBrowserRouter([
     {
@@ -32,14 +34,14 @@ export const router = createBrowserRouter([
                 children: [
                     { path: "app-development", element: <AppDevelopment /> },
 
-                    { path: "app-development", element: <WebDevelopment /> },
+                    { path: "web-development", element: <WebDevelopment /> },
 
                     {
-                        path: "technical-writting",
+                        path: "technical-writing",
                         element: <TechnicalWritting />,
                     },
 
-                    { path: "ui/ux-design", element: <UiUx /> },
+                    { path: "ui-ux", element: <UiUx /> },
                     {
                         path: "product-management",
                         element: <ProductManagement />,

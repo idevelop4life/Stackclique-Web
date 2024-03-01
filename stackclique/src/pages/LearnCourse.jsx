@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { courses } from "../components/LearnPage/coursesTestData";
-import { Hero, Outline } from "../components/DetailsPage";
+import { Outline } from "../components/DetailsPage";
 import styles from "../styles/css/app.module.css";
 
 function LearnCourse() {
@@ -17,7 +17,8 @@ function LearnCourse() {
     return (
         <>
             <section className={styles.course}>
-                <Outline />
+                {/* <Hero /> */}
+                <Outline courses={courses} />
             </section>
         </>
     );

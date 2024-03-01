@@ -104,7 +104,7 @@ export default function Contact() {
                         </span>
                     ) : null}
                     <Button
-                        className="bg-gradient-to-r from-[#C326B3] via-[#5D1656] to-[#5C0052] p-6 w-full flex items-center justify-center text-white text-2xl py-4 rounded-2xl"
+                        className="bg-gradient-to-r from-[#C326B3] via-[#5D1656] to-[#5C0052] hover:bg-[#C326B3] p-6 w-full flex items-center justify-center text-white text-2xl py-4 rounded-2xl"
                         disabled={
                             Object.entries(formik.errors).length > 0 ||
                             !formik.values.email ||

@@ -4,7 +4,7 @@ import { courses } from "../LearnPage/coursesTestData";
 const CourseDetails = () => {
     const { pathname } = useLocation();
 
-    const courseDetails = courses.filter(
+    const courseDetails = courses.find(
         (el) => pathname === `/${el.title.split(" ").join("-").toLowerCase()}`,
     );
 

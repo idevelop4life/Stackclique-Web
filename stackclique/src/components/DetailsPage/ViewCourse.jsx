@@ -1,7 +1,7 @@
 import styles from "../../styles/css/app.module.css";
-import { courses } from "../LearnPage/coursesTestData";
-import { Button, CourseCard } from "../ui";
-import CourseDropdown from "./CourseDropdown";
+// import { courses } from "../LearnPage/coursesTestData";
+// import { Button, CourseCard } from "../ui";
+// import CourseDropdown from "./CourseDropdown";
 import CourseInfo from "./CourseInfo";
 import Instructor from "./Instructor";
 import Playlist from "./Playlist";
