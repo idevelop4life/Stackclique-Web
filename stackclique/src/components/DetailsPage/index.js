@@ -6,3 +6,4 @@ export { default as Enroll } from "./EnrollCourse";
 export { default as View } from "./ViewCourse";
 export { default as Playlist } from "./Playlist";
 export { default as Info } from "./CourseInfo";
+export { default as VideoPlayer } from "./VideoPlayer";

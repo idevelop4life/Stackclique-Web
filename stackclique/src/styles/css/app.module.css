@@ -123,6 +123,27 @@ h5 {
   margin: 0.5rem auto;
 }
 
+.control_btn {
+  border: none;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  width: 34px;
+  height: 34px;
+}
+@media (max-width: 767px) {
+  .control_btn {
+    padding: 0.333rem;
+    width: 24px;
+    height: 24px;
+  }
+}
+.control_btn:focus, .control_btn:focus-within {
+  border: 1px solid #ffffff;
+}
+
 .auth {
   display: block;
   min-height: 70%;
@@ -1290,17 +1311,17 @@ h5 {
   min-height: 80dvh;
   margin: 3rem 7.5%;
 }
-@media (max-width: 767px) {
+@media (max-width: 1023px) {
   .course .course_outline {
     gap: 1.5rem;
     grid-template-columns: 1fr;
-    margin: 2rem 4%;
+    margin: 3.8rem 4% 2rem 4%;
   }
 }
 .course .course_outline .no_mobile {
   display: block;
 }
-@media (max-width: 767px) {
+@media (max-width: 1023px) {
   .course .course_outline .no_mobile {
     display: none;
   }
@@ -1308,7 +1329,7 @@ h5 {
 .course .course_outline .no_desktop {
   display: none;
 }
-@media (max-width: 767px) {
+@media (max-width: 1023px) {
   .course .course_outline .no_desktop {
     display: block;
     margin-bottom: 3rem;

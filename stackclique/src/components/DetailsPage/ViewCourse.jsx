@@ -5,6 +5,7 @@ import CourseDropdown from "./CourseDropdown";
 import CourseInfo from "./CourseInfo";
 import Instructor from "./Instructor";
 import Playlist from "./Playlist";
+import VideoPlayer from "./VideoPlayer";
 
 function ViewCourse({ content }) {
     return (
@@ -14,6 +15,7 @@ function ViewCourse({ content }) {
                 style={{ paddingTop: 5 + "%" }}
             >
                 <div>
+                    <VideoPlayer />
                     <div className={styles.no_desktop}>
                         <Playlist type={false} content={content} />
                     </div>

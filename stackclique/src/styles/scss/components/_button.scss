@@ -1,5 +1,6 @@
 @use "../custom" as *;
 @use "./typography" as *;
+@use "./mixins" as *;
 
 .btn {
     cursor: pointer !important;
@@ -109,4 +110,26 @@
     color: $white;
     border-radius: 16px;
     margin: 0.5rem auto;
+}
+
+.control_btn {
+    border: none;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
+    width: 34px;
+    height: 34px;
+
+    @include responsive(mobile) {
+        padding: 0.333rem;
+        width: 24px;
+        height: 24px;
+    }
+
+    &:focus,
+    &:focus-within {
+        border: 1px solid $white;
+    }
 }
