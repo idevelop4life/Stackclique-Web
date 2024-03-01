@@ -1,23 +1,6 @@
-// const tabs = [
-//     { id: 1, name: "categories" },
-//     { id: 2, name: "app development" },
-//     { id: 3, name: "cyber security" },
-//     { id: 4, name: "web development" },
-//     { id: 5, name: "ui/ux design" },
-//     { id: 6, name: "product management" },
-//     { id: 7, name: "technical writing" },
-//     // { id: 8, name: "technical writing" },
-//     // { id: 9, name: "technical writing" },
-//     // { id: 10, name: "technical writing" },
-// ];
-
 const tabsData = [
     {
-        label: "categories",
-        content: <Categories />,
-    },
-    {
-        label: "app-development",
+        label: "app development",
         content: <AppDevelopment />,
     },
     {
@@ -45,7 +28,6 @@ const tabsData = [
 
 import { useState } from "react";
 import WebDevelopment from "./components/WebDevelopment";
-import Categories from "./Categories";
 import AppDevelopment from "./components/AppDevelopment";
 import UiUx from "./components/UiUx";
 import CyberSecurity from "./components/CyberSecurity";
@@ -58,7 +40,8 @@ export default function TopTabs() {
 
     return (
         <div>
-            <div className="flex items-center justify-center gap-16 space-x-3 border-b">
+            <div className="flex items-center justify-center gap-16 space-x-3 border-b overflow-x-scroll">
+                <h1 className="text-3xl font-semibold">Categories</h1>
                 {/* Loop through tab data and render Link for each. */}
                 {tabsData.map((tab, idx) => {
                     return (
@@ -77,10 +60,10 @@ export default function TopTabs() {
                     );
                 })}
             </div>
-            {/* Show active tab content. */}
+            {/* Show active tab content.
             <div className="py-4">
                 <p>{tabsData[activeTabIndex].content}</p>
-            </div>
+            </div> */}
         </div>
     );
 }

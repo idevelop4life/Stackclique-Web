@@ -90,7 +90,7 @@ export default function CourseCard({
                     size={"medium"}
                     className="self-center h-[2.5rem] mt-auto btn btn-rect"
                     onClick={() => {
-                        navigate(`/course/${_id}`)
+                        navigate(`/course/${_id}`);
                     }}
                 >
                     Enroll Course

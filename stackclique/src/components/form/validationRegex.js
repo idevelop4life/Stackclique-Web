@@ -21,7 +21,7 @@ export const SignUpSchema = Yup.object({
     email: Yup.string()
         .required("No Email Provided")
         .matches(
-            /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+            /^\w+([\.-]?\w+)*@\w+([\\.-]?\w+)*(\.\w{2,3})+$/,
             "invalid email address",
         ),
 
@@ -36,13 +36,9 @@ export const ContactUsSchema = Yup.object({
         .min(2, "Too Short!")
         .max(25, "Too Long!")
         .required("Required"),
-    lastName: Yup.string().min(2, "Too Short!").max(25, "Too Long!"),
+    // lastName: Yup.string().min(2, "Too Short!").max(25, "Too Long!"),
     email: Yup.string().email("Invalid email addresss`").required("Required"),
-    phoneNumber: Yup.string()
-        .required("Phone number is required")
-        .matches(
-            /^([0]{1}|\+?[234]{3})([7-9]{1})([0|1]{1})([\d]{1})([\d]{7})$/g,
-            "Invalid phone number",
-        ),
+    phone: Yup.string().required("Phone number is required"),
+    lastName: Yup.string().required("Last name is required"),
     message: Yup.string().required(),
 });

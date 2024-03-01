@@ -7,6 +7,7 @@ import Idea from "../assets/svg/idea-icon.svg";
 import PersonalGrowth from "../assets/svg/personal-growth.svg";
 import About from "../assets/pics/about1.svg";
 import About2 from "../assets/pics/about2.svg";
+import Faq from "../components/FaqComponent/Faq";
 
 const aboutUsDataWithAvatar = [
     {
@@ -141,6 +142,7 @@ export default function AboutUs() {
                     </Button>
                 </section>
             </div>
+            <Faq />
         </section>
     );
 }
