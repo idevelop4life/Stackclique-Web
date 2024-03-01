@@ -6,6 +6,8 @@ use App\Http\Controllers\NewAuthController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\CourseCategoryController;
 use App\Http\Controllers\ChannelsController;
+use App\Http\Controllers\ChatController;
+
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -67,6 +69,27 @@ Route::post('channels', [ChannelsController::class, 'store']);
 Route::get('channels/{id}', [ChannelsController::class, 'show']);
 Route::put('channels/{id}', [ChannelsController::class, 'update']);
 Route::delete('channels/{id}', [ChannelsController::class, 'delete']);	
+
+########################################################
+// Routes for the chat channels
+
+Route::prefix('api')->group(function () {
+    // List all chat messages
+    Route::get('chats', [ChatController::class, 'index']);
+
+    // Create a new chat message
+    Route::post('chats', [ChatController::class, 'store']);
+
+    // Retrieve a single chat message
+    Route::get('chats/{chat}', [ChatController::class, 'show']);
+
+    // Update a chat message
+    Route::put('chats/{chat}', [ChatController::class, 'update']);
+
+    // Delete a chat message
+    Route::delete('chats/{chat}', [ChatController::class, 'destroy']);
+});
+
 
 
 // Route::post('/signup', [AuthenController::class, 'signup'])->name('signup');
