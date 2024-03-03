@@ -1,15 +1,231 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "../../styles/css/app_root.css";
 import thumb from "../../assets/pics/thumb.jpg";
+import videoSample from "../../assets/video/sample.mp4";
 
-function VideoPlayer() {
+function VideoPlayer({ setTheatreMode }) {
     const [idle, setIdle] = useState(true);
     const [play, setPlay] = useState(false);
+    const [fullscreen, setFullscreen] = useState(false);
+    const [theatre, setTheatre] = useState(false);
+    const [playback, setPlayback] = useState(1);
+    const videoRef = useRef(null);
+    const onscreenplayRef = useRef(null);
+    const play_pause_btnRef = useRef(null);
+    const videoContainerRef = useRef(null);
+    const forwardBtnRef = useRef(null);
+    const backwardBtnRef = useRef(null);
+    const playbackBtnRef = useRef(null);
+    const videoDurationRef = useRef(null);
+    const videoCurTimeRef = useRef(null);
+    const fullscreenBtnRef = useRef(null);
+    const theatreBtnRef = useRef(null);
 
-    // document.addEventListener("keydown", ())
+    useEffect(() => {
+        const video = videoRef.current;
+        const onscreenplay = onscreenplayRef.current;
+        const playPauseBtn = play_pause_btnRef.current;
+        const videoContainer = videoContainerRef.current;
+        const forwardBtn = forwardBtnRef.current;
+        const backwardBtn = backwardBtnRef.current;
+        const playbackBtn = playbackBtnRef.current;
+        const videoDuration = videoDurationRef.current;
+        const videoCurTime = videoCurTimeRef.current;
+        const fullscreenBtn = fullscreenBtnRef.current;
+        const theatreBtn = theatreBtnRef.current;
+        setTheatreMode(theatre);
+
+        /* -----------------------------
+            VIDEO PLAYER SECTION
+        -----------------------------   */
+
+        //  desc: Toggle the play and pause
+        //  type: Function
+        function togglePlay() {
+            video.paused ? video.play() : video.pause();
+            setPlay(!play);
+            setIdle(false);
+        }
+
+        //  desc: Skip video timestamp
+        //  type: Function
+        function skip(duration) {
+            video.currentTime += duration;
+        }
+
+        //  desc: Set playback speed
+        //  type: Function
+        function playback() {
+            let playbackRate = video.playbackRate + 0.25;
+            if (playbackRate > 2) playbackRate = 0.25;
+            video.playbackRate = playbackRate;
+            setPlayback(video.playbackRate);
+        }
+
+        //  desc: Format the video timestamp
+        //  type: Function
+        function durationFormat(time) {
+            const zeroFormatter = new Intl.NumberFormat(undefined, {
+                minimumIntegerDigits: 2,
+            });
+            const sec = Math.floor(time % 60);
+            const min = Math.floor(time / 60) % 60;
+            const hr = Math.floor(time / 3600);
+
+            if (hr === 0)
+                return `${zeroFormatter.format(min)}:${zeroFormatter.format(sec)}`;
+            else
+                return `${hr}:${zeroFormatter.format(min)}:${zeroFormatter.format(sec)}`;
+        }
+
+        //  desc: Toggle fullscreen mode
+        //  type: Function
+        function toggleFullscreen() {
+            if (document.fullscreenElement == null) {
+                videoContainer.requestFullscreen();
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+        /* -----------------------------
+            EVENT LISTENERS SECTION
+        -----------------------------   */
+
+        //  desc: Assign play and pause toogle
+        //  type: Event Listener
+        onscreenplay.addEventListener("click", togglePlay);
+        playPauseBtn.addEventListener("click", togglePlay);
+        videoContainer.addEventListener("play", () => {
+            setPlay(true);
+        });
+        videoContainer.addEventListener("pause", () => {
+            setPlay(false);
+        });
+        document.addEventListener("keydown", (e) => {
+            switch (e.key.toLowerCase()) {
+                case " ":
+                case "k":
+                    togglePlay();
+                    break;
+                case "arrowleft":
+                    skip(-5);
+                    break;
+                case "arrowright":
+                    skip(5);
+                    break;
+                case "f":
+                    toggleFullscreen();
+                    break;
+            }
+        });
+        forwardBtn.addEventListener("click", () => {
+            skip(5);
+        });
+        backwardBtn.addEventListener("click", () => {
+            skip(-5);
+        });
+        playbackBtn.addEventListener("click", playback);
+        video.addEventListener("loadeddata", () => {
+            videoCurTime.textContent = "00:00";
+            videoDuration.textContent = durationFormat(video.duration);
+        });
+        video.addEventListener("timeupdate", () => {
+            videoCurTime.textContent = durationFormat(video.currentTime);
+        });
+        fullscreenBtn.addEventListener("click", () => {
+            toggleFullscreen();
+            setFullscreen(!fullscreen);
+        });
+
+        return () => {
+            onscreenplay.removeEventListener("click", togglePlay);
+            playPauseBtn.removeEventListener("click", togglePlay);
+            videoContainer.removeEventListener("play", () => {
+                setPlay(true);
+            });
+            videoContainer.removeEventListener("pause", () => {
+                setPlay(false);
+            });
+            forwardBtn.removeEventListener("click", () => {
+                skip(5);
+            });
+            backwardBtn.removeEventListener("click", () => {
+                skip(-5);
+            });
+            playbackBtn.removeEventListener("click", playback);
+            video.removeEventListener("loadeddata", () => {
+                videoCurTime.textContent = "00:00";
+                videoDuration.textContent = durationFormat(video.duration);
+            });
+            video.removeEventListener("timeupdate", () => {
+                videoCurTime.textContent = durationFormat(video.currentTime);
+            });
+            fullscreenBtn.removeEventListener("click", () => {
+                toggleFullscreen();
+                setFullscreen(!fullscreen);
+            });
+
+            document.removeEventListener("keydown", (e) => {
+                switch (e.key.toLowerCase()) {
+                    case " ":
+                    case "k":
+                        togglePlay();
+                        break;
+                }
+            });
+        };
+    }, [
+        play,
+        videoRef,
+        onscreenplayRef,
+        videoContainerRef,
+        fullscreen,
+        theatre,
+        setTheatreMode,
+    ]);
+
     return (
         <>
-            <div className="video_container">
+            <div
+                className={`video_container ${!play ? "paused" : ""} ${fullscreen ? "fullscreen" : ""} ${theatre ? "theatre" : ""}`}
+                ref={videoContainerRef}
+            >
+                <div className="video_overlay" ref={onscreenplayRef}>
+                    <button
+                        type="button"
+                        className="pause-play-status"
+                        id="play_pause_onscreen"
+                    >
+                        {play ? (
+                            <svg
+                                width="19"
+                                height="24"
+                                viewBox="0 0 19 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M0.599609 0.799988V23.2L18.1996 12L0.599609 0.799988Z"
+                                    fill="white"
+                                />
+                            </svg>
+                        ) : (
+                            <svg
+                                width="19"
+                                height="24"
+                                viewBox="0 0 19 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M0.599609 0.799988V23.2L18.1996 12L0.599609 0.799988Z"
+                                    fill="white"
+                                />
+                            </svg>
+                        )}
+                    </button>
+                </div>
                 <div className={`video_thumbnail ${!idle ? "hide" : ""}`}>
                     <img
                         src={thumb}
@@ -25,9 +241,7 @@ function VideoPlayer() {
                             <button
                                 type="button"
                                 className="control_btn play-pause-btn"
-                                onClick={() => {
-                                    setIdle(false)
-                                }}
+                                ref={play_pause_btnRef}
                             >
                                 {play ? (
                                     <svg
@@ -60,6 +274,7 @@ function VideoPlayer() {
                             <button
                                 type="button"
                                 className="control_btn backward-btn"
+                                ref={backwardBtnRef}
                             >
                                 <svg
                                     width="26"
@@ -87,12 +302,14 @@ function VideoPlayer() {
                             <button
                                 type="button"
                                 className="control_btn speed-btn"
+                                ref={playbackBtnRef}
                             >
-                                <span className="speedometer">1x</span>
+                                <span className="speedometer">{`${playback}x`}</span>
                             </button>
                             <button
                                 type="button"
                                 className="control_btn forward-btn"
+                                ref={forwardBtnRef}
                             >
                                 <svg
                                     width="26"
@@ -117,37 +334,50 @@ function VideoPlayer() {
                                     />
                                 </svg>
                             </button>
-                            <span className="timestamp">0:5 / 8:02</span>
+                            <div className="timestamp">
+                                <div ref={videoCurTimeRef}></div>/
+                                <div ref={videoDurationRef}></div>
+                            </div>
                         </div>
 
                         <div className="controls_right">
-                            <button
-                                type="button"
-                                className="control_btn volume-btn"
-                            >
-                                <svg
-                                    width="26"
-                                    height="20"
-                                    viewBox="0 0 26 20"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
+                            <div className="volume-container">
+                                <button
+                                    type="button"
+                                    className="control_btn volume-btn"
                                 >
-                                    <path
-                                        d="M11.8 1.59998L5.8 6.39998H1V13.6H5.8L11.8 18.4V1.59998Z"
-                                        stroke="white"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                    />
-                                    <path
-                                        d="M21.484 1.51599C23.7337 3.76632 24.9975 6.81802 24.9975 9.99999C24.9975 13.182 23.7337 16.2337 21.484 18.484M17.248 5.75199C18.3729 6.87716 19.0048 8.40301 19.0048 9.99399C19.0048 11.585 18.3729 13.1108 17.248 14.236"
-                                        stroke="white"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                    />
-                                </svg>
-                            </button>
+                                    <svg
+                                        width="26"
+                                        height="20"
+                                        viewBox="0 0 26 20"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            d="M11.8 1.59998L5.8 6.39998H1V13.6H5.8L11.8 18.4V1.59998Z"
+                                            stroke="white"
+                                            strokeWidth="2"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        />
+                                        <path
+                                            d="M21.484 1.51599C23.7337 3.76632 24.9975 6.81802 24.9975 9.99999C24.9975 13.182 23.7337 16.2337 21.484 18.484M17.248 5.75199C18.3729 6.87716 19.0048 8.40301 19.0048 9.99399C19.0048 11.585 18.3729 13.1108 17.248 14.236"
+                                            stroke="white"
+                                            strokeWidth="2"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        />
+                                    </svg>
+                                </button>
+                                <input
+                                className="volume-slider"
+                                    type="range"
+                                    min={0}
+                                    max={1}
+                                    // value={1}
+                                    step={"any"}
+                                />
+                            </div>
                             <button
                                 type="button"
                                 className="control_btn setting-btn"
@@ -195,89 +425,178 @@ function VideoPlayer() {
                             <button
                                 type="button"
                                 className="control_btn fullscreen-btn"
+                                ref={fullscreenBtnRef}
                             >
-                                <svg
-                                    width="24"
-                                    height="24"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                        d="M15.5996 1.19995H22.7996V8.39995"
-                                        stroke="white"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                    />
-                                    <path
-                                        d="M8.39922 22.8H1.19922V15.6"
-                                        stroke="white"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                    />
-                                    <path
-                                        d="M22.7984 1.19995L14.3984 9.59995"
-                                        stroke="white"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                    />
-                                    <path
-                                        d="M1.19922 22.7999L9.59922 14.3999"
-                                        stroke="white"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                    />
-                                </svg>
+                                {fullscreen ? (
+                                    <svg
+                                        width="24"
+                                        height="24"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            d="M15.5996 1.19995H22.7996V8.39995"
+                                            stroke="#7e0772"
+                                            strokeWidth="2"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        />
+                                        <path
+                                            d="M8.39922 22.8H1.19922V15.6"
+                                            stroke="#7e0772"
+                                            strokeWidth="2"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        />
+                                        <path
+                                            d="M22.7984 1.19995L14.3984 9.59995"
+                                            stroke="#7e0772"
+                                            strokeWidth="2"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        />
+                                        <path
+                                            d="M1.19922 22.7999L9.59922 14.3999"
+                                            stroke="#7e0772"
+                                            strokeWidth="2"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        />
+                                    </svg>
+                                ) : (
+                                    <svg
+                                        width="24"
+                                        height="24"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            d="M15.5996 1.19995H22.7996V8.39995"
+                                            stroke="white"
+                                            strokeWidth="2"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        />
+                                        <path
+                                            d="M8.39922 22.8H1.19922V15.6"
+                                            stroke="white"
+                                            strokeWidth="2"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        />
+                                        <path
+                                            d="M22.7984 1.19995L14.3984 9.59995"
+                                            stroke="white"
+                                            strokeWidth="2"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        />
+                                        <path
+                                            d="M1.19922 22.7999L9.59922 14.3999"
+                                            stroke="white"
+                                            strokeWidth="2"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        />
+                                    </svg>
+                                )}
                             </button>
                             <button
                                 type="button"
-                                className="control_btn screen-btn"
+                                className="control_btn theatre-btn"
+                                ref={theatreBtnRef}
+                                onClick={() => {
+                                    setTheatre(!theatre);
+                                }}
                             >
-                                <svg
-                                    width="34"
-                                    height="32"
-                                    viewBox="0 0 34 32"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                        d="M27.5508 10.194L32.8257 15.2879L27.732 20.5626"
-                                        stroke="white"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                    />
-                                    <path
-                                        d="M6.99371 20.9242L1.71876 15.8303L6.8125 10.5555"
-                                        stroke="white"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                    />
-                                    <path
-                                        d="M32.826 15.2878L20.7292 15.4987"
-                                        stroke="white"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                    />
-                                    <path
-                                        d="M1.71746 15.8302L13.8143 15.6193"
-                                        stroke="white"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                    />
-                                </svg>
+                                {theatre ? (
+                                    <svg
+                                        width="34"
+                                        height="32"
+                                        viewBox="0 0 34 32"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            d="M27.5508 10.194L32.8257 15.2879L27.732 20.5626"
+                                            stroke="#7e0772"
+                                            strokeWidth="2"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        />
+                                        <path
+                                            d="M6.99371 20.9242L1.71876 15.8303L6.8125 10.5555"
+                                            stroke="#7e0772"
+                                            strokeWidth="2"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        />
+                                        <path
+                                            d="M32.826 15.2878L20.7292 15.4987"
+                                            stroke="#7e0772"
+                                            strokeWidth="2"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        />
+                                        <path
+                                            d="M1.71746 15.8302L13.8143 15.6193"
+                                            stroke="#7e0772"
+                                            strokeWidth="2"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        />
+                                    </svg>
+                                ) : (
+                                    <svg
+                                        width="34"
+                                        height="32"
+                                        viewBox="0 0 34 32"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            d="M27.5508 10.194L32.8257 15.2879L27.732 20.5626"
+                                            stroke="white"
+                                            strokeWidth="2"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        />
+                                        <path
+                                            d="M6.99371 20.9242L1.71876 15.8303L6.8125 10.5555"
+                                            stroke="white"
+                                            strokeWidth="2"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        />
+                                        <path
+                                            d="M32.826 15.2878L20.7292 15.4987"
+                                            stroke="white"
+                                            strokeWidth="2"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        />
+                                        <path
+                                            d="M1.71746 15.8302L13.8143 15.6193"
+                                            stroke="white"
+                                            strokeWidth="2"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        />
+                                    </svg>
+                                )}
                             </button>
                         </div>
                     </div>
                 </div>
-                <video src=""></video>
+                <video
+                    src={videoSample}
+                    ref={videoRef}
+                    id="video_player"
+                    width={1080}
+                    height={720}
+                ></video>
             </div>
         </>
     );
