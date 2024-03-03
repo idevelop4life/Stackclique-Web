@@ -117,6 +117,10 @@
             margin: 3.8rem 4% 2rem 4%;
         }
 
+        &.single {
+            grid-template-columns: 1fr;
+        }
+
         .no_mobile {
             display: block;
 

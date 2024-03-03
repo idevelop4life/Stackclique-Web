@@ -1318,6 +1318,9 @@ h5 {
     margin: 3.8rem 4% 2rem 4%;
   }
 }
+.course .course_outline.single {
+  grid-template-columns: 1fr;
+}
 .course .course_outline .no_mobile {
   display: block;
 }
