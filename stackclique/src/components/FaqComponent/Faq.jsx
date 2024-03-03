@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import faqImage1 from "../../assets/pics/faq1.svg";
 import faqImage2 from "../../assets/pics/faq2.svg";
 import { CiSearch } from "react-icons/ci";
@@ -27,20 +27,20 @@ const AccordionItem = ({ title, content }) => {
                     <IoIosArrowDown size={20} />
                 )}
             </motion.div>
-            <AnimatePresence>
+            <div>
                 {isOpen && (
-                    <motion.div
-                        key="content"
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                    <div
+                        // key="content"
+                        // initial={{ opacity: 0, height: 0 }}
+                        // animate={{ opacity: 1, height: "auto" }}
+                        // exit={{ opacity: 0, height: 0 }}
+                        // transition={{ duration: 0.3, ease: "easeInOut" }}
                         className="p-4 overflow-hidden"
                     >
                         {content}
-                    </motion.div>
+                    </div>
                 )}
-            </AnimatePresence>
+            </div>
         </div>
     );
 };

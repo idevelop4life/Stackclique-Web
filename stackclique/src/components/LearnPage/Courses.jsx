@@ -1,5 +1,5 @@
-import { courses } from "./coursesTestData";
 import { CourseCard } from "../ui";
+import { courses } from "./coursesTestData";
 
 export default function Courses() {
     return (
