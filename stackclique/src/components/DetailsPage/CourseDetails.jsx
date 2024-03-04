@@ -1,14 +1,23 @@
-// CourseDetails.js
-import React from "react";
+import { useLocation } from "react-router-dom";
+import { courses } from "../LearnPage/coursesTestData";
 
-const CourseDetails = ({ course }) => {
+const CourseDetails = () => {
+    const { pathname } = useLocation();
+
+    const courseDetails = courses.find(
+        (el) => pathname === `/${el.title.split(" ").join("-").toLowerCase()}`,
+    );
+
+    if (!courseDetails) {
+        return <div>Course not found</div>;
+    }
+
     return (
-        <div>
-            <h2 className="text-2xl font-bold">{course.title}</h2>
-            <p>Tutor: {course.tutor}</p>
-            <p>Modules: {course.modules}</p>
-            <p>Likes: {course.likes}</p>
-            {/* Add more details as needed */}
+        <div className="mt-96 min-h-screen">
+            <h2 className="text-2xl font-bold">{courseDetails.title}</h2>
+            <p>Tutor: {courseDetails.tutor}</p>
+            <p>Modules: {courseDetails.modules}</p>
+            <p>Likes: {courseDetails.likes}</p>
         </div>
     );
 };

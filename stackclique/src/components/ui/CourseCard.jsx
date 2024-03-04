@@ -1,12 +1,11 @@
 import { BsClock } from "react-icons/bs";
 import { FiStar } from "react-icons/fi";
-import Button from "./Button";
+// import Button from "./Button";
 import { FaRegUser } from "react-icons/fa";
 import styles from "../../styles/css/app.module.css";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function CourseCard({
-    _id,
     title,
     img_url,
     modules,
@@ -16,7 +15,8 @@ export default function CourseCard({
     duration_hours,
     students_enrolled,
 }) {
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
+    const url = title.split("").join("").toLowerCase();
 
     return (
         <div>
@@ -86,15 +86,13 @@ export default function CourseCard({
                         <span className="text-[12px]">Students Enrolled</span>
                     </div>
                 </div>
-                <Button
+                <Link
+                    to={`/course/${url}`}
                     size={"medium"}
                     className="self-center h-[2.5rem] mt-auto btn btn-rect"
-                    onClick={() => {
-                        navigate(`/course/${_id}`)
-                    }}
                 >
                     Enroll Course
-                </Button>
+                </Link>
             </div>
         </div>
     );

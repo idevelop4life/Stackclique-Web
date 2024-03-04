@@ -16,7 +16,7 @@ function CourseHero() {
                     <span
                         style={{
                             marginLeft: 1 + "rem",
-                            marginRight: .25 + "rem",
+                            marginRight: 0.25 + "rem",
                             width: 1.25 + "rem",
                             height: 1.25 + "rem",
                         }}
