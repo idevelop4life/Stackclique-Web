@@ -71,7 +71,32 @@ Route::put('channels/{id}', [ChannelsController::class, 'update']);
 Route::delete('channels/{id}', [ChannelsController::class, 'delete']);	
 
 ########################################################
-// Routes for the chat channels
+// Routes for the course reviews
+
+// Index
+Route::get('/course_reviews', 'CourseReviewController@index')->name('course_reviews.index');
+
+// Create
+Route::get('/course_reviews/create', 'CourseReviewController@create')->name('course_reviews.create');
+Route::post('/course_reviews', 'CourseReviewController@store')->name('course_reviews.store');
+
+// Show
+Route::get('/course_reviews/{course_review}', 'CourseReviewController@show')->name('course_reviews.show');
+
+// Edit
+Route::get('/course_reviews/{course_review}/edit', 'CourseReviewController@edit')->name('course_reviews.edit');
+Route::put('/course_reviews/{course_review}', 'CourseReviewController@update')->name('course_reviews.update');
+
+// Delete
+Route::delete('/course_reviews/{course_review}', 'CourseReviewController@destroy')->name('course_reviews.destroy');
+
+
+##########################################################
+
+
+
+
+
 
 Route::prefix('api')->group(function () {
     // List all chat messages
