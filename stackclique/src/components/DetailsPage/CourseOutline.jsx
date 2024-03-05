@@ -4,7 +4,7 @@ import EnrollCourse from "./EnrollCourse";
 import ViewCourse from "./ViewCourse";
 function CourseOutline() {
     // Simulate if the user is logged and has enrolled for the course
-    const hasEnrolled = false;
+    const hasEnrolled = true;
     const content = [
         {
             header: "Course Content",
