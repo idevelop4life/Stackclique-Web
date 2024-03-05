@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -13,13 +14,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('course_enrollements', function (Blueprint $table) {
+        Schema::create('course_categories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('course_id');
-            $table->foreignId('enrolled_user_id');
-            $table->boolean('completed')->default(false);
-            $table->integer('completed_modules')->default(0);
-            $table->unique(['course_id', 'enrolled_user_id']);
+            $table->string('name', 255);
+            $table->text('description');
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('course_enrollements');
+        Schema::dropIfExists('course_categories');
     }
 };

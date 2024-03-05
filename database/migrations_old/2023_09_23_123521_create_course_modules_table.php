@@ -14,16 +14,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('courses', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('category_id');
+        Schema::create('course_modules', function (Blueprint $table) {
+            $table->uuid('id')->primary()->default(DB::raw('uuid()'));
+            $table->string('name', 255);
             $table->string('title', 255);
-            $table->text('about');
-            $table->string('profile_photo', 255);
+            $table->text('content');
+            $table->uuid('course_id');
+            $table->string('video_url', 255);
             $table->string('cover_photo', 255);
-            $table->string('instructor', 255);
-            $table->integer('rating');
-            $table->integer('required_user_level');
+            $table->string('profile_photo', 255);
+            $table->foreign('course_id')->references('id')->on('courses');
             $table->timestamps();
         });
     }
@@ -35,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('courses');
+        Schema::dropIfExists('course_modules');
     }
 };
