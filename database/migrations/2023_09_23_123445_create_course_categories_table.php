@@ -15,9 +15,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('course_categories', function (Blueprint $table) {
-            $table->uuid('id')->primary()->default(DB::raw('uuid()'));
+            $table->id();
             $table->string('name', 255);
-            $table->text('description');
+            $table->text('description', 255);
             $table->timestamps();
         });
     }

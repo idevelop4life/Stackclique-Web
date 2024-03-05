@@ -8,11 +8,13 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+// use Illuminate\Http\Request;
 
-class AuthController extends Controller
+class OldAuthController extends Controller
 {
 
     // A static function to make a verf code and pin
@@ -34,23 +36,27 @@ class AuthController extends Controller
         $validatedData = $req->validate([
             'username' => 'required|string|unique:users',
             'email' => 'required|email|unique:users',
+            // 'level' => 'sometimes',
+            'phone_number' => 'required|integer|unique:users',
             'password' => 'required|string|min:6',
         ]);
 
         try {
             // Attempt to create a new user
             // The verification code
-            $verf_code = AuthController::generateRefcode($req->name);
+            $verf_code = $this->generateRefcode($req->name);
+
             $user = User::create([
                 'name' => $validatedData['username'],
                 'username' => $validatedData['username'],
                 'email' => $validatedData['email'],
+                'phone_number' => $validatedData['phone_number'],
                 'password' => bcrypt($validatedData['password']),
                 'verf_pin' => $verf_code,
             ]);
 
             event(new Registered($user));
-
+            
             Auth::login($user);
 
             // Make the token to login the user
@@ -63,7 +69,7 @@ class AuthController extends Controller
             ];
 
             // Send the verification mail
-            Mail::to($validatedData['email'])->send(new VerfEmail($verf_dets));
+            // Mail::to($validatedData['email'])->send(new VerfEmail($verf_dets));
 
             // Return the response to the front-end.
             return response()->json([
@@ -99,10 +105,14 @@ class AuthController extends Controller
 
             /**  @var User $user */
             $user = Auth::user();
-            $token = $user->createToken('main')->plainTextToken;
+
+            $user->token = $user->createToken('main')->plainTextToken;
+
+            session()->put('access_token', $user->token);
+
             return response()->json([
                 'user' => $user,
-                'token' => $token,
+                'token' => $user->token,
                 'message' => 'Data Checked. You are now logged in.',
                 'error' => null,
             ]);
@@ -116,15 +126,38 @@ class AuthController extends Controller
 
     }
 
-    public function logout(Request $req)
-    {
+    public function token(){
 
-        /** @var User $user */
+        if (!session()->isStarted()) {
+            session()->start();
+        }
 
-        $user = $req->user();
-        $user->currentAccessToken()->delete();
-        return response('', 204);
+        $user = Auth::user();
+
+    
+        // Retrieve the access token from the session
+        $session = session()->get('access_token');
+
+        return response()->json([
+            'session' => $session,
+            'name' => $user->email,
+        ]);
     }
+
+    public function logout(Request $request)
+    {
+        if ($request->user()) {
+            dd($request->user());
+            // Revoke the current user's token
+            $request->user()->tokens()->delete();
+            // Auth::logout();
+            return response()->json(['message' => 'Successfully logged out']);
+        }
+        return response()->json(['message' => 'User not authenticated'], 401);
+    }
+
+
+
 
     // Verification of Users
 
@@ -163,19 +196,19 @@ class AuthController extends Controller
         }
 
 
-        // dd($user);
+        dd($user);
 
-        // if (User::where('verf_pin',$req->otp)) {
+        if (User::where('verf_pin',$req->otp)) {
 
 
-        //     $user->email_verified_at = now()->format('Y-m-d');
-        //     $user->save();
+            $user->email_verified_at = now()->format('Y-m-d');
+            $user->save();
 
-        //   return response()->json(['user'=> $user]);
+          return response()->json(['user'=> $user]);
 
-        // } else {
+        } else {
 
-        // }
+        }
 
     }
 }
