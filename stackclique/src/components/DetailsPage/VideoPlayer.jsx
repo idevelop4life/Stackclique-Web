@@ -370,7 +370,7 @@ function VideoPlayer({ setTheatreMode }) {
                                     </svg>
                                 </button>
                                 <input
-                                className="volume-slider"
+                                    className="volume-slider"
                                     type="range"
                                     min={0}
                                     max={1}

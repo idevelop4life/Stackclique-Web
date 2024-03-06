@@ -20,8 +20,6 @@ import WebDevelopment from "./pages/WebDevelopment";
 import TechnicalWritting from "./pages/TechWriting";
 import ProductManagement from "./pages/ProductManagment";
 import CyberSecurity from "./pages/CyberSecurity";
-// import CourseDetails from "./components/DetailsPage/CourseDetails";
-// import CourseDetails from "./components/DetailsPage/CourseDetails";
 export const router = createBrowserRouter([
     {
         element: <AppLayout />,
@@ -50,11 +48,6 @@ export const router = createBrowserRouter([
                     { path: "cyber-security", element: <CyberSecurity /> },
                 ],
             },
-
-            // {
-            //     path: ":id",
-            //     element: <CourseDetails />,
-            // },
 
             { path: "/connect", element: <Connect /> },
             { path: "/chat", element: <Message /> },
