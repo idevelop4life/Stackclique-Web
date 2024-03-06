@@ -49,4 +49,11 @@ class User extends Authenticatable
     public function channels(){
         $this->belongsTo(Channel::class);
     }
+
+    protected $guarded = [];
+
+    public function enrollements()
+    {
+        return $this->hasMany(Enrollement::class, 'enrolled_user_id');
+    }
 }

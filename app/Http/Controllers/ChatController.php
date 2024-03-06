@@ -1,46 +1,48 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Chat;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class ChatController extends Controller
 {
     public function index()
     {
-        // Retrieve all chat messages
         $chats = Chat::all();
         return response()->json($chats);
     }
 
+    public function show(Chat $chat)
+    {
+        return response()->json($chat);
+    }
+
     public function store(Request $request)
     {
-        // Create a new chat message
+        $request->validate([
+            'sender_id' => 'required',
+            'channel_id' => 'required',
+            'message' => 'required',
+        ]);
+
         $chat = Chat::create($request->all());
         return response()->json($chat, 201);
     }
 
-    public function show($id)
+    public function update(Request $request, Chat $chat)
     {
-        // Retrieve a single chat message
-        $chat = Chat::findOrFail($id);
-        return response()->json($chat);
-    }
+        $request->validate([
+            'sender_id' => 'required',
+            'channel_id' => 'required',
+            'message' => 'required',
+        ]);
 
-    public function update(Request $request, $id)
-    {
-        // Update a chat message
-        $chat = Chat::findOrFail($id);
         $chat->update($request->all());
         return response()->json($chat, 200);
     }
 
-    public function destroy($id)
+    public function destroy(Chat $chat)
     {
-        // Delete a chat message
-        $chat = Chat::findOrFail($id);
         $chat->delete();
         return response()->json(null, 204);
     }

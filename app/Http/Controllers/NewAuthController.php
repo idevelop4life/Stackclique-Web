@@ -15,7 +15,8 @@ class NewAuthController  extends Controller
     public function signup(Request $request)
     {
         $request->validate([
-            'phoneNumber' => 'required|integer|max:255',
+            'name' => 'required|string|max:255',
+            'level'=>'integer|max:10',
             'email' => 'required|string|email|unique:users|max:255',
             'password' => 'required|string|min:8',
             'username' => 'required|string|unique:users|max:255',

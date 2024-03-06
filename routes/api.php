@@ -7,7 +7,8 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\CourseCategoryController;
 use App\Http\Controllers\ChannelsController;
 use App\Http\Controllers\ChatController;
-
+use App\Http\Controllers\CourseModuleController;
+use App\Http\Controllers\CourseEnrollmentController;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -92,10 +93,7 @@ Route::delete('/course_reviews/{course_review}', 'CourseReviewController@destroy
 
 
 ##########################################################
-
-
-
-
+//  Routes for Chat Management
 
 
 Route::prefix('api')->group(function () {
@@ -116,7 +114,47 @@ Route::prefix('api')->group(function () {
 });
 
 
+##########################################################################
+// Routes fo the CourseModules
 
+
+
+// Display a listing of the resource.
+Route::get('/modules', [CourseModuleController::class, 'index'])->name('modules.index');
+
+// Show the form for creating a new resource.
+Route::get('/modules/create', [CourseModuleController::class, 'create'])->name('modules.create');
+
+// Store a newly created resource in storage.
+Route::post('/modules', [CourseModuleController::class, 'store'])->name('modules.store');
+
+// Display the specified resource.
+Route::get('/modules/{module}', [CourseModuleController::class, 'show'])->name('modules.show');
+
+// Show the form for editing the specified resource.
+Route::get('/modules/{module}/edit', [CourseModuleController::class, 'edit'])->name('modules.edit');
+
+// Update the specified resource in storage.
+Route::put('/modules/{module}', [CourseModuleController::class, 'update'])->name('modules.update');
+
+// Remove the specified resource from storage.
+Route::delete('/modules/{module}', [CourseModuleController::class, 'destroy'])->name('modules.destroy');
+
+
+####################################################################
+// Routes for course enrollments
+
+
+Route::get('/enrollments', [CourseEnrollmentController::class, 'index']);
+Route::get('/enrollments/create', [CourseEnrollmentController::class, 'create']);
+Route::post('/enrollments', [CourseEnrollmentController::class, 'store']);
+Route::get('/enrollments/{enrollment}', [CourseEnrollmentController::class, 'show']);
+Route::get('/enrollments/{enrollment}/edit', [CourseEnrollmentController::class, 'edit']);
+Route::put('/enrollments/{enrollment}', [CourseEnrollmentController::class, 'update']);
+Route::delete('/enrollments/{enrollment}', [CourseEnrollmentController::class, 'destroy']);
+
+
+################################################################
 // Route::post('/signup', [AuthenController::class, 'signup'])->name('signup');
 Route::get('/', [landController::class, 'land'])->name('land');
 Route::post('/verf-user', [AuthController::class, 'verf_user']);
