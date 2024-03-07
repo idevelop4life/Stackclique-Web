@@ -9,6 +9,9 @@ use App\Http\Controllers\ChannelsController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\CourseModuleController;
 use App\Http\Controllers\CourseEnrollmentController;
+use App\Http\Controllers\CourseReviewController;
+use App\Http\Controllers\NotificationController;
+
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -75,28 +78,23 @@ Route::delete('channels/{id}', [ChannelsController::class, 'delete']);
 // Routes for the course reviews
 
 // Index
-Route::get('/course_reviews', 'CourseReviewController@index')->name('course_reviews.index');
+Route::get('/course_reviews', [CourseReviewController::class,'index']);
 
 // Create
-Route::get('/course_reviews/create', 'CourseReviewController@create')->name('course_reviews.create');
-Route::post('/course_reviews', 'CourseReviewController@store')->name('course_reviews.store');
-
-// Show
-Route::get('/course_reviews/{course_review}', 'CourseReviewController@show')->name('course_reviews.show');
+Route::post('/course_reviews', [CourseReviewController::class,'store']);
 
 // Edit
-Route::get('/course_reviews/{course_review}/edit', 'CourseReviewController@edit')->name('course_reviews.edit');
-Route::put('/course_reviews/{course_review}', 'CourseReviewController@update')->name('course_reviews.update');
+Route::put('/course_reviews/{course_review}',  [CourseReviewController::class,'update']);
 
 // Delete
-Route::delete('/course_reviews/{course_review}', 'CourseReviewController@destroy')->name('course_reviews.destroy');
+Route::delete('/course_reviews/{course_review}',  [CourseReviewController::class,'destroy']);
 
 
 ##########################################################
 //  Routes for Chat Management
 
 
-Route::prefix('api')->group(function () {
+// Route::prefix('api')->group(function () {
     // List all chat messages
     Route::get('chats', [ChatController::class, 'index']);
 
@@ -111,7 +109,7 @@ Route::prefix('api')->group(function () {
 
     // Delete a chat message
     Route::delete('chats/{chat}', [ChatController::class, 'destroy']);
-});
+// });
 
 
 ##########################################################################
@@ -131,9 +129,6 @@ Route::post('/modules', [CourseModuleController::class, 'store'])->name('modules
 // Display the specified resource.
 Route::get('/modules/{module}', [CourseModuleController::class, 'show'])->name('modules.show');
 
-// Show the form for editing the specified resource.
-Route::get('/modules/{module}/edit', [CourseModuleController::class, 'edit'])->name('modules.edit');
-
 // Update the specified resource in storage.
 Route::put('/modules/{module}', [CourseModuleController::class, 'update'])->name('modules.update');
 
@@ -144,7 +139,6 @@ Route::delete('/modules/{module}', [CourseModuleController::class, 'destroy'])->
 ####################################################################
 // Routes for course enrollments
 
-
 Route::get('/enrollments', [CourseEnrollmentController::class, 'index']);
 Route::get('/enrollments/create', [CourseEnrollmentController::class, 'create']);
 Route::post('/enrollments', [CourseEnrollmentController::class, 'store']);
@@ -153,6 +147,15 @@ Route::get('/enrollments/{enrollment}/edit', [CourseEnrollmentController::class,
 Route::put('/enrollments/{enrollment}', [CourseEnrollmentController::class, 'update']);
 Route::delete('/enrollments/{enrollment}', [CourseEnrollmentController::class, 'destroy']);
 
+###################################################################
+// Routes for the notifications
+
+
+Route::get('/notifications', [NotificationController::class, 'index']);
+Route::post('/notifications', [NotificationController::class, 'store']);
+Route::get('/notifications/{notification}', [NotificationController::class, 'show']);
+Route::put('/notifications/{notification}', [NotificationController::class, 'update']);
+Route::delete('/notifications/{notification}', [NotificationController::class, 'destroy']);
 
 ################################################################
 // Route::post('/signup', [AuthenController::class, 'signup'])->name('signup');

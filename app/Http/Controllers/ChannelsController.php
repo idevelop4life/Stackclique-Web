@@ -32,7 +32,7 @@ class ChannelsController extends Controller
         //
         $channel = Channel::create($request->all());
 
-        return response()->json(['message' => 'Course created successfully', 'channel' => $channel], 201);
+        return response()->json(['message' => 'Channels created successfully', 'channel' => $channel], 201);
         
     }
 

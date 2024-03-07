@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\CourseModule;
+use App\Models\CourseModule;
 
 class CourseModuleController extends Controller
 {
@@ -34,20 +34,18 @@ class CourseModuleController extends Controller
         ]);
 
         $module = CourseModule::create($validatedData);
+        
+        // $chat = Chat::create($request->all());
+        return response()->json($module, 201);
 
-        return redirect()->route('modules.index')->with('success', 'Module created successfully');
+        // return redirect()->route('modules.index')->with('success', 'Module created successfully');
     }
 
     // Display the specified resource.
     public function show(CourseModule $module)
     {
-        return view('modules.show', compact('module'));
-    }
-
-    // Show the form for editing the specified resource.
-    public function edit(CourseModule $module)
-    {
-        return view('modules.edit', compact('module'));
+        // return view('modules.show', compact('module'));
+        return response()->json($module);
     }
 
     // Update the specified resource in storage.
@@ -72,7 +70,7 @@ class CourseModuleController extends Controller
     public function destroy(CourseModule $module)
     {
         $module->delete();
-
-        return redirect()->route('modules.index')->with('success', 'Module deleted successfully');
+        return respons->json(['message' => 'Module deleted successfully']);
+        // return redirect()->route('modules.index')->with('success', 'Module deleted successfully');
     }
 }

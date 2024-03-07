@@ -10,13 +10,14 @@ class CourseReviewController extends Controller
     public function index()
     {
         $courseReviews = CourseReview::all();
-        return view('course_reviews.index', compact('courseReviews'));
+        return response()->json($courseReviews, 201);
+
     }
 
-    public function create()
-    {
-        return view('course_reviews.create');
-    }
+    // public function create()
+    // {
+    //     return view('course_reviews.create');
+    // }
 
     public function store(Request $request)
     {
@@ -30,18 +31,7 @@ class CourseReviewController extends Controller
 
         CourseReview::create($request->all());
 
-        return redirect()->route('course_reviews.index')
-            ->with('success', 'Course review created successfully.');
-    }
-
-    public function show(CourseReview $courseReview)
-    {
-        return view('course_reviews.show', compact('courseReview'));
-    }
-
-    public function edit(CourseReview $courseReview)
-    {
-        return view('course_reviews.edit', compact('courseReview'));
+        return response()->json(['message' =>'review stored successfully']);
     }
 
     public function update(Request $request, CourseReview $courseReview)
@@ -55,16 +45,12 @@ class CourseReviewController extends Controller
         ]);
 
         $courseReview->update($request->all());
-
-        return redirect()->route('course_reviews.index')
-            ->with('success', 'Course review updated successfully');
+        return response()->json(['message'=>'Courses Updated Successfully']);    
     }
-
+    
     public function destroy(CourseReview $courseReview)
     {
         $courseReview->delete();
-
-        return redirect()->route('course_reviews.index')
-            ->with('success', 'Course review deleted successfully');
+        return response()->json(['Course review deleted successfully']);
     }
 }
