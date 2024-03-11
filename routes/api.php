@@ -11,6 +11,8 @@ use App\Http\Controllers\CourseModuleController;
 use App\Http\Controllers\CourseEnrollmentController;
 use App\Http\Controllers\CourseReviewController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\UserEmailVerificationTokenController;
+use App\Http\Controllers\PersonalAccessTokenController;
 
 
 use Illuminate\Http\Request;
@@ -156,6 +158,26 @@ Route::post('/notifications', [NotificationController::class, 'store']);
 Route::get('/notifications/{notification}', [NotificationController::class, 'show']);
 Route::put('/notifications/{notification}', [NotificationController::class, 'update']);
 Route::delete('/notifications/{notification}', [NotificationController::class, 'destroy']);
+
+
+###################################################################
+// Routes for the User email verification
+
+Route::get('/verify', [UserEmailVerificationTokenController::class, 'index']);
+Route::post('/verify', [UserEmailVerificationTokenController::class, 'store']);
+Route::put('/verify/{verify}', [UserEmailVerificationTokenController::class, 'update']);
+Route::delete('/verify/{verify}', [UserEmailVerificationTokenController::class, 'destroy']);
+
+########################################################################
+// Routes for Personal Access Token
+
+Route::get('/personal-access-tokens', [PersonalAccessTokenController::class, 'index']);
+Route::post('/personal-access-tokens', [PersonalAccessTokenController::class, 'store']);
+Route::get('/personal-access-tokens/{personal_access_token}', [PersonalAccessTokenController::class, 'show']);
+Route::put('/personal-access-tokens/{personal_access_token}', [PersonalAccessTokenController::class, 'update']);
+Route::delete('/personal-access-tokens/{personal_access_token}', [PersonalAccessTokenController::class, 'destroy']);
+
+
 
 ################################################################
 // Route::post('/signup', [AuthenController::class, 'signup'])->name('signup');

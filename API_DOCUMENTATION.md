@@ -261,6 +261,28 @@ http://127.0.0.1:8000/api/
 
 -   **Endpoint:** `DELETE /notifications/{notification}`
 
+## Personal Access Tokens
+
+### Index
+
+-   **Endpoint:** `GET /personal-access-tokens:`
+
+### Create
+
+-   **Endpoint:** `POST /personal-access-tokens: `
+
+### Show
+
+-   **Endpoint:** `GET /personal-access-tokens/{id}: `
+
+### Update
+
+-   **Endpoint:** `PUT /personal-access-tokens/{id}`
+
+### Delete
+
+-   **Endpoint:** `DELETE /personal-access-tokens/{id}`
+
 ```
 
 ```

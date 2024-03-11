@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class UserEmailVerificationToken extends Model
 {
     use HasFactory;
+    protected $fillable = ['email', 'otp', 'verified', 'expiredAt'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
+

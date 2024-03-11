@@ -14,11 +14,6 @@ class CourseReviewController extends Controller
 
     }
 
-    // public function create()
-    // {
-    //     return view('course_reviews.create');
-    // }
-
     public function store(Request $request)
     {
         $request->validate([
