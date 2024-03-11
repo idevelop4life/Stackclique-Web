@@ -283,6 +283,28 @@ http://127.0.0.1:8000/api/
 
 -   **Endpoint:** `DELETE /personal-access-tokens/{id}`
 
+## Password Reset
+
+### Index
+
+-   **Endpoint:** `GET /password-resets`
+
+### Create
+
+-   **Endpoint:** `POST /password-resets `
+
+### Show
+
+-   **Endpoint:** `GET /password-resets/{id}: `
+
+### Update
+
+-   **Endpoint:** `PUT /password-resets/{id}`
+
+### Delete
+
+-   **Endpoint:** `DELETE /password-resets/{id}`
+
 ```
 
 ```

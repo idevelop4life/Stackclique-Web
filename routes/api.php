@@ -13,6 +13,7 @@ use App\Http\Controllers\CourseReviewController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\UserEmailVerificationTokenController;
 use App\Http\Controllers\PersonalAccessTokenController;
+use App\Http\Controllers\PasswordResetController;
 
 
 use Illuminate\Http\Request;
@@ -177,6 +178,16 @@ Route::get('/personal-access-tokens/{personal_access_token}', [PersonalAccessTok
 Route::put('/personal-access-tokens/{personal_access_token}', [PersonalAccessTokenController::class, 'update']);
 Route::delete('/personal-access-tokens/{personal_access_token}', [PersonalAccessTokenController::class, 'destroy']);
 
+
+##############################################################################
+// Routes for Passwords Reset
+
+
+Route::get('/password-resets', [PasswordResetController::class, 'index']);
+Route::post('/password-resets', [PasswordResetController::class, 'store']);
+Route::get('/password-resets/{passwordReset}', [PasswordResetController::class, 'show']);
+Route::put('/password-resets/{passwordReset}', [PasswordResetController::class, 'update']);
+Route::delete('/password-resets/{passwordReset}', [PasswordResetController::class, 'destroy']);
 
 
 ################################################################
